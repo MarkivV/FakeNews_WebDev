@@ -4,6 +4,7 @@ import styles from "./../styles/Layout.module.scss"
 import {Playfair_Display} from "@next/font/google";
 import {Layout} from "../types";
 import Head from "next/head";
+import Footer from "./Footer";
 
 
 
@@ -23,6 +24,8 @@ const MainLayouts: React.FC<Layout> = ({children}) => {
                     {children}
                 </div>
             </div>
+            <hr className={styles.Line}/>
+            <Footer/>
         </div>
     );
 };

@@ -9,6 +9,7 @@ type Details = {
 }
 
 const CardDetails: FC<Details> = ({news}) => {
+    console.log(news.tags)
     return (
         <div className={styles.cardDetails_wrap}>
             <div className={styles.cardDetails_leftBlock}>
@@ -31,14 +32,16 @@ const CardDetails: FC<Details> = ({news}) => {
                 </div>
 
                 <div className={styles.cardDetails_otherInfo}>
-                    <h2>Читайте нас у: </h2>
+                    <h3>Читайте нас у: </h3>
                     <h2><a href="https://t.me/brazhkovich">Telegram</a></h2>
                 </div>
                 <hr/>
                 <div className={styles.cardDetails_tags}>
-                    <h2>Теги:</h2>
                     <div className={styles.cardDetails_tagsBadge}>
-                        <h2>Війна</h2>
+                        <h3>Теги:</h3>
+                        {news.tags.map((i,index)=>(
+                            <h2 key={index}>{i}</h2>
+                        ))}
                     </div>
                 </div>
             </div>
