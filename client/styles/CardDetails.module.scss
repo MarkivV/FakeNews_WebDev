@@ -1,0 +1,59 @@
+.cardDetails_wrap{
+  display: flex;
+  .cardDetails_leftBlock{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    .cardDetails_title{
+      .cardDetails_CategoryBadge{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        h2{
+          color: white;
+          background-color: #ff4f00;
+          display: inline-block;
+        }
+      }
+      .cardDetails_dateTime{
+        margin-bottom: 15px;
+        h3{
+          color: #c2c2c2;
+        }
+      }
+    }
+    .cardDetails_image{
+      img{
+        height: 550px;
+        width: 1000px;
+        object-fit: cover;
+      }
+    }
+    .cardDetails_description{
+      text-align: justify;
+      margin-top: 15px;
+      span{
+        font-size: 24px;
+        line-height: 150%;
+      }
+    }
+    .cardDetails_otherInfo{
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      a{
+        color: #2AABEE;
+      }
+    }
+    .cardDetails_tags{
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      .cardDetails_tagsBadge{
+        color: black;
+        background-color: #cecece;
+        display: inline-block;
+      }
+
+    }
+  }
+}

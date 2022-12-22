@@ -1,0 +1,26 @@
+.normal_card{
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  max-width: 25%;
+  .normal_card_img {
+    img{
+      width: 100%;
+      object-fit: cover;
+      height: 250px;
+    }
+  }
+  .normal_card_desc{
+    display: flex;
+    flex-direction: column;
+    h2{
+      font-size: 16px;
+      &:hover{
+        color: #ff4f00;
+      }
+    }
+    span{
+      margin-top: 15px;
+    }
+  }
+}

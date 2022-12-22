@@ -1,0 +1,27 @@
+.wrap{
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+  .imgDiv{
+    img{
+      width: 700px;
+      max-height: 390px;
+      object-fit: cover;
+    }
+  }
+  .descDiv{
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+    h2{
+      text-align: justify;
+      &:hover{
+        color: #ff4f00;
+      }
+    }
+    span{
+      margin-top: 15px;
+      text-align: justify;
+    }
+  }
+}

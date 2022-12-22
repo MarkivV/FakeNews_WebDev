@@ -1,0 +1,45 @@
+.header{
+  a:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  max-height: 70px;
+  margin: auto 150px;
+  display: flex;
+  .header_title{
+    width: 150px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+    .title{
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .title_small{
+      font-size: 26px;
+      font-weight: 400;
+      color: #FF4F00;
+    }
+  }
+
+  .menu{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    h2{
+      font-size: 18px;
+      font-weight: 400;
+      margin: 20px;
+      cursor: pointer;
+      &:hover{
+        color: #FF4F00;
+      }
+    }
+  }
+  .header_icons{
+    width: 150px;
+    position: relative;
+    margin: auto 0 auto 0;
+  }
+}

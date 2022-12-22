@@ -1,0 +1,36 @@
+.wrap{
+.upper_block{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 25px;
+    height: 400px;
+}
+
+.mainHr{
+    margin-top: 10px;
+    border: 1px solid #EDEDED;
+}
+
+.middle_block{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-height: 400px;
+.lastNews{
+    margin-top: 10px;
+    border: 2px solid #EDEDED;
+    border-radius: 5px;
+}
+}
+
+.third_block{
+    margin-top: 10px;
+}
+.sub_line{
+    justify-content: center;
+}
+
+
+}
