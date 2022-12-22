@@ -1,5 +1,5 @@
 import React from 'react';
-import {News, typeNews} from "../types";
+import {News} from "../types";
 import styles from './../styles/BigCard.module.scss'
 import Link from "next/link";
 

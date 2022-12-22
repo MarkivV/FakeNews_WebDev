@@ -3,22 +3,20 @@ import MainCard from "../components/MainCard";
 import NormalCard from "../components/NormalCard";
 import RusLosses from "../components/RusLooses";
 import {News, RusStats} from "../types";
-import {GetStaticProps} from "next";
+import {GetServerSideProps} from "next";
 import axios from "axios";
 import LastNews from "../components/LastNews";
 import ThirdBlock from "../components/ThirdBlock";
-
-
 type Props = {
-    // looses: RusStats,
-    news: News[]
+    news: News[],
+    looses: RusStats
 }
 
-export default function Home({news }: Props) {
+export default function Home({looses, news }: Props) {
 
   return (
     <div className={styles.wrap}>
-        {/*<RusLosses looses={looses}/>*/}
+        <RusLosses looses={looses}/>
         <div className={styles.upper_block}>
           <MainCard news={news[0]}/>
           <NormalCard news={news[1]}/>
@@ -28,22 +26,24 @@ export default function Home({news }: Props) {
               <LastNews items={news} />
           </div>
         </div>
-        <div className="third-block">
-            <div className={"big-info-block"}>
+        <div className={styles.third_block}>
+            <div className={styles.big_info_block}>
                 <ThirdBlock items={news}/>
             </div>
         </div>
-        {/*  <h1>Бражкович медіа</h1>*/}
     </div>
   )
 
 }
 
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const res = await axios.get("http://localhost:3000/api/news");
+    const lost = await axios.get("https://russianwarship.rip/api/v1/statistics/latest")
+    const {data} = lost
     return {
         props: {
+            looses: data.data.stats,
             news: res.data
         },
     };
