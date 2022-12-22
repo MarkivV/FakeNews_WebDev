@@ -3,7 +3,7 @@ import React from 'react';
 const Index = () => {
     return (
         <div>
-            sfsrf
+            <h1>hi my name is</h1>
         </div>
     );
 };
