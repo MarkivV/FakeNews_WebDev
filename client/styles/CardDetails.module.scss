@@ -40,6 +40,14 @@
       margin-top: 25px;
       display: flex;
       align-items: center;
+      margin-bottom: 20px;
+      h3{
+        font-size: 16px;
+      }
+      h2{
+        font-size: 22px;
+        margin-left: 20px;
+      }
       a{
         color: #2AABEE;
       }
@@ -47,11 +55,20 @@
     .cardDetails_tags{
       display: flex;
       flex-direction: row;
+      margin-top: 20px;
       gap: 20px;
+
       .cardDetails_tagsBadge{
-        color: black;
-        background-color: #cecece;
-        display: inline-block;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        h3{
+          font-size: 18px;
+        }
+        h2{
+          font-size: 22px;
+          color: #ff4f00;
+        }
       }
 
     }

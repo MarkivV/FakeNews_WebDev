@@ -1,0 +1,25 @@
+.wrap{
+  a:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  max-height: 70px;
+  margin: auto 150px;
+  display: flex;
+  .header_title{
+    width: 150px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+    .title{
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .title_small{
+      font-size: 36px;
+      font-weight: 400;
+      color: #FF4F00;
+    }
+  }
+}
