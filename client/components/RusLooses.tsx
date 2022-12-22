@@ -1,10 +1,8 @@
 import React from 'react';
 import styles from './../styles/RusLooses.module.scss'
 import {Looses} from "../types";
-import axios from "axios/index";
 
 const RusLosses: React.FC<Looses> = ({looses}) => {
-
     const list = [
         {
             title: 'Особивий склад',

@@ -1,5 +1,4 @@
 import styles from './../../styles/CardDetails.module.scss'
-import Image from "next/image";
 import axios from "axios";
 import {GetServerSideProps } from 'next'
 import {News} from "../../types";
@@ -47,7 +46,6 @@ const CardDetails: FC<Details> = ({news}) => {
     );
 };
 
-// @ts-ignore
 export const getServerSideProps: GetServerSideProps = async ({ params }: any) => {
     console.log(params)
     const res = await axios.get(
