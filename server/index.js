@@ -3,7 +3,7 @@ import React from 'react';
 const Index = () => {
     return (
         <div>
-            <h1>HELLO MY NAME IS MAXIM</h1>
+            <h1>HELLO MY</h1>
         </div>
     );
 };
