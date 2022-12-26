@@ -1,0 +1,33 @@
+.wrap{
+  .left_block{
+    gap: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    .titleInput{
+      height: 35px;
+    }
+
+    .descriptionInput{
+      height: 70px;
+    }
+
+    .imageInput{
+      height: 35px;
+    }
+
+    .categoryInput{
+      height: 35px;
+    }
+
+    .button{
+      height: 35px;
+      background-color: #ff4f00;
+    }
+  }
+
+  .right_block{
+    width: 50%;
+  }
+}

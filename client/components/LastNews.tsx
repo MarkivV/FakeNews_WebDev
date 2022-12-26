@@ -7,7 +7,7 @@ import SmallCard from "./SmallCard";
 
 const LastNews:React.FC<typeNews> = ({items}) => {
     const item = items.slice(0,4).map((i)=>(
-        <SmallCard id={i.id} img={i.image} title={i.description} key={i.id}/>
+        <SmallCard id={i._id} img={i.image} title={i.description} category={i.category} key={i._id}/>
     ))
     return (
         <div className={styles.lastNewsBlock}>

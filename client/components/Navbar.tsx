@@ -16,9 +16,15 @@ const Header = () => {
                 </Link>
             </div>
             <div className={styles.menu}>
-                <h2>Головна</h2>
-                <h2>Новини</h2>
-                <h2>Бєсєдка</h2>
+                <Link href={"/"}>
+                    <h2>Головна</h2>
+                </Link>
+                <Link href={"/category/Війна"}>
+                    <h2>Новини</h2>
+                </Link>
+                <Link href={"/suggest"}>
+                    <h2>Бєсєдка</h2>
+                </Link>
                 <h2>Блог</h2>
             </div>
             <div className={styles.header_icons}>

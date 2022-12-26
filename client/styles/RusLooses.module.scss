@@ -4,7 +4,7 @@
   align-items: center;
   .title_losses h3{
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
   }
   .losses_list {
     display: flex;
@@ -16,12 +16,13 @@
     }
     .name{
       font-size: 12px;
-      font-weight: 400;
+      font-weight: 300;
     }
   }
   .losses_list_map{
     display: flex;
     flex-direction: row;
     gap: 50px;
+    margin-top: 15px;
   }
 }

@@ -4,11 +4,11 @@ import styles from './../styles/BigCard.module.scss'
 import Link from "next/link";
 
 
-const BigCard:React.FC<News> = ({id, title, description, creator, tags, image, published, category}) => {
+const BigCard:React.FC<News> = ({_id, title, description, creator, tags, image, published, category}) => {
     return (
         <div className={styles.card_wrap}>
             <div className={styles.Image}>
-                <Link href={'/news/'+id}>
+                <Link href={'/news/'+_id}>
                     <img src={image} alt=""/>
                 </Link>
                 <div className={styles.desc}>
@@ -16,7 +16,7 @@ const BigCard:React.FC<News> = ({id, title, description, creator, tags, image, p
                         <h2>Війна</h2>
                         <h3>| 8 листопада 12:45</h3>
                     </div>
-                    <Link href={'/news/' + id}>
+                    <Link href={'/news/' + _id}>
                        <span>
                         {
                             title

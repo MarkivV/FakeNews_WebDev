@@ -43,8 +43,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const {data} = lost
     return {
         props: {
-            looses: data.data.stats,
-            news: res.data
+            looses: data?.data?.stats,
+            news: res?.data
         },
     };
 };
