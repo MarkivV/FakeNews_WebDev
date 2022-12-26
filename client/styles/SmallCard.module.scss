@@ -6,10 +6,19 @@
     position: relative;
     width: 100%;
     display: flex;
+    text-align: justify;
     img {
       width: 100%;
       object-fit: cover;
       filter: brightness(50%);
+    }
+    h3{
+      position: absolute;
+      padding: 5px;
+      background-color: #ff4f00;
+      display: inline-block;
+      color: #fff;
+      font-weight: 400;
     }
     span {
       position: absolute;

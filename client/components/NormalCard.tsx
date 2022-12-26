@@ -15,7 +15,7 @@ const NormalCard: FC<NormalCard> = ({news}) => {
                 <img src={news?.image} alt=""/>
             </div>
             <div className={styles.normal_card_desc}>
-                <Link href={'/news/'+news.id}>
+                <Link href={'/news/'+news._id}>
                     <h2>{news.title?.length > 90 ? `${news.title?.substring(0, 90)}...` : news.title}</h2>
                     <span>{news.description?.length > 90 ? `${news.description?.substring(0, 90)}...` : news.description}</span>
                 </Link>

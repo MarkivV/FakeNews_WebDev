@@ -29,14 +29,15 @@ export type Layout = {
 }
 
 export type News = {
-    id: string,
+    _id: string,
     title: string,
     description: string,
     creator: string,
     tags: string[],
     image: string,
     published: boolean,
-    category: number
+    category: string,
+    createdAt?: string
 }
 
 export enum Status {
@@ -57,5 +58,6 @@ export interface typeNews {
 
 
 export type SelectNewsById = {
-    id: string
+    _id: string
 }
+

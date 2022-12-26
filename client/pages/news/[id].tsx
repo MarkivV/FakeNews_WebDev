@@ -3,12 +3,18 @@ import axios from "axios";
 import {GetServerSideProps } from 'next'
 import {News} from "../../types";
 import {FC} from "react";
+import moment from "moment";
+import 'moment/locale/uk';
 
 type Details = {
     news: News
 }
 
 const CardDetails: FC<Details> = ({news}) => {
+
+    // @ts-ignore
+    // const mom = moment.locale('uk')
+
     console.log(news.tags)
     return (
         <div className={styles.cardDetails_wrap}>
@@ -16,10 +22,11 @@ const CardDetails: FC<Details> = ({news}) => {
                 <div className={styles.cardDetails_title}>
                     <h1>{news?.title}</h1>
                     <div className={styles.cardDetails_CategoryBadge}>
-                        <h2>Війна</h2>
+                        <h2>{news.category}</h2>
                     </div>
                     <div className={styles.cardDetails_dateTime}>
-                        <h3>19 грудня 2022 | 15:46</h3>
+                        {/*<h3>19 грудня 2022 | 15:46</h3>*/}
+                        <h3>{moment(news.createdAt).format("LLL")}</h3>
                     </div>
                 </div>
                 <div className={styles.cardDetails_image}>

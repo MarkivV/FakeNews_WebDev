@@ -1,14 +1,17 @@
 import React from 'react';
 import Navbar from "./Navbar";
 import styles from "./../styles/Layout.module.scss"
-import {Playfair_Display} from "@next/font/google";
+import {Roboto} from "@next/font/google";
 import {Layout} from "../types";
 import Head from "next/head";
 import Footer from "./Footer";
 
 
 
-const inter = Playfair_Display({ subsets: ['cyrillic'] })
+const inter = Roboto({
+    subsets: ['cyrillic'],
+    weight: ["300", "400", "500"]
+})
 
 
 const MainLayouts: React.FC<Layout> = ({children}) => {
@@ -18,7 +21,7 @@ const MainLayouts: React.FC<Layout> = ({children}) => {
                 <title>БражновичМедіа</title>
             </Head>
             <Navbar/>
-            <hr/>
+            <hr className={styles.Line}/>
             <div className={styles.content}>
                 <div>
                     {children}

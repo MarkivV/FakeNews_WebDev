@@ -14,8 +14,8 @@ const ThirdBlock: React.FC<typeNews> = ({items}) => {
             <div className={styles.small_card}>
                 {
                     items.slice(3,7).map((item)=>(
-                        <div className={styles.newsBlockDiv} key={item?.id}>
-                            <SmallCard id={item?.id} img={item?.image} title={item?.description}/>
+                        <div className={styles.newsBlockDiv} key={item?._id}>
+                            <SmallCard id={item?._id} img={item?.image} title={item?.description} category={item?.category}/>
                         </div>
                     ))
                 }

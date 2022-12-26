@@ -6,15 +6,15 @@ import NewsPosts from "../../../models/NewsPosts";
 
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
-    const {method, query:{id}} = req
+    const {method, query:{category}} = req
 
     await dbConnect()
 
     switch (method) {
         case "GET":
             try {
-                const newsGetById = await NewsPosts.findById(id)
-                res.status(200).json(newsGetById)
+                const newsGetCategory = await NewsPosts.find({category: category})
+                res.status(200).json(newsGetCategory)
             }catch (e:any) {
                 res.status(500).json(e)
             }
