@@ -1,37 +1,126 @@
-.wrap{
-    margin-bottom: 20px;
-.upper_block{
+.wrap {
+  margin-bottom: 20px;
+
+  .upper_block {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 25px;
     gap: 25px;
     height: 400px;
-}
+  }
 
-.mainHr{
+  .mainHr {
     margin-top: 10px;
     border: 1px solid #EDEDED;
-}
+  }
 
-.middle_block{
+  .middle_block {
     display: flex;
     flex-direction: row;
     justify-content: center;
     max-height: 400px;
-.lastNews{
-    margin-top: 10px;
-    border: 2px solid #EDEDED;
-    border-radius: 5px;
-}
-}
 
-.third_block{
+    .lastNews {
+      margin-top: 10px;
+      border: 2px solid #EDEDED;
+      border-radius: 5px;
+    }
+  }
+
+  .third_block {
     margin-top: 20px;
-}
-.sub_line{
+  }
+
+  .sub_line {
     justify-content: center;
-}
+  }
+
+  .newsBlock {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    border-top: 1px solid #EDEDED;
+    padding-top: 15px;
+
+    .fist_part{
+        margin-bottom: 20px;
+      h2{
+        color: #ff4f00;
+      }
+    }
+    .second_part{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .normal_card {
+        &:first-of-type{
+          position: relative;
+          width: 75%;
+          .normal_card_img {
+            img {
+              width: 100%;
+              object-fit: cover;
+              height: 470px;
+              filter: brightness(50%);
+            }
+          }
+          .normal_card_desc{
+            margin-right: 20px;
+            margin-left: 20px;
+            position: absolute;
+            text-align: justify;
+            bottom: 1px;
+            h2{
+              font-size: 32px;
+              color: white;
+            }
+            span{
+              display: none;
+            }
+          }
+        }
+        width: 24%;
+        justify-content: center;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #EDEDED;
+
+        .normal_card_img {
+          img {
+            width: 100%;
+            object-fit: cover;
+            height: 300px;
+          }
+        }
+
+        .normal_card_desc {
+          text-align: justify;
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 10px;
+          height: 170px;
+
+          h2 {
+            font-size: 16px;
+            margin-bottom: 15px;
+
+            &:hover {
+              color: #ff4f00;
+            }
+          }
+
+          span {
+            margin-top: 15px;
+          }
+        }
+
+        hr {
+
+        }
+      }
+    }
+  }
 
 
 }

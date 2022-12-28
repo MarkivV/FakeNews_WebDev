@@ -5,6 +5,7 @@ import {News} from "../../types";
 import {FC} from "react";
 import moment from "moment";
 import 'moment/locale/uk';
+import Link from "next/link";
 
 type Details = {
     news: News
@@ -12,8 +13,6 @@ type Details = {
 
 const CardDetails: FC<Details> = ({news}) => {
 
-    // @ts-ignore
-    // const mom = moment.locale('uk')
 
     console.log(news.tags)
     return (
@@ -21,17 +20,26 @@ const CardDetails: FC<Details> = ({news}) => {
             <div className={styles.cardDetails_leftBlock}>
                 <div className={styles.cardDetails_title}>
                     <h1>{news?.title}</h1>
-                    <div className={styles.cardDetails_CategoryBadge}>
-                        <h2>{news.category}</h2>
+                    <Link href={"/category/"+news.category}>
+                        <div className={styles.cardDetails_CategoryBadge}>
+                            <h2>{news.category}</h2>
+                        </div>
+                    </Link>
+                </div>
+                <div className={styles.cardDetails_image}>
+                    <img src={news?.image} alt=""/>
+                </div>
+                <div className={styles.underImageBlock}>
+                    <div className={styles.creator}>
+                        <h2>Автор: </h2>
+                        <h3>{news.creator}</h3>
                     </div>
                     <div className={styles.cardDetails_dateTime}>
                         {/*<h3>19 грудня 2022 | 15:46</h3>*/}
                         <h3>{moment(news.createdAt).format("LLL")}</h3>
                     </div>
                 </div>
-                <div className={styles.cardDetails_image}>
-                    <img src={news?.image} alt=""/>
-                </div>
+                <hr className={styles.hr}/>
                 <div className={styles.cardDetails_description}>
                     <span>
                         {news?.description}
@@ -42,7 +50,7 @@ const CardDetails: FC<Details> = ({news}) => {
                     <h3>Читайте нас у: </h3>
                     <h2><a href="https://t.me/brazhkovich">Telegram</a></h2>
                 </div>
-                <hr/>
+                <hr className={styles.hr}/>
                 <div className={styles.cardDetails_tags}>
                     <div className={styles.cardDetails_tagsBadge}>
                         <h3>Теги:</h3>

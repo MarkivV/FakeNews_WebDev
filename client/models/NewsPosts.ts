@@ -26,7 +26,7 @@ const NewsPostsSchema = new mongoose.Schema(
         published:{
             type: Boolean,
             required: true,
-            default: false
+            default: true
         },
         category:{
             type: String,
