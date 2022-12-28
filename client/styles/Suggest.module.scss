@@ -1,4 +1,8 @@
 .wrap{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  gap: 20px;
   .left_block{
     gap: 20px;
     width: 50%;
@@ -7,27 +11,82 @@
 
     .titleInput{
       height: 35px;
+      border:0;
+      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+      padding:10px;
+      border-radius: 15px;
     }
 
     .descriptionInput{
-      height: 70px;
+      min-height: 150px;
+      border:0;
+      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+      padding:10px;
+      border-radius: 15px;
+      resize: vertical;
     }
 
     .imageInput{
-      height: 35px;
+      input[type="file"] {
+        display: none;
+      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h2{
+        font-size: 14px;
+        font-weight: 400;
+        color: #ff4f00;
+      }
+      width: 200px;
+      border:0;
+      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+      padding:10px;
+      border-radius: 15px;
     }
 
     .categoryInput{
       height: 35px;
+      border:0;
+      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+      padding:10px;
+      border-radius: 15px;
+
+    }
+
+    .categories{
+      display: flex;
+      gap: 20px;
+        button{
+          height: 35px;
+          border:0;
+          box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+          padding:10px;
+          border-radius: 20px;
+          background-color: #fff;
+
+        }
+        .active{
+          box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+          border: 1px solid #ff4f00;
+        }
+
     }
 
     .button{
       height: 35px;
+      border:0;
+      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+      padding:10px;
+      border-radius: 20px;
       background-color: #ff4f00;
+      color: #fff;
+      width: 150px;
     }
   }
 
   .right_block{
     width: 50%;
+
   }
 }

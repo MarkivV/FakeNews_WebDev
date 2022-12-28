@@ -18,7 +18,7 @@ const MainLayouts: React.FC<Layout> = ({children}) => {
     return (
         <div className={inter.className}>
             <Head>
-                <title>БражновичМедіа</title>
+                <title>БражковичМедіа</title>
             </Head>
             <Navbar/>
             <hr className={styles.Line}/>

@@ -7,14 +7,16 @@ import {GetServerSideProps} from "next";
 import axios from "axios";
 import LastNews from "../components/LastNews";
 import ThirdBlock from "../components/ThirdBlock";
+import Link from "next/link";
+import img from "../assets/400_0_1662698694-6361.jpg";
+import React from "react";
 type Props = {
     news: News[],
     looses: RusStats
 }
 
 export default function Home({looses, news }: Props) {
-
-  return (
+    return (
     <div className={styles.wrap}>
         <RusLosses looses={looses}/>
         <div className={styles.upper_block}>
@@ -27,8 +29,59 @@ export default function Home({looses, news }: Props) {
           </div>
         </div>
         <div className={styles.third_block}>
-            <div className={styles.big_info_block}>
                 <ThirdBlock items={news}/>
+        </div>
+
+        <div className={styles.newsBlock}>
+            <div className={styles.fist_part}>
+                <Link href={"/category/Війна"}>
+                    <h2>Війна</h2>
+                </Link>
+            </div>
+            <div className={styles.second_part}>
+            {
+                news.filter(cat => cat.category === "Війна").slice(0,10).map((i)=>(
+                    <div className={styles.normal_card}>
+                        <div className={styles.normal_card_img}>
+                            <Link href={'/news/'+i._id}>
+                                <img src={i?.image} alt=""/>
+                            </Link>
+                        </div>
+                        <div className={styles.normal_card_desc}>
+                            <Link href={'/news/'+i._id}>
+                                <h2>{i.title}</h2>
+                                <span>{i.description?.length > 150 ? `${i.description?.substring(0, 150)}...` : i.description}</span>
+                            </Link>
+                        </div>
+                    </div>
+                ))
+            }
+            </div>
+        </div>
+        <div className={styles.newsBlock}>
+            <div className={styles.fist_part}>
+                <Link href={"/category/Політика"}>
+                    <h2>Політика</h2>
+                </Link>
+            </div>
+            <div className={styles.second_part}>
+                {
+                    news.filter(cat => cat.category === "Політика").slice(0,10).map((i)=>(
+                        <div className={styles.normal_card}>
+                            <div className={styles.normal_card_img}>
+                                <Link href={'/news/'+i._id}>
+                                    <img src={i?.image} alt=""/>
+                                </Link>
+                            </div>
+                            <div className={styles.normal_card_desc}>
+                                <Link href={'/news/'+i._id}>
+                                    <h2>{i.title}</h2>
+                                    <span>{i.description?.length > 150 ? `${i.description?.substring(0, 150)}...` : i.description}</span>
+                                </Link>
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>

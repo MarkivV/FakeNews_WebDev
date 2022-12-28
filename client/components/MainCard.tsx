@@ -20,7 +20,7 @@ const MainCard = ({news}: NewsProp) => {
                     <h2>{news?.title}</h2>
                 </Link>
                 <Link href={'/news/' + news._id}>
-                    <span>{news?.description}</span>
+                    <span>{news?.description.length > 150 ? `${news?.description.substring(0, 150)}...` : news?.description}</span>
                 </Link>
 
             </div>
