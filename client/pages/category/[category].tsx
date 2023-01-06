@@ -2,7 +2,7 @@ import React, {FC, useState} from 'react';
 import {GetServerSideProps} from "next";
 import axios from "axios";
 import styles from "../../styles/NewsCat.module.scss"
-import {News} from "../../types";
+import {News} from "../../types/types";
 import NormalCard from "../../components/NormalCard";
 import Link from "next/link";
 import img from "../../assets/400_0_1662698694-6361.jpg";
@@ -33,7 +33,7 @@ const News: FC<NewsCat> = ({news}) => {
             <div className={styles.mainBlock}>
                 {
                     news.map((i: News) => (
-                        <div className={styles.normal_card}>
+                        <div key={i._id} className={styles.normal_card}>
                             <div className={styles.normal_card_img}>
                                 <Link href={'/news/'+i._id}>
                                     <img src={i?.image} alt=""/>

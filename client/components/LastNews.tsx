@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./../styles/LastNews.module.scss"
-import {typeNews} from "../types";
+import {typeNews} from "../types/types";
 import SmallCard from "./SmallCard";
 
 

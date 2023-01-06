@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from "./Navbar";
 import styles from "./../styles/Layout.module.scss"
 import {Roboto} from "@next/font/google";
-import {Layout} from "../types";
+import {Layout} from "../types/types";
 import Head from "next/head";
 import Footer from "./Footer";
 

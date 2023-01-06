@@ -7,4 +7,11 @@ declare global {
         promise: Promise<Mongoose> | null;
         conn: Mongoose | null;
     };
+    namespace NodeJS {
+        interface ProcessEnv {
+            NODE_ENV: "development" | "production";
+        }
+    }
 }
+
+export {};

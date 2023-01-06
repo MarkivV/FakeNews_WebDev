@@ -1,0 +1,25 @@
+.wrap{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  .titleInput {
+    height: 35px;
+    border: 0;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    padding: 10px;
+    border-radius: 15px;
+    width: 350px;
+  }
+  .button {
+    height: 35px;
+    border: 0;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #ff4f00;
+    color: #fff;
+    width: 150px;
+  }
+}

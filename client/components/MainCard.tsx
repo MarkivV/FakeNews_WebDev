@@ -1,5 +1,5 @@
 import styles from './../styles/MainCard.module.scss'
-import {News} from "../types";
+import {News} from "../types/types";
 import Link from "next/link";
 
 

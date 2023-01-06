@@ -1,6 +1,6 @@
 import React from 'react';
 import SmallCard from "./SmallCard";
-import {typeNews} from "../types";
+import {typeNews} from "../types/types";
 import BigCard from "./BigCard";
 import styles from './../styles/ThirdBlock.module.scss'
 

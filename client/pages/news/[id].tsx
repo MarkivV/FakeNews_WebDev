@@ -1,7 +1,7 @@
 import styles from './../../styles/CardDetails.module.scss'
 import axios from "axios";
 import {GetServerSideProps } from 'next'
-import {News} from "../../types";
+import {News} from "../../types/types";
 import {FC} from "react";
 import moment from "moment";
 import 'moment/locale/uk';

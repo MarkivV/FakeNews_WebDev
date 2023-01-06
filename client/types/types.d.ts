@@ -37,7 +37,8 @@ export type News = {
     image: string,
     published: boolean,
     category: string,
-    createdAt?: string
+    createdAt?: string,
+    updatedAt?: string
 }
 
 export enum Status {

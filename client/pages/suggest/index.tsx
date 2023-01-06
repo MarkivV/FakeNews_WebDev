@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styles from "./../../styles/Suggest.module.scss"
-import styles_c from "./../../styles/CardDetails.module.scss"
 import axios from "axios";
-import Link from "next/link";
-import moment from "moment";
+import 'react-quill/dist/quill.bubble.css';
+import Cookies from "cookies";
+import Login from "../login";
 
 function convertToBase64(file:any){
     return new Promise((resolve, reject) => {
@@ -17,7 +17,6 @@ function convertToBase64(file:any){
         }
     } )
 }
-
 
 const Suggest = () => {
     const list = ['Війна', 'Політика', 'Наука']
@@ -51,9 +50,6 @@ const Suggest = () => {
         setImg(base64)
     }
 
-
-
-    // @ts-ignore
     return (
         <div className={styles.wrap}>
             <div className={styles.left_block}>
@@ -75,35 +71,23 @@ const Suggest = () => {
                 <button className={styles.button} onClick={handleSuggest}>Відправити</button>
             </div>
             <div className={styles.right_block}>
-                <div className={styles_c.cardDetails_wrap}>
-                    <div className={styles_c.cardDetails_leftBlock}>
-                        <div className={styles_c.cardDetails_title}>
-                            <h1>{title}</h1>
-                                <div className={styles_c.cardDetails_CategoryBadge}>
-                                    <h2>{list[selectedButton]}</h2>
-                                </div>
-                        </div>
-                        <div className={styles_c.cardDetails_image_s}>
-                            <img src={image} alt=""/>
-                        </div>
-                        <div className={styles_c.underImageBlock}>
-                            <div className={styles_c.creator}>
-                                <h2>Автор: </h2>
-                                <h3>Volodymyr Markiv</h3>
-                            </div>
-                        </div>
-                        <hr className={styles_c.hr}/>
-                        <div className={styles_c.cardDetails_description}>
-                    <span>
-                        {description}
-                    </span>
-                        </div>
-                    </div>
-                </div>
+                <h2>Маєте дотепну новину?</h2>
+                <span>Пришліть її нам, будь-ласка. Якщо вона дотепна та відповідає нашим правилам, опублікуємо. Переглянути список правил можна нижче</span>
+                <span>Майте на увазі що Бражкович Медіа - це тільки про старичні новини, ми не намагаємось нікого ввести в оману.</span>
+                <h2>Ваша новина має більший шанс на публікацію, якщо вона відповідає наступним правилам:</h2>
+                <ul>
+                    <li>Не є плагіатом</li>
+                    <li>Має не менш ніж 120 слів (600 знаків з пробілами)</li>
+                    <li>Є дотепною та відповідає нашому формату</li>
+                    <li>Написана чистою українською мовою, без помилок</li>
+                    <li>Висміює якусь реальну ситуацію, але повністю вигадані новини публікуємо також</li>
+                    <li>Не є прямою образою, будьте оригінальними</li>
+                </ul>
             </div>
 
         </div>
     );
 };
+
 
 export default Suggest;
