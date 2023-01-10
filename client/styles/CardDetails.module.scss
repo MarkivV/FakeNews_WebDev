@@ -1,9 +1,8 @@
 .cardDetails_wrap{
   display: flex;
-  .cardDetails_leftBlock{
-    display: flex;
-    flex-direction: column;
-    width: 70%;
+  flex-direction: column;
+
+  .upperBlock{
     .cardDetails_title{
       .cardDetails_CategoryBadge{
         margin-top: 15px;
@@ -20,11 +19,17 @@
     }
     .cardDetails_image{
       img{
-        height: 550px;
-        width: 1000px;
+        height: 600px;
+        width: 100%;
         object-fit: cover;
       }
     }
+  }
+  .cardDetails_leftBlock{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
     .cardDetails_image_s{
       img{
         width: 100%;
@@ -52,6 +57,7 @@
       .cardDetails_dateTime{
         margin-bottom: 15px;
         h3{
+          font-size: 18px;
           color: #c2c2c2;
           font-weight: 400;
         }

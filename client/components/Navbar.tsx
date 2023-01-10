@@ -28,7 +28,7 @@ const Header = () => {
                 <Link href={"/suggest"}>
                     <h2>Бєсєдка</h2>
                 </Link>
-                <h2>Блог</h2>
+                <h2>Новини ші</h2>
             </div>
             <div className={styles.header_icons}>
                 <SearchIcon/>

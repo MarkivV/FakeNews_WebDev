@@ -13,7 +13,6 @@ const NewsPostsSchema = new mongoose.Schema(
         creator:{
             type: String,
             required: true,
-            default: "Volodymyr Markiv"
         },
         tags: {
             type: [String],

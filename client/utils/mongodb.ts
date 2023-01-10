@@ -36,9 +36,10 @@ if (process.env.NODE_ENV === "development") {
 // separate module, the client can be shared across functions.
 
 export async function loginUser(email: string, password: string) {
+    await dbConnect()
     try {
-        await dbConnect()
         const user = await User.findOne({email});
+        console.log(user)
         if(!user) {
             return {error: 'email or password does not match our records'}
         }
@@ -48,7 +49,8 @@ export async function loginUser(email: string, password: string) {
             return {error: 'email or password does not match our records'}
         }
 
-        return { user: {...user, _id: user._id.toString()}}
+        // return {user}
+        return { user: {...user, email: user.email, name: user.username || user.name, id: user._id}}
     }catch (error){
        return  {error: 'Something went wrong, please try again!'}
     }

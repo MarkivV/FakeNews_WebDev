@@ -1,28 +1,25 @@
-import NextAuth from "next-auth";
+import NextAuth, {NextAuthOptions} from "next-auth";
 import GoogleProvider from 'next-auth/providers/google'
+import GithubProvider from 'next-auth/providers/github'
 import {MongoDBAdapter} from "@next-auth/mongodb-adapter";
 import clientPromise, {loginUser} from "../../../utils/mongodb";
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-export default NextAuth({
-    session:{
-        strategy: "jwt",
-        maxAge: 30*24*60*60,
-    },
+
+export const authOptions: NextAuthOptions ={
     providers:[
         GoogleProvider({
-            clientId: "254511680205-gv7vi2m337iffc9o1ofo3qrn4ojsotip.apps.googleusercontent.com",
-            clientSecret: "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"
+            clientId: process.env.GOOGLE_ID,
+            clientSecret: process.env.GOOGLE_SECRET
+        }),
+        GithubProvider({
+            clientId: process.env.GITHUB_ID,
+            clientSecret: process.env.GITHUB_SECRET
         }),
         CredentialsProvider({
             name: 'Credentials',
-            credentials: {
-                email: {
-                    label: 'Email',
-                    type: 'text',
-                    placeholder: 'email'
-                },
-                password: { label: 'Password', type: 'password' }
+            credentials:{
+
             },
             async authorize(credentials, req) {
                 // @ts-ignore
@@ -31,7 +28,6 @@ export default NextAuth({
                 const {user, error} = await loginUser(email, password)
                 if (error) throw new Error (error)
                 if (user) {
-                    console.log(user)
                     return user
                 } else {
                     return null
@@ -39,5 +35,26 @@ export default NextAuth({
             }
         })
     ],
+    callbacks: {
+        async jwt({ token, account }) {
+            // Persist the OAuth access_token to the token right after signin
+            token.userRole = "admin"
+            return token
+
+        },
+        async session({ session, token, user }) {
+            // Send properties to the client, like an access_token from a provider.
+            return session
+        }
+    },
     adapter: MongoDBAdapter(clientPromise),
-})
+    secret: process.env.NEXTAUTH_SECRET,
+    session:{
+        strategy: "jwt"
+    },
+    pages: {
+        signIn: "/login"
+    }
+}
+
+export default NextAuth(authOptions)

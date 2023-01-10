@@ -33,7 +33,7 @@ async function dbConnect() {
         const opts = {
             bufferCommands: false,
         };
-
+        mongoose.set("strictQuery", false);
         cached.promise = mongoose.connect(MONGO_URL, opts).then((mongoose) => {
             return mongoose;
         });

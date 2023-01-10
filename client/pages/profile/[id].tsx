@@ -1,5 +1,5 @@
 import styles from "./../../styles/Profile.module.scss"
-import image from "./../../assets/photo_2022-09-03 13.11.11.jpeg"
+import image from "../../assets/film-ukraina-trizub-sluga-naroda-vladimir-zelenskii-preziden.jpeg"
 import {GetServerSideProps} from "next";
 import axios from "axios";
 import {News} from "../../types/types";
@@ -7,39 +7,16 @@ import React, {FC, useState} from "react";
 import moment from "moment";
 import 'moment/locale/uk';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import {useSession} from "next-auth/react";
-import {redirect} from "next/navigation";
-import Link from "next/link";
+import {getSession, signOut, useSession} from "next-auth/react";
+
 
 type Details = {
     news: News[]
 }
 const Profile: FC<Details> = ({news}) => {
-    const { data: session, status } = useSession()
     const [change, setChange] = useState(false);
     const [name, setName] = useState(news[0].creator);
     const [location, setLocation] = useState("Kyiv, Ukraine");
-
-    if(!session){
-        return (
-            <div>
-                <Link href={"/api/auth/signin"}>
-                    <h3>
-                        Sign in
-                    </h3>
-                </Link>
-                <h3>or</h3>
-                <Link href={"/registration"}>
-                    <h3>
-                        register
-                    </h3>
-                </Link>
-            </div>
-
-        )
-    }else{
-
-    }
 
     return (
         <div className={styles.wrap}>
@@ -88,6 +65,7 @@ const Profile: FC<Details> = ({news}) => {
                         <h2>9</h2>
                     </div>
                 </div>
+                <button onClick={()=>signOut()}>Exit</button>
             </div>
             <div className={styles.rightSide}>
                 {
@@ -125,13 +103,24 @@ const Profile: FC<Details> = ({news}) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({params}: any) => {
-    const res = await axios.get("http://localhost:3000/api/category/" + params.id);
-    return {
-        props: {
-            news: res?.data
-        },
-    };
+export const getServerSideProps: GetServerSideProps = async ({params, req}: any) => {
+    const session = await getSession({req})
+    if(!session) {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false
+            }
+        }
+    }else {
+        const res = await axios.get("http://localhost:3000/api/category/" + params.id);
+        return {
+            props: {
+                session: session,
+                news: res?.data
+            },
+        };
+    }
 };
 
 export default Profile;

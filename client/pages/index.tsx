@@ -3,7 +3,7 @@ import MainCard from "../components/MainCard";
 import NormalCard from "../components/NormalCard";
 import RusLosses from "../components/RusLooses";
 import {News, RusStats} from "../types/types";
-import {GetServerSideProps} from "next";
+import {GetServerSideProps, GetStaticProps} from "next";
 import axios from "axios";
 import LastNews from "../components/LastNews";
 import ThirdBlock from "../components/ThirdBlock";
@@ -12,13 +12,14 @@ import NewsBlock from "../components/NewsBlock";
 
 type Props = {
     news: News[],
-    looses?: RusStats
+    // looses?: RusStats
 }
 
-export default function Home({looses, news}: Props) {
+export default function Home({news}: Props) {
+
     return (
         <div className={styles.wrap}>
-            <RusLosses looses={looses}/>
+            {/*<RusLosses looses={looses}/>*/}
             <div className={styles.upper_block}>
                 <MainCard news={news[0]}/>
                 <NormalCard news={news[1]}/>
@@ -41,13 +42,13 @@ export default function Home({looses, news}: Props) {
 }
 
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const res = await axios.get("http://localhost:3000/api/news")
-    const lost = await axios.get("https://russianwarship.rip/api/v1/statistics/latest")
-    const {data} = lost
+    // const lost = await axios.get("https://russianwarship.rip/api/v1/statistics/latest")
+    // const {data} = lost
     return {
         props: {
-            looses: data?.data?.stats,
+            // looses: data?.data?.stats,
             news: res?.data
         },
     };

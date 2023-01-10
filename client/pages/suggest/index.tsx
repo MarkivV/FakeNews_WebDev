@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import styles from "./../../styles/Suggest.module.scss"
 import axios from "axios";
-import 'react-quill/dist/quill.bubble.css';
-import Cookies from "cookies";
-import Login from "../login";
+import {useSession} from "next-auth/react";
+import {list} from "../category/[category]";
 
 function convertToBase64(file:any){
     return new Promise((resolve, reject) => {
@@ -19,17 +18,20 @@ function convertToBase64(file:any){
 }
 
 const Suggest = () => {
-    const list = ['Війна', 'Політика', 'Наука']
     const [title, setTitle] = useState("");
     const [description, setDesc] = useState("");
     const [image, setImg] = useState("");
     const [selectedButton, setSelectedButton] = useState(0);
+    const {data: session, status} = useSession()
+    console.log(session)
+
 
     const handleClick = (id: any) => {
         setSelectedButton(id)
     }
 
-    const handleSuggest = async () =>{
+    const handleSuggest = async (e: any) =>{
+        e.preventDefault()
         if(title && description && image){
             const res = await axios.post("http://localhost:3000/api/news", {title, description, image, category: list[selectedButton]});
             setTitle("")
@@ -50,6 +52,8 @@ const Suggest = () => {
         setImg(base64)
     }
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <div className={styles.wrap}>
             <div className={styles.left_block}>
@@ -68,7 +72,13 @@ const Suggest = () => {
                         ))
                     }
                 </div>
-                <button className={styles.button} onClick={handleSuggest}>Відправити</button>
+                {
+                    session ? (
+                        <button className={styles.button} onClick={(e)=>handleSuggest(e)}><h2>Відправити</h2></button>
+                    ):(
+                        <button className={styles.button} onClick={(e)=>alert("Ви не ввійшли в свій аккаунт")}><h2>Відправити</h2></button>
+                    )
+                }
             </div>
             <div className={styles.right_block}>
                 <h2>Маєте дотепну новину?</h2>

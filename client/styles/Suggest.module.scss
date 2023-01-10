@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
-  gap: 20px;
+  gap: 30px;
 
   .left_block {
-    gap: 20px;
+    gap: 30px;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
       border: 0;
       box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
       padding: 10px;
-      border-radius: 15px;
+      border-radius: 10px;
     }
 
     .descriptionInput {
@@ -23,7 +23,7 @@
       border: 0;
       box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
       padding: 10px;
-      border-radius: 15px;
+      border-radius: 10px;
       resize: vertical;
     }
 
@@ -46,7 +46,7 @@
       border: 0;
       box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
       padding: 10px;
-      border-radius: 15px;
+      border-radius: 10px;
     }
 
     .categoryInput {
@@ -54,22 +54,21 @@
       border: 0;
       box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
       padding: 10px;
-      border-radius: 15px;
+      border-radius: 10px;
 
     }
 
     .categories {
       display: flex;
       gap: 20px;
-
+      flex-wrap: wrap;
       button {
-        height: 35px;
-        border: 0;
-        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+        height: 45px;
+        border: 1px solid #E0E0E0FF;
         padding: 10px;
-        border-radius: 20px;
+        border-radius: 10px;
         background-color: #fff;
-
+        width: 15%;
       }
 
       .active {
@@ -80,12 +79,25 @@
     }
 
     .button {
+      height: 45px;
+      border: 0;
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+      padding: 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, rgba(255,79,0,1) 0%, rgb(218, 67, 0) 100%);
+      color: #fff;
+      width: 100%;
+      h2{
+        font-weight: 400;
+      }
+    }
+    .buttonDis{
       height: 35px;
       border: 0;
       box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
       padding: 10px;
       border-radius: 20px;
-      background-color: #ff4f00;
+      background-color: #ffb293;
       color: #fff;
       width: 150px;
     }
@@ -96,5 +108,8 @@
     line-height: 200%;
     display: flex;
     flex-direction: column;
+    ul{
+        text-decoration: none;
+    }
   }
 }

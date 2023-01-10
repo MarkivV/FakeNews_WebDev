@@ -28,7 +28,7 @@ const NewsBlock = ({news, category}: NewsBlock) => {
                             <div className={styles.normal_card_desc}>
                                 <Link href={'/news/'+i._id}>
                                     <h2>{i.title}</h2>
-                                    <span>{i.description?.length > 150 ? `${i.description?.substring(0, 150)}...` : i.description}</span>
+                                    {/*<span>{i.description?.length > 120 ? `${i.description?.substring(0, 120)}...` : i.description}</span>*/}
                                 </Link>
                             </div>
                         </div>
