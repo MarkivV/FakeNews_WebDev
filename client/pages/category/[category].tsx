@@ -2,15 +2,18 @@ import React, {FC, useState} from 'react';
 import {GetServerSideProps} from "next";
 import axios from "axios";
 import styles from "../../styles/NewsCat.module.scss"
-import {News} from "../../types";
+import {News} from "../../types/types";
 import NormalCard from "../../components/NormalCard";
 import Link from "next/link";
 import img from "../../assets/400_0_1662698694-6361.jpg";
+import moment from "moment";
+import 'moment/locale/uk';
+
 
 type NewsCat = {
     news: News[]
 }
-const list = ['Війна', 'Політика', 'Наука']
+export const list = ['Війна', 'Політика', 'Наука', "Шоу-бізнес", "Україна", "Світ", "Технології", "Економіка"]
 
 const News: FC<NewsCat> = ({news}) => {
     const [selectedButton, setSelectedButton] = useState(0);
@@ -25,25 +28,31 @@ const News: FC<NewsCat> = ({news}) => {
                 {
                     list.map((i:string, index)=>(
                         <Link href={'/category/'+i} key={index}>
-                            <button  className={ index === selectedButton ? styles.active : styles.disable} onClick={()=>handleClick(index)}>{i}</button>
+                            <button  className={ index === selectedButton ? styles.active : styles.disable} onClick={()=>handleClick(index)}><h2>{i}</h2></button>
                         </Link>
                     ))
                 }
             </div>
+            <div className={styles.catTitle}>
+                <h1>{list[selectedButton]}</h1>
+            </div>
             <div className={styles.mainBlock}>
                 {
                     news.map((i: News) => (
-                        <div className={styles.normal_card}>
+                        <div key={i._id} className={styles.normal_card}>
                             <div className={styles.normal_card_img}>
                                 <Link href={'/news/'+i._id}>
                                     <img src={i?.image} alt=""/>
                                 </Link>
+                                <div className={styles.desc}>
+                                    <Link href={'/news/'+i._id}>
+                                        <h2>{i.title?.length > 150 ? `${i.title?.substring(0, 90)}...` : i.title}</h2>
+                                        {/*<span>{i.description?.length > 150 ? `${i.description?.substring(0, 150)}...` : i.description}</span>*/}
+                                    </Link>
+                                </div>
                             </div>
                             <div className={styles.normal_card_desc}>
-                                <Link href={'/news/'+i._id}>
-                                    <h2>{i.title}</h2>
-                                    <span>{i.description?.length > 150 ? `${i.description?.substring(0, 150)}...` : i.description}</span>
-                                </Link>
+                                    <h3>{moment(i.createdAt).format("LLL")}</h3>
                             </div>
                         </div>
                     ))

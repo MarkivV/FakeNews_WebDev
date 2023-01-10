@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './../styles/RusLooses.module.scss'
-import {Looses} from "../types";
+import {Looses} from "../types/types";
 
 const RusLosses: React.FC<Looses> = ({looses}) => {
     const list = [

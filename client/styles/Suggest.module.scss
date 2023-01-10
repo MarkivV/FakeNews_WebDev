@@ -1,92 +1,115 @@
-.wrap{
+.wrap {
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
-  gap: 20px;
-  .left_block{
-    gap: 20px;
+  gap: 30px;
+
+  .left_block {
+    gap: 30px;
     width: 50%;
     display: flex;
     flex-direction: column;
 
-    .titleInput{
+    .titleInput {
       height: 35px;
-      border:0;
-      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-      padding:10px;
-      border-radius: 15px;
+      border: 0;
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+      padding: 10px;
+      border-radius: 10px;
     }
 
-    .descriptionInput{
+    .descriptionInput {
       min-height: 150px;
-      border:0;
-      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-      padding:10px;
-      border-radius: 15px;
+      border: 0;
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+      padding: 10px;
+      border-radius: 10px;
       resize: vertical;
     }
 
-    .imageInput{
+    .imageInput {
       input[type="file"] {
         display: none;
       }
+
       display: flex;
       align-items: center;
       justify-content: center;
-      h2{
+
+      h2 {
         font-size: 14px;
         font-weight: 400;
         color: #ff4f00;
       }
+
       width: 200px;
-      border:0;
-      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-      padding:10px;
-      border-radius: 15px;
+      border: 0;
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+      padding: 10px;
+      border-radius: 10px;
     }
 
-    .categoryInput{
+    .categoryInput {
       height: 35px;
-      border:0;
-      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-      padding:10px;
-      border-radius: 15px;
+      border: 0;
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+      padding: 10px;
+      border-radius: 10px;
 
     }
 
-    .categories{
+    .categories {
       display: flex;
       gap: 20px;
-        button{
-          height: 35px;
-          border:0;
-          box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-          padding:10px;
-          border-radius: 20px;
-          background-color: #fff;
+      flex-wrap: wrap;
+      button {
+        height: 45px;
+        border: 1px solid #E0E0E0FF;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #fff;
+        width: 15%;
+      }
 
-        }
-        .active{
-          box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-          border: 1px solid #ff4f00;
-        }
+      .active {
+        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+        border: 1px solid #ff4f00;
+      }
 
     }
 
-    .button{
+    .button {
+      height: 45px;
+      border: 0;
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+      padding: 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, rgba(255,79,0,1) 0%, rgb(218, 67, 0) 100%);
+      color: #fff;
+      width: 100%;
+      h2{
+        font-weight: 400;
+      }
+    }
+    .buttonDis{
       height: 35px;
-      border:0;
-      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-      padding:10px;
+      border: 0;
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+      padding: 10px;
       border-radius: 20px;
-      background-color: #ff4f00;
+      background-color: #ffb293;
       color: #fff;
       width: 150px;
     }
   }
 
-  .right_block{
+  .right_block {
     width: 50%;
-
+    line-height: 200%;
+    display: flex;
+    flex-direction: column;
+    ul{
+        text-decoration: none;
+    }
   }
 }

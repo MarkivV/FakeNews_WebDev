@@ -5,6 +5,9 @@ import styles from './../styles/Navbar.module.scss'
 import Link from "next/link";
 
 const Header = () => {
+    // const token = Cookies.get('jwt');
+
+
     return (
         <div className={styles.header}>
             <div className={styles.header_title}>
@@ -25,11 +28,14 @@ const Header = () => {
                 <Link href={"/suggest"}>
                     <h2>Бєсєдка</h2>
                 </Link>
-                <h2>Блог</h2>
+                <h2>Новини ші</h2>
             </div>
             <div className={styles.header_icons}>
                 <SearchIcon/>
-                <PersonIcon/>
+
+                <Link href={"/profile/Війна"}>
+                    <PersonIcon/>
+                </Link>
             </div>
         </div>
     );

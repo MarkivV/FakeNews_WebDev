@@ -1,7 +1,7 @@
 import styles from './../../styles/CardDetails.module.scss'
 import axios from "axios";
 import {GetServerSideProps } from 'next'
-import {News} from "../../types";
+import {News} from "../../types/types";
 import {FC} from "react";
 import moment from "moment";
 import 'moment/locale/uk';
@@ -17,7 +17,7 @@ const CardDetails: FC<Details> = ({news}) => {
     console.log(news.tags)
     return (
         <div className={styles.cardDetails_wrap}>
-            <div className={styles.cardDetails_leftBlock}>
+            <div className={styles.upperBlock}>
                 <div className={styles.cardDetails_title}>
                     <h1>{news?.title}</h1>
                     <Link href={"/category/"+news.category}>
@@ -29,6 +29,9 @@ const CardDetails: FC<Details> = ({news}) => {
                 <div className={styles.cardDetails_image}>
                     <img src={news?.image} alt=""/>
                 </div>
+            </div>
+            <div className={styles.cardDetails_leftBlock}>
+
                 <div className={styles.underImageBlock}>
                     <div className={styles.creator}>
                         <h2>Автор: </h2>

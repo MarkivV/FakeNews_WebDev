@@ -1,0 +1,162 @@
+.wrap{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  .leftSide{
+    width: 30%;
+    img{
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .name{
+      h2{
+        font-size: 28px;
+        font-weight: 500;
+      }
+      h3{
+        font-size: 24px;
+        color: #b7b7b7;
+        font-weight: 300;
+      }
+    }
+
+    .button{
+      margin-top: 15px;
+      button{
+        cursor: pointer;
+        height: 35px;
+        border:0;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+        border-radius: 5px;
+        background-color: #ff4f00;
+        color: #fff;
+        width: 100%;
+        font-size: 18px;
+      }
+    }
+
+    .location{
+      display: flex;
+      margin-top: 15px;
+      h3{
+        font-weight: 300;
+      }
+    }
+
+    .editData{
+      margin-top: 15px;
+      .titleInput{
+        height: 40px;
+        border: 2px solid #EDEDED;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.04);
+        border-radius: 5px;
+        width: 100%;
+        margin-top: 15px;
+      }
+      .buttons{
+        display: flex;
+        gap: 20px;
+        .button{
+          height: 35px;
+          border: 0;
+          box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+          border-radius: 20px;
+          background-color: #ff4f00;
+          color: #fff;
+          width: 150px;
+          font-size: 14px;
+
+          &:last-child{
+            background-color: #EDEDED;
+            color: black;
+          }
+
+        }
+      }
+      .imageInput{
+        input[type="file"] {
+          display: none;
+        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        h2{
+          font-size: 14px;
+          font-weight: 400;
+          color: #ff4f00;
+        }
+        height: 35px;
+        width: 100%;
+        border:0;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+        border-radius: 15px;
+      }
+    }
+
+    .stats{
+      margin-top: 25px;
+      .sts{
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        h3{
+          font-weight: 400;
+          font-size: 22px;
+        }
+        h2{
+          font-weight: 500;
+          font-size: 24px;
+        }
+      }
+
+    }
+  }
+  .rightSide{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    .card{
+      width: 45%;
+      .image{
+        position: relative;
+        .cardImage{
+          img{
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: brightness(50%);
+          }
+        }
+        .title{
+          padding: 10px;
+          position: absolute;
+          color: white;
+          bottom: 0;
+        }
+      }
+      .stats{
+        margin-top: 25px;
+        .sts{
+          margin-top: 15px;
+          display: flex;
+          justify-content: space-between;
+          h3{
+            font-weight: 400;
+            font-size: 22px;
+          }
+          h2{
+            font-weight: 500;
+            font-size: 24px;
+          }
+        }
+
+      }
+
+
+    }
+  }
+}

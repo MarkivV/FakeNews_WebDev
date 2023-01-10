@@ -1,6 +1,6 @@
 import styles from './../styles/NormalCard.module.scss'
 import img from "./../assets/400_0_1662698694-6361.jpg"
-import {News} from "../types";
+import {News} from "../types/types";
 import {FC} from "react";
 import Link from 'next/link';
 

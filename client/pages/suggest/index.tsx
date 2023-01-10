@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import styles from "./../../styles/Suggest.module.scss"
-import styles_c from "./../../styles/CardDetails.module.scss"
 import axios from "axios";
-import Link from "next/link";
-import moment from "moment";
+import {useSession} from "next-auth/react";
+import {list} from "../category/[category]";
 
 function convertToBase64(file:any){
     return new Promise((resolve, reject) => {
@@ -18,19 +17,21 @@ function convertToBase64(file:any){
     } )
 }
 
-
 const Suggest = () => {
-    const list = ['Війна', 'Політика', 'Наука']
     const [title, setTitle] = useState("");
     const [description, setDesc] = useState("");
     const [image, setImg] = useState("");
     const [selectedButton, setSelectedButton] = useState(0);
+    const {data: session, status} = useSession()
+    console.log(session)
+
 
     const handleClick = (id: any) => {
         setSelectedButton(id)
     }
 
-    const handleSuggest = async () =>{
+    const handleSuggest = async (e: any) =>{
+        e.preventDefault()
         if(title && description && image){
             const res = await axios.post("http://localhost:3000/api/news", {title, description, image, category: list[selectedButton]});
             setTitle("")
@@ -51,8 +52,7 @@ const Suggest = () => {
         setImg(base64)
     }
 
-
-
+    // @ts-ignore
     // @ts-ignore
     return (
         <div className={styles.wrap}>
@@ -72,38 +72,32 @@ const Suggest = () => {
                         ))
                     }
                 </div>
-                <button className={styles.button} onClick={handleSuggest}>Відправити</button>
+                {
+                    session ? (
+                        <button className={styles.button} onClick={(e)=>handleSuggest(e)}><h2>Відправити</h2></button>
+                    ):(
+                        <button className={styles.button} onClick={(e)=>alert("Ви не ввійшли в свій аккаунт")}><h2>Відправити</h2></button>
+                    )
+                }
             </div>
             <div className={styles.right_block}>
-                <div className={styles_c.cardDetails_wrap}>
-                    <div className={styles_c.cardDetails_leftBlock}>
-                        <div className={styles_c.cardDetails_title}>
-                            <h1>{title}</h1>
-                                <div className={styles_c.cardDetails_CategoryBadge}>
-                                    <h2>{list[selectedButton]}</h2>
-                                </div>
-                        </div>
-                        <div className={styles_c.cardDetails_image_s}>
-                            <img src={image} alt=""/>
-                        </div>
-                        <div className={styles_c.underImageBlock}>
-                            <div className={styles_c.creator}>
-                                <h2>Автор: </h2>
-                                <h3>Volodymyr Markiv</h3>
-                            </div>
-                        </div>
-                        <hr className={styles_c.hr}/>
-                        <div className={styles_c.cardDetails_description}>
-                    <span>
-                        {description}
-                    </span>
-                        </div>
-                    </div>
-                </div>
+                <h2>Маєте дотепну новину?</h2>
+                <span>Пришліть її нам, будь-ласка. Якщо вона дотепна та відповідає нашим правилам, опублікуємо. Переглянути список правил можна нижче</span>
+                <span>Майте на увазі що Бражкович Медіа - це тільки про старичні новини, ми не намагаємось нікого ввести в оману.</span>
+                <h2>Ваша новина має більший шанс на публікацію, якщо вона відповідає наступним правилам:</h2>
+                <ul>
+                    <li>Не є плагіатом</li>
+                    <li>Має не менш ніж 120 слів (600 знаків з пробілами)</li>
+                    <li>Є дотепною та відповідає нашому формату</li>
+                    <li>Написана чистою українською мовою, без помилок</li>
+                    <li>Висміює якусь реальну ситуацію, але повністю вигадані новини публікуємо також</li>
+                    <li>Не є прямою образою, будьте оригінальними</li>
+                </ul>
             </div>
 
         </div>
     );
 };
+
 
 export default Suggest;

@@ -13,7 +13,7 @@ const SmallCard: FC<LastNews> = ({id,title, img, category}) => {
             <Link href={'/news/'+id} className={styles.lastNews_card_img} passHref>
                 <img src={img} alt=""/>
                 <h3>{category}</h3>
-                <span>{title.length > 90 ? `${title.substring(0, 90)}...` : title}</span>
+                <span>{title.length > 110 ? `${title.substring(0, 110)}...` : title}</span>
             </Link>
         </div>
     );
