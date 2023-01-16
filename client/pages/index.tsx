@@ -9,6 +9,7 @@ import LastNews from "../components/LastNews";
 import ThirdBlock from "../components/ThirdBlock";
 import React from "react";
 import NewsBlock from "../components/NewsBlock";
+import {listEng} from "./category/[category]";
 
 type Props = {
     news: News[],
@@ -16,6 +17,10 @@ type Props = {
 }
 
 export default function Home({news}: Props) {
+
+    if(news.length === 0){
+        return "Наразі на сайті ведутся технічні роботи"
+    }
 
     return (
         <div className={styles.wrap}>
@@ -33,8 +38,11 @@ export default function Home({news}: Props) {
                 <ThirdBlock items={news}/>
             </div>
             <div className={styles.newsBlock}>
-                <NewsBlock news={news} category={"Війна"}/>
-                <NewsBlock news={news} category={"Політика"}/>
+                {
+                    listEng.map((category, index)=>(
+                        <NewsBlock news={news} key={index} category={category}/>
+                    ))
+                }
             </div>
         </div>
     )

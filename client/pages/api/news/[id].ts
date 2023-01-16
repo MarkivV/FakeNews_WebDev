@@ -1,8 +1,9 @@
 import axios from "axios";
 import dbConnect from "../../../utils/dbConnect";
-import {News} from "../../../types/types";
 import {NextApiRequest, NextApiResponse} from "next";
 import NewsPosts from "../../../models/NewsPosts";
+import {News} from "../../../types/types";
+import { User } from "../../../models/User";
 
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
@@ -13,8 +14,23 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     switch (method) {
         case "GET":
             try {
-                const newsGetById = await NewsPosts.findById(id)
-                res.status(200).json(newsGetById)
+                const post = await NewsPosts.findById(id)
+                if(post){
+                    const creator = post.creator;
+                    console.log(creator)
+                    // @ts-ignore
+                    const posts = await NewsPosts.find({ creator: { $in: [creator] } });
+                    const postsUser = await User.findById(creator)
+                    console.log(posts)
+                    res.status(200).json({
+                        post: post,
+                        posts: posts.sort(function () {
+                            return Math.random() - 0.5;
+                        }),
+                        userName: postsUser?.name
+                    });
+                }
+                // res.status(200).json(newsGetById)
             }catch (e:any) {
                 res.status(500).json(e)
             }
@@ -24,5 +40,19 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     }
 
 }
+
+// await NewsPosts.findOne({_id: id}, (err: any, post: News) => {
+//     if (err) throw err;
+//     if (post) {
+//         const creator = post.creator;
+//         // Get all posts with same creator
+//         // @ts-ignore
+//         NewsPosts.find({creator: {$in: [creator]}}).toArray((err, posts) => {
+//             if (err) throw err;
+//             console.log(posts);
+//             res.status(200).json(posts)
+//         });
+//     }
+// })
 
 

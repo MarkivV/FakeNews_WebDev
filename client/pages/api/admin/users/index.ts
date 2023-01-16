@@ -1,6 +1,6 @@
-import dbConnect from "../../../utils/dbConnect";
+import dbConnect from "../../../../utils/dbConnect";
 import {NextApiRequest, NextApiResponse} from "next";
-import NewsPosts from "../../../models/NewsPosts";
+import {User} from "../../../../models/User";
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
     const {method} = req
@@ -11,16 +11,16 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     switch (method) {
         case "GET":
             try {
-                const newsGet = await NewsPosts.find({published: true})
-                res.status(200).json(newsGet.reverse())
+                const usersGet = await User.find()
+                res.status(200).json(usersGet)
             }catch (e:any) {
                 res.status(500).json(e)
             }
             break;
         case "POST":
             try {
-                const newsCreate = await NewsPosts.create(req.body)
-                res.status(201).json(newsCreate)
+                const usersCreate = await User.create(req.body)
+                res.status(201).json(usersCreate)
             }catch (e: any) {
                 res.status(500).json(e)
             }

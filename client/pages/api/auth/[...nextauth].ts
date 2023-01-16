@@ -6,6 +6,7 @@ import clientPromise, {loginUser} from "../../../utils/mongodb";
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 
+// @ts-ignore
 export const authOptions: NextAuthOptions ={
     providers:[
         GoogleProvider({
@@ -19,14 +20,13 @@ export const authOptions: NextAuthOptions ={
         CredentialsProvider({
             name: 'Credentials',
             credentials:{
-
             },
             async authorize(credentials, req) {
                 // @ts-ignore
                 const { email, password } = credentials
                 // @ts-ignore
                 const {user, error} = await loginUser(email, password)
-                if (error) throw new Error (error)
+                console.log(user)
                 if (user) {
                     return user
                 } else {
@@ -36,21 +36,31 @@ export const authOptions: NextAuthOptions ={
         })
     ],
     callbacks: {
-        async jwt({ token, account }) {
+        async jwt({ token, user }) {
             // Persist the OAuth access_token to the token right after signin
-            token.userRole = "admin"
-            return token
-
+            // return token
+            console.log(token, "token")
+            console.log(user, "user")
+            return { ...token, ...user }
         },
         async session({ session, token, user }) {
             // Send properties to the client, like an access_token from a provider.
-            return session
+            // return session
+            // @ts-ignore
+            // session.user.email = user.email;
+            console.log(token, "token ses")
+            console.log(session, "session")
+            return {
+                ...session,
+                user:{id: token.id, email: token.email, username: token?.name}
+            }
         }
     },
     adapter: MongoDBAdapter(clientPromise),
     secret: process.env.NEXTAUTH_SECRET,
     session:{
-        strategy: "jwt"
+        strategy: "jwt",
+        maxAge: 3000,
     },
     pages: {
         signIn: "/login"

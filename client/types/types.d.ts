@@ -30,6 +30,7 @@ export type Layout = {
 
 export type News = {
     _id: string,
+    url?: string,
     title: string,
     description: string,
     creator: string,
@@ -41,24 +42,7 @@ export type News = {
     updatedAt?: string
 }
 
-export enum Status {
-    LOADING = 'loading',
-    SUCCESS = 'completed',
-    ERROR = 'error',
-}
-
-export interface NewsSliceState {
-    items: News[];
-    status: Status;
-}
-
 export interface typeNews {
     items: News[],
     status?: string
 }
-
-
-export type SelectNewsById = {
-    _id: string
-}
-

@@ -1,0 +1,158 @@
+.cardDetails_wrap{
+  display: flex;
+  flex-direction: column;
+
+  .upperBlock{
+    .cardDetails_title{
+      width: 70%;
+      textarea{
+        height: 100px;
+        border: 2px solid #EDEDED;
+        width: 98%;
+        padding: 10px;
+        font-size: 24px;
+        resize: vertical;
+        border-radius: 5px;
+
+      }
+      .published{
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .cardDetails_CategoryBadge{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        .categories {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          button {
+            height: 45px;
+            border: 1px solid #E0E0E0FF;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #fff;
+            width: 15%;
+          }
+
+          .active {
+            box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+            border: 1px solid #ff4f00;
+          }
+
+        }
+      }
+      .cardDetails_image{
+        img{
+          height: 600px;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+  }
+  .cardDetails_leftBlock{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    .cardDetails_image_s{
+      img{
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .underImageBlock{
+      display: flex;
+      gap: 20px;
+      margin-top: 15px;
+      .creator{
+        display: flex;
+        margin-bottom: 15px;
+        h2{
+          font-weight: 400;
+          font-size: 18px;
+          color: #c2c2c2;
+        }
+        h3{
+          margin-left: 10px;
+          font-size: 18px;
+          color: black;
+        }
+      }
+      .cardDetails_dateTime{
+        margin-bottom: 15px;
+        display: flex;
+        h2{
+          font-size: 18px;
+          font-weight: 500;
+          color: #c2c2c2;
+        }
+        h3{
+          margin-left: 10px;
+          font-size: 18px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .hr{
+      border: 1px solid #EDEDED;
+    }
+
+    .cardDetails_description{
+      margin-top: 15px;
+      textarea{
+        width: 98%;
+        font-size: 20px;
+        border: 2px solid #EDEDED;
+        resize: vertical;
+        border-radius: 5px;
+        padding: 10px;
+        height: 100px;
+       }
+    }
+    .cardDetails_tags{
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      gap: 20px;
+
+      .cardDetails_tagsBadge{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        h3{
+          font-size: 18px;
+        }
+        h2{
+          font-size: 22px;
+          color: #ff4f00;
+        }
+      }
+
+    }
+    .buttons{
+      display: flex;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      gap: 10px;
+      button{
+        display: flex;
+        align-items: center;
+        height: 45px;
+        border: 1px solid #E0E0E0FF;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #fff;
+        h2 {
+          font-size: 14px;
+          &:hover {
+            color: #ff4f00;
+          }
+        }
+      }
+    }
+  }
+}

@@ -48,9 +48,10 @@ export async function loginUser(email: string, password: string) {
         if(!match) {
             return {error: 'email or password does not match our records'}
         }
+        const userId = user._id.toString();
+        const userEmail = user.email
 
-        // return {user}
-        return { user: {...user, email: user.email, name: user.username || user.name, id: user._id}}
+        return { user: {email: userEmail, id: userId}}
     }catch (error){
        return  {error: 'Something went wrong, please try again!'}
     }

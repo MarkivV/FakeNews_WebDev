@@ -1,12 +1,9 @@
-import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import styles from './../styles/Navbar.module.scss'
 import Link from "next/link";
 
 const Header = () => {
-    // const token = Cookies.get('jwt');
-
 
     return (
         <div className={styles.header}>
@@ -22,7 +19,7 @@ const Header = () => {
                 <Link href={"/"}>
                     <h2>Головна</h2>
                 </Link>
-                <Link href={"/category/Війна"}>
+                <Link href={"/category/war"}>
                     <h2>Новини</h2>
                 </Link>
                 <Link href={"/suggest"}>
@@ -33,7 +30,7 @@ const Header = () => {
             <div className={styles.header_icons}>
                 <SearchIcon/>
 
-                <Link href={"/profile/Війна"}>
+                <Link href={"/profile/war"}>
                     <PersonIcon/>
                 </Link>
             </div>

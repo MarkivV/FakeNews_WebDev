@@ -1,17 +1,9 @@
 import Navbar from "../components/Navbar";
 import styles from "../styles/Layout.module.scss"
-import {Montserrat} from "@next/font/google";
 import {Layout} from "../types/types";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import {FC} from "react";
-
-
-// const inter = Montserrat({
-//     subsets: ['montserrat'],
-//     weight: ["300", "400", "500"]
-// })
-
 
 const MainLayouts: FC<Layout> = ({children}) => {
     return (

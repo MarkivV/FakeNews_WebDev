@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import styles from "../../styles/Login.module.scss";
 import LayoutAuth from "../../layouts/LayoutAuth";
 import Link from "next/link";
@@ -50,6 +50,13 @@ const Login = () => {
             }
         } else {
             alert("Заповніть всі поля")
+            toastProp = {
+                id: alertList.length+1,
+                title: "Увага",
+                description: "Заповніть всі поля",
+                bgColor: "#FF4F00"
+            }
+            setAlertList([...alertList, toastProp])
         }
 
     }

@@ -15,7 +15,7 @@ type Details = {
 }
 const Profile: FC<Details> = ({news}) => {
     const [change, setChange] = useState(false);
-    const [name, setName] = useState(news[0].creator);
+    const [name, setName] = useState(news[0]?.creator);
     const [location, setLocation] = useState("Kyiv, Ukraine");
 
     return (
@@ -70,28 +70,28 @@ const Profile: FC<Details> = ({news}) => {
             <div className={styles.rightSide}>
                 {
                     news?.map((item: News)=>(
-                        <div key={item._id} className={styles.card}>
+                        <div key={item?._id} className={styles.card}>
                             <div className={styles.image}>
                                 <div className={styles.cardImage}>
-                                    <img src={item.image} alt=""/>
+                                    <img src={item?.image} alt=""/>
                                 </div>
                                 <div className={styles.title}>
-                                    <h2>{item.title}</h2>
+                                    <h2>{item?.title}</h2>
                                 </div>
                             </div>
                             <div className={styles.description}>
                                 <div className={styles.stats}>
                                     <div className={styles.sts}>
                                         <h3>Статус:</h3>
-                                        <h2>{item.published ? "Опубліковано" : "Відхилено"}</h2>
+                                        <h2>{item?.published ? "Опубліковано" : "Відхилено"}</h2>
                                     </div>
                                     <div className={styles.sts}>
                                         <h3>Запропоновано:</h3>
-                                        <h2> {moment(item.createdAt).format("L")}</h2>
+                                        <h2> {moment(item?.createdAt).format("L")}</h2>
                                     </div>
                                     <div className={styles.sts}>
                                         <h3>Дата публікації:</h3>
-                                        <h2> {moment(item.updatedAt).format("L")}</h2>
+                                        <h2> {moment(item?.updatedAt).format("L")}</h2>
                                     </div>
                                 </div>
                             </div>

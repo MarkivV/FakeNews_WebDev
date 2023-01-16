@@ -1,19 +1,20 @@
-import React from 'react';
 import Link from "next/link";
 import {News} from "../types/types";
 import styles from "./../styles/NewsBlock.module.scss"
+import {FC} from "react";
+import {newsTranslate} from "../utils/utilities";
 
 type NewsBlock = {
     news: News[],
     category: string
 }
 
-const NewsBlock = ({news, category}: NewsBlock) => {
+const NewsBlock:FC<NewsBlock> = ({news, category}) => {
     return (
         <>
             <div className={styles.fist_part}>
                 <Link href={"/category/"+category}>
-                    <h2>{category}</h2>
+                    <h2>{newsTranslate(category)}</h2>
                 </Link>
             </div>
             <div className={styles.second_part}>
