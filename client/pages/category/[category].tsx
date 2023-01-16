@@ -1,9 +1,8 @@
-import React, {FC, useState} from 'react';
+import {FC, useState} from 'react';
 import {GetServerSideProps} from "next";
 import axios from "axios";
 import styles from "../../styles/NewsCat.module.scss"
 import {News} from "../../types/types";
-import NormalCard from "../../components/NormalCard";
 import Link from "next/link";
 import img from "../../assets/400_0_1662698694-6361.jpg";
 import moment from "moment";
@@ -14,6 +13,7 @@ type NewsCat = {
     news: News[]
 }
 export const list = ['Війна', 'Політика', 'Наука', "Шоу-бізнес", "Україна", "Світ", "Технології", "Економіка"]
+export const listEng = ['war', 'politic', 'science', "show-business", "Ukraine", "World", "Technology", "economy"]
 
 const News: FC<NewsCat> = ({news}) => {
     const [selectedButton, setSelectedButton] = useState(0);
@@ -27,7 +27,7 @@ const News: FC<NewsCat> = ({news}) => {
             <div className={styles.categories}>
                 {
                     list.map((i:string, index)=>(
-                        <Link href={'/category/'+i} key={index}>
+                        <Link href={'/category/'+listEng[index]} key={index}>
                             <button  className={ index === selectedButton ? styles.active : styles.disable} onClick={()=>handleClick(index)}><h2>{i}</h2></button>
                         </Link>
                     ))

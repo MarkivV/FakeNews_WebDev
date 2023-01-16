@@ -1,10 +1,10 @@
-import React from 'react';
 import SmallCard from "./SmallCard";
 import {typeNews} from "../types/types";
 import BigCard from "./BigCard";
 import styles from './../styles/ThirdBlock.module.scss'
+import {FC} from "react";
 
-const ThirdBlock: React.FC<typeNews> = ({items}) => {
+const ThirdBlock: FC<typeNews> = ({items}) => {
 
     return (
         <div className={styles.wrap}>
@@ -15,7 +15,7 @@ const ThirdBlock: React.FC<typeNews> = ({items}) => {
                 {
                     items.slice(3,7).map((item)=>(
                         <div className={styles.newsBlockDiv} key={item?._id}>
-                            <SmallCard id={item?._id} img={item?.image} title={item?.description} category={item?.category}/>
+                            <SmallCard id={item?._id} img={item?.image} title={item?.title} category={item?.category}/>
                         </div>
                     ))
                 }

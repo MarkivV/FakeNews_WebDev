@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, {Types} from "mongoose";
 
 const NewsPostsSchema = new mongoose.Schema(
     {
@@ -10,9 +10,14 @@ const NewsPostsSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        url: {
+            type: String,
+            required: false
+        },
         creator:{
             type: String,
             required: true,
+            // default: "Volodymyr Markiv"
         },
         tags: {
             type: [String],
@@ -25,12 +30,12 @@ const NewsPostsSchema = new mongoose.Schema(
         published:{
             type: Boolean,
             required: true,
-            default: true
+            default: false
         },
         category:{
             type: String,
             required: true,
-            default: "Війна"
+            default: "war"
         },
     },
     { timestamps: true }

@@ -1,11 +1,11 @@
-import React from 'react';
 import styles from "./../styles/LastNews.module.scss"
 import {typeNews} from "../types/types";
 import SmallCard from "./SmallCard";
+import {FC} from "react";
 
 
 
-const LastNews:React.FC<typeNews> = ({items}) => {
+const LastNews:FC<typeNews> = ({items}) => {
     const item = items.slice(0,4).map((i)=>(
         <SmallCard id={i._id} img={i.image} title={i.title} category={i.category} key={i._id}/>
     ))

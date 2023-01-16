@@ -1,35 +1,48 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import styles from "../../styles/Registration.module.scss";
 import axios from "axios";
 import LayoutAuth from "../../layouts/LayoutAuth";
-import Image from "next/image";
-import google from "../../public/asset/google.svg";
-import git from "../../public/asset/github.svg";
 import Link from "next/link";
 import {useRouter} from "next/router";
+import Alerts from '../../components/Alerts';
+import { toastProps } from '../login';
 
 const Registration = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConf, setPasswordConf] = useState("");
+    const [alertList, setAlertList] = useState<toastProps[]>([]);
+    let toastProp = null
     const router = useRouter()
 
     const handleRegister = async (e: any) =>{
         e.preventDefault()
         if(email && username && password){
             if(password === passwordConf){
-                await axios.post("http://localhost:3000/api/registration", {email, username, password});
+                await axios.post("http://localhost:3000/api/registration", {email, name: username, password});
                 setEmail("")
                 setUsername("")
                 setPassword("")
                 router.push("/login")
             }else {
-                alert("Паролі не співпадають")
+                toastProp = {
+                    id: alertList.length+1,
+                    title: "Помилка",
+                    description: "Паролі не співпадають",
+                    bgColor: "#FF4F00"
+                }
+                setAlertList([...alertList, toastProp])
             }
 
         }else{
-            alert("Заповніть всі поля")
+            toastProp = {
+                id: alertList.length+1,
+                title: "Помилка",
+                description: "Заповніть всі поля",
+                bgColor: "#FF4F00"
+            }
+            setAlertList([...alertList, toastProp])
         }
 
     }
@@ -54,6 +67,7 @@ const Registration = () => {
                         <p className={styles.ptag}>Ввійдіть</p>
                     </Link>
                 </div>
+                <Alerts toastList={alertList} position={"bottom-right"} setAlertList={setAlertList}/>
             </div>
         </LayoutAuth>
     );

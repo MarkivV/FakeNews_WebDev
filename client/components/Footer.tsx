@@ -1,13 +1,7 @@
-import React, {useState} from 'react';
 import styles from './../styles/Footer.module.scss'
 import Link from "next/link";
 
 const Footer = () => {
-    const [email, setEmail] = useState("");
-
-    const sendEmail = () => {
-
-    }
 
     return (
         <div className={styles.wrap}>

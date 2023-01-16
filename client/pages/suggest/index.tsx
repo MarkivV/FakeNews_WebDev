@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import styles from "./../../styles/Suggest.module.scss"
 import axios from "axios";
 import {useSession} from "next-auth/react";
-import {list} from "../category/[category]";
+import {list, listEng} from "../category/[category]";
+import {toastProps} from "../login";
+import Alerts from "../../components/Alerts";
 
 function convertToBase64(file:any){
     return new Promise((resolve, reject) => {
@@ -23,8 +25,8 @@ const Suggest = () => {
     const [image, setImg] = useState("");
     const [selectedButton, setSelectedButton] = useState(0);
     const {data: session, status} = useSession()
-    console.log(session)
-
+    const [alertList, setAlertList] = useState<toastProps[]>([]);
+    let toastProp = null
 
     const handleClick = (id: any) => {
         setSelectedButton(id)
@@ -33,12 +35,19 @@ const Suggest = () => {
     const handleSuggest = async (e: any) =>{
         e.preventDefault()
         if(title && description && image){
-            const res = await axios.post("http://localhost:3000/api/news", {title, description, image, category: list[selectedButton]});
+            const res = await axios.post("http://localhost:3000/api/news", {title, description, image, category: listEng[selectedButton], creator: session?.user?.id});
+            console.log(res)
             setTitle("")
             setImg("")
             setDesc("")
         }else{
-            alert("Заповніть всі поля")
+            toastProp = {
+                id: alertList.length+1,
+                title: "Увага",
+                description: "Заповніть всі поля",
+                bgColor: "#FF4F00"
+            }
+            setAlertList([...alertList, toastProp])
         }
 
     }
@@ -94,7 +103,7 @@ const Suggest = () => {
                     <li>Не є прямою образою, будьте оригінальними</li>
                 </ul>
             </div>
-
+            <Alerts toastList={alertList} position={"bottom-right"} setAlertList={setAlertList}/>
         </div>
     );
 };
