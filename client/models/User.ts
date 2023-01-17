@@ -18,6 +18,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: 'user',
     },
+    emailVerified:{
+        type:Boolean,
+        require: true,
+        default: false
+    }
 });
 
 export const User = mongoose.models.User || mongoose.model('User', userSchema);

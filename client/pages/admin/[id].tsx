@@ -10,6 +10,7 @@ import {listEng} from "../category/[category]";
 import {toastProps} from "../login";
 import {useRouter} from "next/router";
 import Alerts from "../../components/Alerts";
+import LayoutAdmin from '../../layouts/LayoutAdmin';
 type Details = {
     news: News,
     name: string,
@@ -103,6 +104,7 @@ const AdminDetails: FC<Details> = ({news, name}) => {
     }
 
     return (
+        <LayoutAdmin>
         <div className={styles.cardDetails_wrap}>
             <div className={styles.upperBlock}>
                 <div className={styles.cardDetails_title}>
@@ -157,6 +159,7 @@ const AdminDetails: FC<Details> = ({news, name}) => {
             </div>
             <Alerts toastList={alertList} position={"bottom-right"} setAlertList={setAlertList}/>
         </div>
+        </LayoutAdmin>
     );
 };
 

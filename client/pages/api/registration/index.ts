@@ -1,4 +1,3 @@
-import axios from "axios";
 import dbConnect from "../../../utils/dbConnect";
 import {NextApiRequest, NextApiResponse} from "next";
 import bcrypt from 'bcrypt';

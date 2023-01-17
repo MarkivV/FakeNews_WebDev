@@ -1,8 +1,43 @@
 .wrap{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+
+  .categories{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    border-bottom: 2px solid #ececec;
+    button{
+      justify-content: center;
+      align-items: center;
+      border:0;
+      background-color: #ffffff;
+      border-radius: 10px;
+      width: 100px;
+      margin-bottom: 15px;
+      h2{
+        font-size: 16px;
+        font-weight: 500;
+      }
+      &:hover{
+        h2{
+          color: #FF4F00;
+        }
+      }
+    }
+    .active{
+      //box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+      //border: 1px solid #ff4f00;
+    }
+
+  }
+  .mainBlock{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  
+ 
   .card {
     display: flex;
     flex-direction: column;
@@ -55,4 +90,5 @@
     }
 
   }
+}
 }

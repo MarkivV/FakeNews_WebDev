@@ -46,3 +46,10 @@ export interface typeNews {
     items: News[],
     status?: string
 }
+
+export type User = {
+    _id: string,
+    email: string,
+    name: string,
+    role: string
+}

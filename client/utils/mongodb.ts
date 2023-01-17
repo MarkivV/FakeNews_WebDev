@@ -50,8 +50,9 @@ export async function loginUser(email: string, password: string) {
         }
         const userId = user._id.toString();
         const userEmail = user.email
+        const userRole = user.role
 
-        return { user: {email: userEmail, id: userId}}
+        return { user: {email: userEmail, id: userId, role: userRole}}
     }catch (error){
        return  {error: 'Something went wrong, please try again!'}
     }

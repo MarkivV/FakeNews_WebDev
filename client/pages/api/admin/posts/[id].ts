@@ -16,27 +16,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 if (post) {
                     const creatorID = post.creator;
                     const posts = await User.findById(creatorID)
-                    // console.log(posts)
-                    // console.log(creatorID)
                     res.status(200).json({
                         post: post,
                         userName: posts?.name
                     });
-                    // res.status(200).json(post);
-                    // // console.log(post)
-                    // console.log(newPost)
-                    // console.log()
-
-                    // res.status(200).json(post)
-
-                    // @ts-ignore
-                    // const posts = await User.findById(creator)
-                    // console.log(posts)
-                    // if(posts){
-                    //     res.status(200).json({...post, creator: posts?.name });
-                    // }else{
-                    //     res.status(402).json("Didnt Find")
-                    // }
                 }
                 // res.status(200).json(newsGet)
             } catch (e: any) {
