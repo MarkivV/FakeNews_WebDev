@@ -26,10 +26,10 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GITHUB_SECRET,
       profile(profile: any) {
         return {
-          id: profile.sub,
+          id: profile.id,
           name: profile.name,
           email: profile.email,
-          image: profile.picture,
+          image: profile.avatar_url,
           role: "user",
         };
       },
@@ -68,6 +68,7 @@ export const authOptions: NextAuthOptions = {
           id: token.id,
           email: token.email,
           role: token?.role,
+          name: token?.name
         },
       };
     },

@@ -17,11 +17,9 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
                 const post = await NewsPosts.findById(id)
                 if(post){
                     const creator = post.creator;
-                    console.log(creator)
                     // @ts-ignore
                     const posts = await NewsPosts.find({ creator: { $in: [creator] } });
                     const postsUser = await User.findById(creator)
-                    console.log(posts)
                     res.status(200).json({
                         post: post,
                         posts: posts.sort(function () {
@@ -30,7 +28,6 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
                         userName: postsUser?.name
                     });
                 }
-                // res.status(200).json(newsGetById)
             }catch (e:any) {
                 res.status(500).json(e)
             }

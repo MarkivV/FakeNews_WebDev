@@ -3,72 +3,101 @@
     text-decoration: none;
     color: inherit;
   }
-  max-height: 70px;
+  padding-bottom: 70px;
+  padding-top: 10px;
   margin: auto 150px;
   display: flex;
-  .left_block{
-    margin-right: 20px;
-    width: 50%;
-    .header_title{
-      width: 150px;
-      display: flex;
-      position: relative;
-      align-items: center;
-      cursor: pointer;
-      .title{
-        font-size: 30px;
-        font-weight: bold;
-      }
-      .title_small{
-        font-size: 30px;
-        font-weight: 400;
-        color: #FF4F00;
-      }
-    }
-
-    .otherInfo{
-      text-align: justify;
-      margin-top: 20px;
-      span{
-        font-size: 15px;
-        line-height: 150%;
-        color: #9b9b9b;
-      }
-    }
-
-  }
-  .right_block{
-    width: 50%;
+  flex-direction: column;
+  .header_title{
     display: flex;
-    margin-left: 20px;
-    .categories{
-      width: 50%;
+    align-items: center;
+    cursor: pointer;
+    .title{
+      font-weight: bold;
+    }
+    .title_small{
+      font-weight: 400;
+      color: #FF4F00;
+    }
+  }
+  .categories{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    .catDiv{
+      gap: 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
-      h1{
-        font-size: 16px;
-        font-weight: 300;
-        &:last-child{
-          color: #ff4f00;
-        }
-        &:hover{
-          color: #ff4f00;
-        }
-      }
-    }
-    .socials{
-      display: flex;
-      gap: 30px;
-      text-align: justify;
-      h1{
-        font-size: 20px;
-        font-weight: 500;
-        &:hover{
-          color: #ff4f00;
+      list-style: none;
+      align-items: flex-start;
+      li{
+        h3{
+          font-weight: 400;
+          &:hover{
+            color: #ff4f00;
+          }
         }
       }
     }
   }
+  .about{
+    text-align: justify;
+    margin-top: 20px;
+    p{
+      font-size: 20px;
+    }
+  }
+
+  hr{
+    margin-top: 10px;
+    border: 1px solid #eee;
+  }
+  .foot{
+    display: flex;
+    flex-direction: row;
+    .left_block{
+      margin-right: 20px;
+      width: 50%;
+  
+      
+  
+      .otherInfo{
+        text-align: justify;
+        margin-top: 20px;
+        span{
+          line-height: 150%;
+          color: #9b9b9b;
+        }
+      }
+  
+    }
+    .right_block{
+      display: flex;
+      margin-left: 20px;
+      width: 50%;
+      .otherInfo{
+        text-align: justify;
+        margin-top: 20px;
+        span{
+          line-height: 150%;
+          color: #9b9b9b;
+        }
+      }
+      // .socials{
+      //   display: flex;
+      //   gap: 30px;
+      //   text-align: justify;
+      //   margin-left: 20px;
+      //   margin-top: 20px;
+      //   h1{
+      //     font-weight: 500;
+      //     &:hover{
+      //       color: #ff4f00;
+      //     }
+      //   }
+      // }
+    }
+  }
+  
 }
 

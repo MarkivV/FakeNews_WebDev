@@ -2,42 +2,38 @@ import styles from "./../../styles/Profile.module.scss"
 import image from "../../assets/film-ukraina-trizub-sluga-naroda-vladimir-zelenskii-preziden.jpeg"
 import {GetServerSideProps} from "next";
 import axios from "axios";
-import {News} from "../../types/types";
+import {News, User} from "../../types/types";
 import React, {FC, useState} from "react";
 import moment from "moment";
 import 'moment/locale/uk';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import {getSession, signOut, useSession} from "next-auth/react";
+import { Session } from "next-auth/core/types";
 
 
 type Details = {
-    news: News[]
+    news: News[],
+    user: User
 }
-const Profile: FC<Details> = ({news}) => {
+const Profile: FC<Details> = ({news, user}) => {
     const [change, setChange] = useState(false);
     const [name, setName] = useState(news[0]?.creator);
-    const [location, setLocation] = useState("Kyiv, Ukraine");
 
     return (
         <div className={styles.wrap}>
             <div className={styles.leftSide}>
-                <img src={image.src} alt=""/>
+                <img src={user?.image} alt=""/>
                 <div className={styles.name}>
-                    <h2>Volodymyr Markiv</h2>
-                    <h3>MarkivV</h3>
-                </div>
-                <div className={styles.location}>
-                    <LocationOnIcon/>
-                    <h3>Kyiv, Ukraine</h3>
+                    <h2>{user?.name}</h2>
+                    <h3>{user?.email}</h3>
                 </div>
                 {
                     change ? (
                         <div className={styles.editData}>
                             <input onChange={(e)=>setName(e.target.value)} value={name} className={styles.titleInput} type="text" placeholder={"Імʼя"}/>
-                            <input onChange={(e)=>setLocation(e.target.value)} value={location} className={styles.titleInput} type="text" placeholder={"Месцеперебування"}/>
                             <label className={styles.imageInput}>
                                 <input type="file" accept={'.jpeg, .png, .jpg'}/>
-                                <h2>Завантажити картинку</h2>
+                                <h4>Завантажити картинку</h4>
                             </label>
                             <div className={styles.buttons}>
                                 <button className={styles.button} onClick={()=>setChange(false)}>Зберегти</button>
@@ -51,21 +47,7 @@ const Profile: FC<Details> = ({news}) => {
                     )
                 }
 
-                <div className={styles.stats}>
-                    <div className={styles.sts}>
-                        <h3>Запропонованих статей:</h3>
-                        <h2>45</h2>
-                    </div>
-                    <div className={styles.sts}>
-                        <h3>Опублікованих статей:</h3>
-                        <h2>36</h2>
-                    </div>
-                    <div className={styles.sts}>
-                        <h3>Відхилено:</h3>
-                        <h2>9</h2>
-                    </div>
-                </div>
-                <button onClick={()=>signOut()}>Exit</button>
+                <button onClick={()=>signOut()}>Вийти</button>
             </div>
             <div className={styles.rightSide}>
                 {
@@ -113,10 +95,11 @@ export const getServerSideProps: GetServerSideProps = async ({params, req}: any)
             }
         }
     }else {
-        const res = await axios.get("http://localhost:3000/api/category/" + params.id);
+        const user = await axios.get("http://localhost:3000/api/profile/" + session.user.id);
+        const res = await axios.get("http://localhost:3000/api/news/newsprof/" + session.user.id);
         return {
             props: {
-                session: session,
+                user: user?.data,
                 news: res?.data
             },
         };

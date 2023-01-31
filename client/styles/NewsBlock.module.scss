@@ -1,16 +1,22 @@
-.fist_part{
+.fist_part {
   margin-bottom: 20px;
-  h2{
+  h1 {
     color: #ff4f00;
   }
 }
-.second_part{
+.second_part {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 
   .normal_card {
-    &:first-of-type{
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ededed;
+    &:first-of-type {
       position: relative;
       width: 75%;
       .normal_card_img {
@@ -20,27 +26,42 @@
           height: 470px;
           filter: brightness(50%);
         }
+        .normal_card_desc {
+          margin-right: 20px;
+          margin-left: 20px;
+          position: absolute;
+          text-align: justify;
+          bottom: 10px;
+          .up_desc {
+            display: flex;
+            margin-bottom: 15px;
+            h2 {
+              background-color: #fff;
+              padding: 5px;
+              color: black;
+              &:first-of-type {
+                cursor: pointer;
+                &:hover {
+                  color: #ff4f00;
+                  transition: ease-in-out 0.3s;
+                }
+              }
+            }
+          }
+          span {
+            font-size: 24px;
+            font-weight: 600;
+            color: black;
+            background-color: #fff;
+            padding: 5px;
+          }
+        }
       }
-      .normal_card_desc{
-        margin-right: 20px;
-        margin-left: 20px;
-        position: absolute;
-        text-align: justify;
-        bottom: 1px;
-        h2{
-          font-size: 32px;
-          font-weight: 600;
-          color: white;
-        }
-        span{
-          display: none;
-        }
+
+      .up_descDown {
+        display: none;
       }
     }
-    width: 24%;
-    justify-content: center;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #EDEDED;
 
     .normal_card_img {
       img {
@@ -48,31 +69,36 @@
         object-fit: cover;
         height: 300px;
       }
-    }
+      .normal_card_desc {
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 10px;
 
-    .normal_card_desc {
-      text-align: justify;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 10px;
-      //height: 170px;
-
-      h2 {
-        font-size: 20px;
-        //margin-bottom: 15px;
-
-        &:hover {
-          color: #ff4f00;
+        .up_desc {
+          display: none;
+        }
+        span {
+          font-size: 18px;
+          font-weight: 600;
+          margin-top: 15px;
+          &:hover {
+            color: #ff4f00;
+          }
         }
       }
-
-      span {
-        margin-top: 15px;
-      }
     }
 
-    hr {
-
+    .up_descDown {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+      h4{
+        font-weight: 400;
+        margin-bottom: 5px;
+        color: #989898;
+      }
     }
   }
 }

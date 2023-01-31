@@ -17,7 +17,7 @@ const MainLayouts: FC<Layout> = ({children}) => {
                             rel="stylesheet"/>
             </Head>
             <Navbar/>
-            <hr className={styles.Line}/>
+            <hr className={styles.LineOne}/>
             <div className={styles.content}>
                 <div>
                     {children}

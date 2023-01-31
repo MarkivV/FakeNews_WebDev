@@ -1,6 +1,7 @@
 .wrap{
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 
   .categories{
     display: flex;
@@ -16,7 +17,6 @@
       width: 100px;
       margin-bottom: 15px;
       h2{
-        font-size: 16px;
         font-weight: 500;
       }
       &:hover{
@@ -26,8 +26,6 @@
       }
     }
     .active{
-      //box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-      //border: 1px solid #ff4f00;
     }
 
   }
@@ -60,9 +58,6 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 10px;
-        h2{
-          font-size: 16px;
-        }
         //height: 170px;
 
       }
@@ -80,8 +75,7 @@
         padding: 10px;
         border-radius: 5px;
         background-color: #fff;
-        h2 {
-          font-size: 14px;
+        h3 {
           &:hover {
             color: #ff4f00;
           }

@@ -1,27 +1,35 @@
 .normal_card{
-  display: flex;
-  flex-direction: column;
-  text-align: justify;
-  max-width: 25%;
+  position: relative;
+  width: 24%;
   .normal_card_img {
-    img{
+    img {
       width: 100%;
       object-fit: cover;
-      height: 250px;
+      height: 390px;
+      filter: brightness(50%);
     }
   }
   .normal_card_desc{
-    display: flex;
-    flex-direction: column;
-    h2{
-      font-size: 16px;
-      margin-bottom: 15px;
-      &:hover{
-        color: #ff4f00;
+    justify-content: space-between;
+    margin-right: 20px;
+    margin-left: 20px;
+    position: absolute;
+    text-align: justify;
+    bottom: 20px;
+      h3{
+        font-weight: 600;
+        color: white;
+        margin-bottom: 10%;
+        &:hover{
+          cursor: pointer;
+          color: #ff4f00;
+        }
       }
-    }
-    span{
-      margin-top: 15px;
-    }
+
+      h4{
+        font-weight: 300;
+        color: #ccc;
+      }
+
   }
 }

@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         require: true,
         default: false
+    },
+    image:{
+        type: String,
+        require: true,
+        default: "Avatar"
     }
 });
 

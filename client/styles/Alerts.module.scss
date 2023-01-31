@@ -1,5 +1,4 @@
 .wrap{
-  font-size: 16px;
   position: fixed;
   z-index: 10;
 
@@ -11,7 +10,6 @@
     .block{
       .title{
         font-weight: 600;
-        font-size: 18px;
         text-align: left;
       }
       .desc{
@@ -30,7 +28,6 @@
     }
   }
   .toast_to_right{
-    height: 50px;
     width: 365px;
     padding: 25px;
     color: white;

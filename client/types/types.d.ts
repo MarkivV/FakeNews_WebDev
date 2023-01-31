@@ -51,5 +51,17 @@ export type User = {
     _id: string,
     email: string,
     name: string,
-    role: string
+    role: string,
+    image: string
+}
+
+
+export interface Comment {
+    _id?: string,
+    body: string,
+    userId: string | undefined,
+    parentId?: string | null,
+    postId: string,
+    name?: string | undefined,
+    createdAt?: string | number | Date | undefined,
 }

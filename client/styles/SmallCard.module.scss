@@ -11,7 +11,7 @@
       object-fit: cover;
       filter: brightness(50%);
     }
-    h3{
+    h4{
       position: absolute;
       padding: 5px;
       background-color: #ff4f00;
@@ -19,14 +19,12 @@
       color: #fff;
       font-weight: 400;
     }
-    span {
+    h3 {
       position: absolute;
       padding: 10px;
-      bottom: 10px;
-      font-size: 20px;
-      font-weight: 400;
+      bottom: 5px;
       color: white;
-
+      font-weight: 500;
       &:hover {
         color: #ff4f00;
       }

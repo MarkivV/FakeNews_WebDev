@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   .title_losses h3{
-    font-size: 22px;
     font-weight: 500;
   }
   .losses_list {
@@ -11,11 +10,9 @@
     flex-direction: column;
     align-items: center;
     .counter{
-      font-size: 20px;
       font-weight: 400;
     }
     .name{
-      font-size: 12px;
       font-weight: 300;
     }
   }

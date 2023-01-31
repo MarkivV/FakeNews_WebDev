@@ -1,0 +1,25 @@
+.comment {
+  margin-top: 15px;
+  display: flex;
+  .avatar {
+    background-color: #ff4040;
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    font-size: 15px;
+  }
+  .commBody {
+    margin-left: 25px;
+    .commContent{
+      h5 {
+        font-weight: 300;
+      }
+    }
+    .commText{
+      margin-top: 10px;
+      h4{
+
+      }
+    }
+  }
+}

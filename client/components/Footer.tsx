@@ -1,45 +1,76 @@
-import styles from './../styles/Footer.module.scss'
+import styles from "./../styles/Footer.module.scss";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const Footer = () => {
-
-    return (
-        <div className={styles.wrap}>
-            <div className={styles.left_block}>
-                <div className={styles.header_title}>
-                    <Link href={"/"}>
-                        <h2 className={styles.title}>Бражкович</h2>
-                    </Link>
-                    <Link href={"/"}>
-                        <h2 className={styles.title_small}>Медіа</h2>
-                    </Link>
-                </div>
-                <div className={styles.otherInfo}>
-                    <span>
-                        Всі права на матеріали, опубліковані на даному ресурсі, належать ТОВ "ФОКУС МЕДІА". Будь-яке використання матеріалів без письмового дозволу ТОВ "ФОКУС МЕДІА" — заборонено. При використанні матеріалів з даного ресурсу гіперпосилання focus.ua обовʼязкове.
-                        Даний ресурс — для користувачів віком від 18 років і старше.
-                        FOCUS.UA — більше ніж просто новини.
-                    </span>
-                </div>
-
-            </div>
-            <div className={styles.right_block}>
-                <div className={styles.categories}>
-                    <h1>Новини</h1>
-                    <h1>Головна</h1>
-                    <h1>Останні</h1>
-                    <h1>Запропонувати</h1>
-                    <h1>Профіль</h1>
-                    <h1>Вийти</h1>
-                    <h1>Важливо</h1>
-                </div>
-                <div className={styles.socials}>
-                    <h1>Instagram</h1>
-                    <h1>Telegram</h1>
-                </div>
-            </div>
+  return (
+    <div className={styles.wrap}>
+      <div className={styles.header_title}>
+        <Link href={"/"}>
+          <h1 className={styles.title}>Бражкович</h1>
+        </Link>
+        <Link href={"/"}>
+          <h1 className={styles.title_small}>Медіа</h1>
+        </Link>
+      </div>
+      <div className={styles.categories}>
+        <ul className={styles.catDiv}>
+          <li>
+            <h3><Link href={"/category/war"}>Новини</Link></h3>
+          </li>
+          <li>
+            <h3><Link href={"/"}>Головна</Link></h3>
+          </li>
+          <li>
+            <h3><Link href={"/"}>Важливо</Link></h3>
+          </li>
+          <li>
+            <h3><Link href={"/suggest"}>Запропонувати</Link></h3>
+          </li>
+          <li>
+            <h3><Link href={"/profile"}>Профіль</Link></h3>
+          </li>
+          <li>
+            <h3 onClick={()=>signOut()}>Вийти</h3>
+          </li>
+        </ul>
+      </div>
+      <div className={styles.about}>
+            <p>
+              <strong>Бражкович Медіа - </strong>
+              це сатиричне онлайн видання яке публікує повністю вигадані новини
+              українською мовою
+            </p>
+            {/* 
+          <p>
+          Повідомлення, розміщені на сайті Бражкович Медіа, є сатиричними і не мають ніякого відношення до реальності. Ми не несемо відповідальності за будь-які неправдиві чи образливі матеріали, які можуть бути опубліковані на нашому сайті
+          </p> */}
         </div>
-    );
+        <hr />
+      <div className={styles.foot}>
+        <div className={styles.left_block}>
+          <div className={styles.otherInfo}>
+            <span>
+              Увага! Всі матеріали, розміщені на даному ресурсі, є власністю ТОВ
+              "БРАЖКОВИЧ МЕДІА" і можуть бути використані тільки за умови
+              посилання на наш ресурс. Повне або часткове відтворення матеріалів
+              без виконання наших умов є незаконним і може привести до юридичних
+              наслідків. Додатково, будь-ласка, майте на увазі, що наші
+              матеріали містять сатиричний контент і є непристойними для деяких
+              осіб. Використовуйте їх на свій розсуд.
+            </span>
+          </div>
+        </div>
+        <div className={styles.right_block}>
+          <div className={styles.otherInfo}>
+            <span>
+            Дисклеймер: Сайт Бражкович Медіа є платформою для виконання сатиричної журналістики. Всі матеріали, розміщені на нашому сайті, є фантазією та надані виключно для розваги і не мають наміру образити реальних людей або організацій. Будь-ласка, не відносіть їх до реальності і не використовуйте без нашої згоди. Ми не несемо відповідальності за будь-які збитки, які можуть виникнути внаслідок використання нашого сайту.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Footer;

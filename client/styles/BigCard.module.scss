@@ -23,17 +23,24 @@
       bottom: 10px;
       .up_desc{
         display: flex;
+        align-items: center;
+
         h3{
-          margin-left: 10px;
+          &:first-of-type{
+            cursor: pointer;
+            &:hover{
+              color: #FF4F00;
+              transition: ease-in-out 0.3s;
+            }
+          }
         }
+        
+
       }
+
       h2{
-        font-size: 20px;
-        margin-bottom: 20px;
-      }
-      span{
-        font-size: 24px;
-        font-weight: 400;
+        cursor: pointer;
+        font-weight: 600;
         &:hover{
           color: #FF4F00;
           transition: ease-in-out 0.3s;

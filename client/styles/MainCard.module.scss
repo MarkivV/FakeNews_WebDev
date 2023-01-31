@@ -13,17 +13,23 @@
     display: flex;
     flex-direction: column;
     margin-left: 25px;
-    text-align: justify;
     h2{
-      text-align: justify;
       margin-bottom: 15px;
       &:hover{
         color: #ff4f00;
       }
     }
-    span{
-      margin-top: 15px;
-      text-align: justify;
+    p{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 450px;
+      height: 200px;
+      background-color: #fff;
+      margin-top: 25px;
+      font-size: 20px;
+      line-height: 150%;
     }
   }
 }

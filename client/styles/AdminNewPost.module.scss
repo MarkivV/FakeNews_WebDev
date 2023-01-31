@@ -1,7 +1,7 @@
 .wrap {
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
+  margin-top: 20px;
   gap: 30px;
 
   .left_block {
@@ -26,6 +26,7 @@
       border-radius: 10px;
       resize: vertical;
     }
+
     .imageInput {
       input[type="file"] {
         display: none;
@@ -38,26 +39,6 @@
       h4 {
         font-weight: 400;
         color: #ff4f00;
-      }
-      width: 200px;
-      border: 0;
-      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-      padding: 10px;
-      border-radius: 10px;
-    }
-    
-    .imgActive{
-      input[type="file"] {
-        display: none;
-      }
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      h4 {
-        font-weight: 400;
-        color: #0ea106;
       }
 
       width: 200px;
@@ -73,7 +54,6 @@
       box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
       padding: 10px;
       border-radius: 10px;
-
     }
 
     .categories {
@@ -82,18 +62,17 @@
       flex-wrap: wrap;
       button {
         height: 45px;
-        border: 1px solid #E0E0E0FF;
+        border: 1px solid #e0e0e0ff;
         padding: 10px;
         border-radius: 10px;
         background-color: #fff;
-        width: 20%;
+        width: 15%;
       }
 
       .active {
         box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
         border: 1px solid #ff4f00;
       }
-
     }
 
     .button {
@@ -102,14 +81,19 @@
       box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
       padding: 10px;
       border-radius: 10px;
-      background: linear-gradient(90deg, rgba(255,79,0,1) 0%, rgb(218, 67, 0) 100%);
+      background: linear-gradient(
+        90deg,
+        rgba(255, 79, 0, 1) 0%,
+        rgb(218, 67, 0) 100%
+      );
       color: #fff;
       width: 100%;
-      h2{
+      h2 {
         font-weight: 400;
       }
     }
-    .buttonDis{
+
+    .buttonDis {
       height: 35px;
       border: 0;
       box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
@@ -119,15 +103,8 @@
       color: #fff;
       width: 150px;
     }
-  }
 
-  .right_block {
-    width: 50%;
-    line-height: 200%;
-    display: flex;
-    flex-direction: column;
-    ul{
-        text-decoration: none;
+    .check {
     }
   }
 }

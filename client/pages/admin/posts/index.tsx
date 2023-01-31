@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { GetServerSideProps } from "next";
-import { getSession } from "next-auth/react";
 import axios from "axios";
 import { News } from "../../../types/types";
 import styles from "./../../../styles/Admin.module.scss";
@@ -16,14 +15,7 @@ type AdminDashboard = {
 const Admin: FC<AdminDashboard> = ({ posts }) => {
   const [postList, setPostList] = useState(posts);
   const [alertList, setAlertList] = useState<toastProps[]>([]);
-//   const categories = ["users", "newpost"];
-//   const categoriesUkr = ["Користувачі", "Новий пост"];
   let toastProp = null;
-//   const [selectedButton, setSelectedButton] = useState(0);
-
-//   const handleClick = (id: any) => {
-//     setSelectedButton(id);
-//   };
 
   const deletePost = async (e: any, id: string) => {
     e.preventDefault();
@@ -36,7 +28,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
           id: alertList.length + 1,
           title: "Виконано",
           description: "Видалення пройшло успішно",
-          bgColor: "#206700",
+          bgColor: "#009216",
         };
         setAlertList([...alertList, toastProp]);
         setPostList(postList.filter((post) => post._id !== id));
@@ -64,7 +56,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
           id: alertList.length + 1,
           title: "Виконано",
           description: "Публікування пройшло успішно",
-          bgColor: "#206700",
+          bgColor: "#009216",
         };
         setAlertList([...alertList, toastProp]);
       } else {
@@ -90,22 +82,22 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
                   <img src={post?.image} alt="" />
                 </div>
                 <div className={styles.title}>
-                  <h2>{post?.title}</h2>
+                  <h3>{post?.title}</h3>
                 </div>
               </div>
               <div className={styles.buttons}>
                 <Link href={"/admin/" + post?._id}>
                   <button>
-                    <h2>Редагувати</h2>
+                    <h3>Редагувати</h3>
                   </button>
                 </Link>
                 <button onClick={(e) => deletePost(e, post?._id)}>
-                  <h2>Видалити</h2>
+                  <h3>Видалити</h3>
                 </button>
                 <button
                   onClick={(e) => publishPost(e, post?._id, post?.published)}
                 >
-                  <h2>{post?.published ? "Архівувати" : "Опублікувати"}</h2>
+                  <h3>{post?.published ? "Архівувати" : "Опублікувати"}</h3>
                 </button>
               </div>
             </div>
@@ -122,21 +114,9 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  // const session = await getSession({ req });
-  // console.log(session);
-  
-  // if (!session) {
-  //   return {
-  //     redirect: {
-  //       destination: "/",
-  //       permanent: false,
-  //     },
-  //   };
-  // } else {
     const res = await axios.get("http://localhost:3000/api/admin/posts/");
     return {
       props: {
-        // session: session,
         posts: res?.data,
       },
     };

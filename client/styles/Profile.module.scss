@@ -10,20 +10,29 @@
       object-fit: cover;
     }
 
+    button{
+      margin-top: 15px;
+      cursor: pointer;
+      height: 35px;
+      border:0;
+      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+      border-radius: 5px;
+      background-color: #ff4f00;
+      color: #fff;
+      width: 100%;
+    }
+
     .name{
       h2{
-        font-size: 28px;
         font-weight: 500;
       }
       h3{
-        font-size: 24px;
         color: #b7b7b7;
         font-weight: 300;
       }
     }
 
     .button{
-      margin-top: 15px;
       button{
         cursor: pointer;
         height: 35px;
@@ -33,17 +42,9 @@
         background-color: #ff4f00;
         color: #fff;
         width: 100%;
-        font-size: 18px;
       }
     }
 
-    .location{
-      display: flex;
-      margin-top: 15px;
-      h3{
-        font-weight: 300;
-      }
-    }
 
     .editData{
       margin-top: 15px;
@@ -66,7 +67,6 @@
           background-color: #ff4f00;
           color: #fff;
           width: 150px;
-          font-size: 14px;
 
           &:last-child{
             background-color: #EDEDED;
@@ -84,7 +84,6 @@
         justify-content: center;
         margin-top: 15px;
         h2{
-          font-size: 14px;
           font-weight: 400;
           color: #ff4f00;
         }
@@ -104,11 +103,9 @@
         justify-content: space-between;
         h3{
           font-weight: 400;
-          font-size: 22px;
         }
         h2{
           font-weight: 500;
-          font-size: 24px;
         }
       }
 
@@ -146,17 +143,13 @@
           justify-content: space-between;
           h3{
             font-weight: 400;
-            font-size: 22px;
           }
           h2{
             font-weight: 500;
-            font-size: 24px;
           }
         }
 
       }
-
-
     }
   }
 }

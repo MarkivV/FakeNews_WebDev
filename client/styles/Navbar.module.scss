@@ -8,28 +8,20 @@
   display: flex;
   justify-content: space-between;
   .header_title{
-    width: 150px;
     display: flex;
-    position: relative;
     align-items: center;
     cursor: pointer;
     .title{
-      font-size: 26px;
       font-weight: bold;
     }
     .title_small{
-      font-size: 26px;
       font-weight: 400;
       color: #FF4F00;
     }
   }
-
   .menu{
     display: flex;
-    margin: auto;
-    justify-content: center;
-    h2{
-      font-size: 18px;
+    h3{
       font-weight: 400;
       margin: 20px;
       cursor: pointer;
@@ -37,10 +29,25 @@
         color: #FF4F00;
       }
     }
+
+    .supportBtn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 25px;
+      h4{
+        font-weight: 500;
+        padding: 10px;
+        background-color: #FF4F00;
+        color: white;
+      }
+    }
+
+    .header_icons{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
-  .header_icons{
-    width: 150px;
-    position: relative;
-    margin: auto 0 auto 0;
-  }
+
 }
