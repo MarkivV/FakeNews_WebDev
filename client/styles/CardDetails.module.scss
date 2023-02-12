@@ -1,47 +1,15 @@
 .cardDetails_wrap {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  margin-top: 20px;
+  gap: 20px;
 
-  .upperBlock {
-    .cardDetails_title {
-      .cardDetails_CategoryBadge {
-        margin-top: 15px;
-        margin-bottom: 15px;
-
-        h2 {
-          padding: 5px;
-          color: white;
-          background-color: #ff4f00;
-          display: inline-block;
-        }
-      }
-
-
-    }
-
-    .cardDetails_image {
-      img {
-        height: 600px;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
-  }
-
-  .wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-
-    .cardDetails_leftBlock {
-      display: flex;
-      flex-direction: column;
-      width: 70%;
-
-      .cardDetails_image_s {
-        img {
-          width: 100%;
-          object-fit: cover;
+  .wrapperMain {
+    width: 70%;
+      .cardDetails_title {
+        h1 {
+          font-size: 40px;
+          font-weight: 600;
         }
       }
 
@@ -49,115 +17,213 @@
         display: flex;
         gap: 20px;
         margin-top: 15px;
+        border-bottom: 1.5px solid #0a0a0a;
 
         .creator {
           display: flex;
-          margin-bottom: 15px;
-
           h2 {
+            font-size: 14px;
             font-weight: 400;
-            font-size: 18px;
-            color: #c2c2c2;
+            color: #0a0a0a;
           }
 
           h3 {
-            margin-left: 10px;
-            font-size: 18px;
-            color: black;
+            margin-left: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0a0a0a;
           }
-        }
 
-        .cardDetails_dateTime {
-          margin-bottom: 15px;
-
-          h3 {
-            font-size: 18px;
-            color: #c2c2c2;
+          h4 {
+            margin-left: 15px;
             font-weight: 400;
+            font-size: 14px;
+            color: #8a8a8a;
           }
         }
       }
 
-      .hr {
-        border: 1px solid #EDEDED;
-      }
-
-      .cardDetails_description {
-        text-align: justify;
-        margin-top: 15px;
-
-        span {
-          font-size: 20px;
-          line-height: 150%;
+      .cardDetails_image {
+        margin-top: 10px;
+        img {
+          height: 600px;
+          width: 100%;
+          object-fit: cover;
         }
       }
+    
 
-      .cardDetails_otherInfo {
-        margin-top: 25px;
+    .wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+
+      .cardDetails_leftBlock {
         display: flex;
-        align-items: center;
-        margin-bottom: 20px;
+        flex-direction: column;
 
-        h3 {
-          font-size: 16px;
+        .cardDetails_image_s {
+          img {
+            width: 100%;
+            object-fit: cover;
+          }
         }
 
-        h2 {
-          font-size: 22px;
-          margin-left: 20px;
+        .cardDetails_description {
+          margin-top: 15px;
+
+          p {
+            min-width: 100%;
+            font-size: 20px;
+            line-height: 150%;
+            font-weight: 400;
+            margin-top: 5px;
+            border: none;
+            resize: none;
+          }
         }
 
-        a {
-          color: #2AABEE;
-        }
-      }
-
-      .cardDetails_tags {
-        display: flex;
-        flex-direction: row;
-        margin-top: 20px;
-        gap: 20px;
-
-        .cardDetails_tagsBadge {
+        .cardDetails_otherInfo {
+          margin-top: 25px;
           display: flex;
-          gap: 20px;
-          align-items: center;
+          flex-direction: column;
+          margin-bottom: 20px;
 
           h3 {
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: 400;
+            border-bottom: 2px solid #0a0a0a;
           }
 
-          h2 {
-            font-size: 22px;
-            color: #ff4f00;
+          .otherInfoDiv{
+            display: flex;
+            gap: 25px;
+            margin-top: 10px;
+            h2{
+              font-size: 16px;
+            }
           }
         }
 
+        .cardDetails_tags {
+          display: flex;
+          flex-direction: row;
+          margin-top: 20px;
+          gap: 20px;
+
+          .cardDetails_tagsBadge {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            h2 {
+              color: #ff4f00;
+            }
+          }
+        }
+
+        .comments {
+          .commentsTitle {
+            margin-top: 15px;
+            h3 {
+            }
+          }
+
+          .commentInputDiv {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 10px;
+            button {
+              cursor: pointer;
+              border: 0;
+              width: 200px;
+              height: 35px;
+              border-radius: 50px;
+              background-color: #0a0a0a;
+              color: #fff;
+              h3 {
+                font-weight: 400;
+              }
+            }
+            .commentInput {
+              height: 35px;
+              border: 1px solid #0a0a0a;
+              padding: 10px;
+              border-radius: 5px;
+            }
+          }
+
+          .commList {
+            margin-top: 25px;
+
+            .comment {
+              margin-top: 15px;
+              display: flex;
+              align-items: center;
+              .avatar {
+                h3 {
+                  padding: 15px;
+                  background-color: #ff4040;
+                }
+              }
+              .commBody {
+                margin-left: 10px;
+                h4 {
+                  font-weight: 300;
+                }
+              }
+            }
+          }
+        }
       }
     }
+  }
 
     .right_block {
-      width: 30%;
+      width: 28%;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       .title_rb {
         margin-top: 20px;
-
-        h2 {
-
-        }
       }
-
       .cards {
-        gap: 20px;
+        background-color: #FBFAF8;
+        // gap: 40px;
         .card {
-          margin-top: 10px;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          .upperPart{
+            img{
+              width: 100%;
+              height: 150px;
+              object-fit: cover;
+            }
+          }
 
+          .bottomPart{
+            h2{
+              color: #485EC6;
+              font-size: 14px;
+              text-transform: uppercase;
+              cursor: pointer;
+              &:hover{
+                text-decoration: underline;
+              }
+            }
+
+            h3{
+              color: #0a0a0a;
+              cursor: pointer;
+              &:hover{
+                text-decoration: underline;
+              }
+            }
+          }
         }
       }
     }
-  }
-
 }

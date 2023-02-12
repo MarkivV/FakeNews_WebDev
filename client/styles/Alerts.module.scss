@@ -1,36 +1,36 @@
-.wrap{
-  font-size: 16px;
+.wrap {
   position: fixed;
   z-index: 10;
 
-  .notify{
+  .notify {
+    border: 1px solid #ccc;
+    border-style: dashed;
     margin-bottom: 1rem;
-    border-radius: 4px;
     transition: 0.3s;
     animation: toast_to_right 0.7s;
-    .block{
-      .title{
+    .block {
+      .title {
         font-weight: 600;
-        font-size: 18px;
         text-align: left;
+        color: #0a0a0a;
       }
-      .desc{
+      .desc {
         margin-top: 5px;
         text-align: left;
+        color: #0a0a0a;
       }
     }
 
-    button{
+    button {
       cursor: pointer;
       float: right;
       background: none;
       border: none;
-      color: #EDEDED;
+      color: #ededed;
       font-size: 16px;
     }
   }
-  .toast_to_right{
-    height: 50px;
+  .toast_to_right {
     width: 365px;
     padding: 25px;
     color: white;
@@ -40,12 +40,12 @@
 .bottom-right {
   bottom: 1rem;
   right: 1rem;
-
 }
 @keyframes toast_to_right {
-  from{
+  from {
     transform: translateX(100%);
-  } to {
+  }
+  to {
     transform: translateX(0);
   }
 }

@@ -44,7 +44,7 @@ const Login = () => {
                     id: alertList.length+1,
                     title: "Помилка",
                     description: "Email або пароль введені не правильно",
-                    bgColor: "#FF4F00"
+                    bgColor: "#fff"
                 }
                 setAlertList([...alertList, toastProp])
             }
@@ -54,7 +54,7 @@ const Login = () => {
                 id: alertList.length+1,
                 title: "Увага",
                 description: "Заповніть всі поля",
-                bgColor: "#FF4F00"
+                bgColor: "#fff"
             }
             setAlertList([...alertList, toastProp])
         }

@@ -1,12 +1,18 @@
 .wrap{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  .card {
+  flex-direction: column;
+  margin-top: 20px;
+
+  .mainBlock{
     display: flex;
     flex-direction: column;
-    width: 24%;
+    // flex-wrap: wrap;
+    justify-content: space-between;
+  
+ 
+  .card {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     margin-bottom: 25px;
     border-bottom: 1px solid #EDEDED;
@@ -15,44 +21,49 @@
 
       .image{
         img {
-          width: 100%;
+          width: 400px;
           object-fit: cover;
-          height: 300px;
+          height: 150px;
         }
       }
+    }
+    .title {
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      margin-right: 15px;
 
-      .title {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-        h2{
-          font-size: 16px;
-        }
-        //height: 170px;
-
+      h2{
+        font-weight: 300;
+        font-size: 15px;
       }
+
     }
     .buttons{
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       margin-bottom: 15px;
       gap: 10px;
       button{
+        width: 100px;
         display: flex;
+        justify-content: center;
         align-items: center;
         height: 45px;
         border: 1px solid #E0E0E0FF;
         padding: 10px;
         border-radius: 5px;
         background-color: #fff;
-        h2 {
-          font-size: 14px;
+        h3 {
           &:hover {
-            color: #ff4f00;
+            text-decoration: underline;
           }
         }
       }
     }
 
   }
+}
 }

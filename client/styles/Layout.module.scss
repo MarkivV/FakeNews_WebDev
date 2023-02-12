@@ -1,13 +1,20 @@
-.content{
+.content {
   margin: auto 150px;
   a:-webkit-any-link {
     text-decoration: none;
     color: inherit;
   }
-
-
 }
-.Line{
-  border: 1px solid #EDEDED;
+.Line {
+  border: 1px solid #ededed;
+  margin-top: 15px;
   margin-bottom: 15px;
 }
+
+.lineOne{
+  border: 0.5px solid #ccc;
+  border-style: dashed;
+  //   border-bottom: 1px solid #ccc;
+  // border-bottom-style: dashed;
+}
+

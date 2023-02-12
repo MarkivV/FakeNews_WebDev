@@ -8,14 +8,14 @@ const ThirdBlock: FC<typeNews> = ({items}) => {
 
     return (
         <div className={styles.wrap}>
-            <div className={styles.big_card}>
+            {/* <div className={styles.big_card}>
                 <BigCard {...items[2]}/>
-            </div>
+            </div> */}
             <div className={styles.small_card}>
                 {
                     items.slice(3,7).map((item)=>(
                         <div className={styles.newsBlockDiv} key={item?._id}>
-                            <SmallCard id={item?._id} img={item?.image} title={item?.title} category={item?.category}/>
+                            <SmallCard item={item}/>
                         </div>
                     ))
                 }

@@ -1,6 +1,6 @@
 .wrap{
   display: flex;
-  height: 100vh;
+  height: 90vh;
   .bigBlock{
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -19,18 +19,16 @@
         bottom: 0;left: 0;right: 0;top:0;
         width: 100%;
         height: 100%;
+        filter: drop-shadow(15px 15px 15px rgb(0 0 0 / 0.4));
         background-size: cover;
         z-index: 1;
-        background-image: url("./../public/asset/Brazh2.png");
         border-radius: 5px;
         .title{
           color: white;
-          font-size: 26px;
           font-weight: 400;
         }
         .title_small{
           font-weight: 400;
-          font-size: 26px;
           color: white;
         }
       }

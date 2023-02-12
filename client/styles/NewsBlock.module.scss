@@ -1,78 +1,148 @@
-.fist_part{
+.fist_part {
   margin-bottom: 20px;
-  h2{
-    color: #ff4f00;
+  display: flex;
+  justify-content: center;
+  h1 {
+    font-size: 30px;
+    color: #0a0a0a;
   }
 }
-.second_part{
+.second_part {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 
   .normal_card {
-    &:first-of-type{
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ededed;
+    border-bottom-style: dashed;
+    &:first-of-type {
+      background-color: #fbfaf8;
+      border: 0;
       position: relative;
-      width: 75%;
+      width: 70%;
       .normal_card_img {
+        img {
+          padding: 20px;
+          width: 75%;
+          object-fit: cover;
+          height: 470px;
+          filter: brightness(50%);
+        }
+        .normal_card_desc {
+          margin-left: 40%;
+          margin-bottom: 10%;
+          width: 500px;
+          position: absolute;
+          bottom: 1%;
+          .up_desc {
+            display: none;
+          }
+          .titleDiv{
+            background-color: #fff;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            h2 {
+              font-size: 30px;
+              font-weight: 600;
+              color: #0a0a0a;
+
+              &:hover{
+                text-decoration: underline;
+
+              }
+            }
+          }
+        }
+      }
+
+      .up_descDown {
+        display: none;
+      }
+    }
+
+    &:nth-child(2){
+      border: 0;
+      position: relative;
+      width: 25%;
+      .normal_card_img {
+        margin-top: 20px;
         img {
           width: 100%;
           object-fit: cover;
           height: 470px;
           filter: brightness(50%);
         }
+        .normal_card_desc {
+          // padding-bottom: 20px;
+          display: flex;
+          justify-content: center;
+          position: absolute;
+          bottom: 40px;
+          .up_desc {
+            display: none;
+          }
+          .titleDiv{
+            h2 {
+              padding-left: 20px;
+              padding-right: 20px;
+              font-size: 20px;
+              font-weight: 600;
+              color: #0a0a0a;
+              background-color: #fff;
+              &:hover{
+                text-decoration: underline;
+              }
+            }
+          }
+        }
       }
-      .normal_card_desc{
-        margin-right: 20px;
-        margin-left: 20px;
-        position: absolute;
-        text-align: justify;
-        bottom: 1px;
-        h2{
-          font-size: 32px;
-          font-weight: 600;
-          color: white;
-        }
-        span{
-          display: none;
-        }
+
+      .up_descDown {
+        display: none;
       }
     }
-    width: 24%;
-    justify-content: center;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #EDEDED;
 
     .normal_card_img {
       img {
         width: 100%;
         object-fit: cover;
-        height: 300px;
+        height: 400px;
       }
-    }
+      .normal_card_desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 10px;
 
-    .normal_card_desc {
-      text-align: justify;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 10px;
-      //height: 170px;
-
-      h2 {
-        font-size: 20px;
-        //margin-bottom: 15px;
-
-        &:hover {
-          color: #ff4f00;
+        .up_desc {
+          display: none;
+        }
+        h2 {
+          font-size: 18px;
+          font-weight: 600;
+          &:hover{
+            text-decoration: underline;
+          }
         }
       }
-
-      span {
-        margin-top: 15px;
-      }
     }
 
-    hr {
-
+    .up_descDown {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+      h4 {
+        font-weight: 400;
+        margin-bottom: 5px;
+        color: #8A8A8A;
+      }
     }
   }
 }

@@ -1,0 +1,28 @@
+.wrap {
+  .table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-family: sans-serif;
+    width: 100%;
+    thead {
+      tr {
+        text-align: left;
+        th {
+          padding: 20px;
+          text-align: left;
+        }
+      }
+    }
+    tbody {
+      padding: 20px;
+      tr {
+        padding: 20px;
+        margin-bottom: 20px;
+        gap: 20px;
+        td {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}

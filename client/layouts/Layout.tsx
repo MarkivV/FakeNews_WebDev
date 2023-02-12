@@ -1,9 +1,12 @@
 import Navbar from "../components/Navbar";
+import NavbarBottom from "../components/NavbarBottom";
 import styles from "../styles/Layout.module.scss"
 import {Layout} from "../types/types";
 import Head from "next/head";
-import Footer from "../components/Footer";
 import {FC} from "react";
+import dynamic from "next/dynamic"
+
+const Footer = dynamic(()=>import("../components/Footer"))
 
 const MainLayouts: FC<Layout> = ({children}) => {
     return (
@@ -17,13 +20,14 @@ const MainLayouts: FC<Layout> = ({children}) => {
                             rel="stylesheet"/>
             </Head>
             <Navbar/>
-            <hr className={styles.Line}/>
+            <NavbarBottom/>
+            {/* <hr className={styles.lineOne} /> */}
             <div className={styles.content}>
                 <div>
                     {children}
                 </div>
             </div>
-            <hr className={styles.Line}/>
+            {/* <hr className={styles.Line}/> */}
             <Footer/>
         </div>
 );

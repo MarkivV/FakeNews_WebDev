@@ -3,27 +3,6 @@ type Lists = {
     value: number | undefined
 }
 
-interface Looses {
-    looses: RusStats | undefined
-}
-
-export type RusStats = {
-    personnel_units: number
-    tanks: number,
-    armoured_fighting_vehicles: number,
-    artillery_systems: number,
-    mlrs: number,
-    aa_warfare_systems: number,
-    planes: number,
-    helicopters: number,
-    vehicles_fuel_tanks: number,
-    warships_cutters: number,
-    cruise_missiles: number,
-    uav_systems: number,
-    special_military_equip: number,
-    atgm_srbm_systems: number
-}
-
 export type Layout = {
     children: any
 }
@@ -38,11 +17,38 @@ export type News = {
     image: string,
     published: boolean,
     category: string,
+    rating: Number 
     createdAt?: string,
-    updatedAt?: string
+    updatedAt?: string,
 }
 
 export interface typeNews {
     items: News[],
     status?: string
 }
+
+export type User = {
+    _id: string,
+    email: string,
+    name: string,
+    role: string,
+    image: string
+}
+
+
+export interface Comment {
+    data: Comment
+    _id?: string,
+    body: string,
+    userId: string | undefined,
+    parentId?: string | null,
+    postId: string,
+    name?: string | undefined,
+    createdAt?: string | number | Date | undefined,
+}
+
+
+declare module "*.svg" {
+    const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+    export default content;
+  }

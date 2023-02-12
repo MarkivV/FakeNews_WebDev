@@ -1,0 +1,52 @@
+.wrap {
+  margin-top: 45px;
+  margin-bottom: 150px;
+  .about {
+    width: 70%;
+    .title {
+      margin-top: 15px;
+    }
+    .desc {
+      p {
+        font-size: 18px;
+        strong {
+          font-weight: 600;
+        }
+        margin-top: 15px;
+        line-height: 200%;
+      }
+    }
+
+    .contacts{
+        margin-top: 35px;
+        .person{
+            margin-top: 15px;
+            display: flex;
+            h3{
+                font-size: 18px;
+            }
+            h4{
+                margin-left: 5px;
+                font-size: 18px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    .backContact{
+        margin-top: 40px;
+        .email{
+            display: flex;
+            h3{
+                font-size: 18px;
+            }
+            h2{
+                margin-left: 15px;
+                font-size: 18px;
+                text-decoration: underline;
+                color: #485EC6;
+            }
+        }
+    }
+  }
+}

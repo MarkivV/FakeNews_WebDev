@@ -1,3 +1,4 @@
+import { User } from './types.d';
 import { Session } from "next-auth"
 import { JWT } from "next-auth/jwt"
 
@@ -9,7 +10,8 @@ declare module "next-auth" {
             id?: string,
             email?: string,
             image?: string,
-            name?: string
+            name?: string,
+            role?: string
         }
     }
 }

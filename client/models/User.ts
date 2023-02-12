@@ -18,6 +18,16 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: 'user',
     },
+    emailVerified:{
+        type:Boolean,
+        require: true,
+        default: false
+    },
+    image:{
+        type: String,
+        require: true,
+        default: "Avatar"
+    }
 });
 
 export const User = mongoose.models.User || mongoose.model('User', userSchema);

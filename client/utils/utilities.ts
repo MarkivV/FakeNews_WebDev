@@ -1,5 +1,5 @@
 export const newsTranslate = (cat: string) =>{
-    const list = ['Війна', 'Політика', 'Наука', "Шоу-бізнес", "Україна", "Світ", "Технології", "Економіка"]
+    const list = ['Війна', 'Політика', 'Наука та Технології', "Шоу-бізнес", "Україна", "Світ", "Технології", "Економіка"]
 
     switch (cat) {
         case "war":
@@ -14,8 +14,6 @@ export const newsTranslate = (cat: string) =>{
             return list[4];
         case "World":
             return list[5];
-        case "Technology":
-            return list[6];
         case "economy":
             return list[7]
         default:
