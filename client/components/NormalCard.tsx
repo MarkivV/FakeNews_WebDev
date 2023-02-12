@@ -12,9 +12,9 @@ type NormalCardType = {
 const NormalCard: FC<NormalCardType> = ({news}) => {
     return (
         <div className={styles.normal_card}>
-            <div className={styles.normal_card_img}>
-                <img src={news?.image} alt=""/>
-            </div>
+            <figure className={styles.normal_card_img}>
+                <img src={news?.image} alt={news?.title} width={1200} height={960} decoding={"async"} loading={"eager"} itemProp={"image"}  />
+            </figure>
             <div className={styles.normal_card_desc}>
                 <Link href={'/news/'+news?._id}>
                     <h3>{news?.title?.length > 90 ? `${news?.title?.substring(0, 90)}...` : news?.title}</h3>
@@ -25,5 +25,4 @@ const NormalCard: FC<NormalCardType> = ({news}) => {
         </div>
     );
 };
-
 export default NormalCard;

@@ -1,30 +1,64 @@
 .wrap {
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
 
   .upper_block {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    position: static;
     margin-top: 25px;
     gap: 25px;
     height: 400px;
+
+    .leftBlock {
+      // flex: none;
+      width: 25%;
+      position: relative;
+    }
+
+    .middleBlock {
+      // flex: none;
+      width: 50%;
+      position: relative;
+    }
+
+    .rightBlock {
+      // flex: none;
+      width: 25%;
+      position: relative;
+    }
   }
 
-  .mainHr {
+  .hrHome {
+    margin-top: 30%;
+    width: 100%;
+    border: 2px solid black;
+  }
+
+  .hrHome2 {
+    margin-top: 5%;
+    width: 100%;
+    border: 2px solid black;
+  }
+  .titlePopular{
+    display: block;
     margin-top: 10px;
-    border: 1px solid #EDEDED;
+    h1{
+      font-size: 30px;
+      font-weight: 600;
+    }
   }
-
-  .middle_block {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    max-height: 400px;
-
+  .lastNewsBlock {
+    margin-top: 30px;
     .lastNews {
-      margin-top: 10px;
-      border: 2px solid #EDEDED;
-      border-radius: 5px;
+      position: relative;
+      // margin-top: 10px;
+      width: 100%;
+      display: block;
+      // border-radius: 5px;
     }
   }
 
@@ -39,23 +73,20 @@
   .newsBlock {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
-    border-top: 1px solid #EDEDED;
-    padding-top: 15px;
-
-    .fist_part{
-        margin-bottom: 20px;
-      h2{
+    margin-top: 10px;
+    .fist_part {
+      margin-bottom: 20px;
+      h2 {
         color: #ff4f00;
       }
     }
-    .second_part{
+    .second_part {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
 
       .normal_card {
-        &:first-of-type{
+        &:first-of-type {
           position: relative;
           width: 75%;
           .normal_card_img {
@@ -66,17 +97,17 @@
               filter: brightness(50%);
             }
           }
-          .normal_card_desc{
+          .normal_card_desc {
             margin-right: 20px;
             margin-left: 20px;
             position: absolute;
             text-align: justify;
             bottom: 1px;
-            h2{
+            h2 {
               font-weight: 400;
               color: white;
             }
-            span{
+            span {
               display: none;
             }
           }
@@ -84,7 +115,7 @@
         width: 24%;
         justify-content: center;
         margin-bottom: 25px;
-        border-bottom: 1px solid #EDEDED;
+        border-bottom: 1px solid #ededed;
 
         .normal_card_img {
           img {
@@ -115,11 +146,8 @@
         }
 
         hr {
-
         }
       }
     }
   }
-
-
 }

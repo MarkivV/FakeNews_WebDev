@@ -4,14 +4,14 @@ import NewsPosts from "../../../models/NewsPosts";
 
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
-    const {method, query:{category}} = req
+    const {method, query:{category, page}} = req
 
     await dbConnect()
 
     switch (method) {
         case "GET":
             try {
-                const newsGetCategory = await NewsPosts.find({category: category, published: true})
+                const newsGetCategory = await NewsPosts.find({category: category, published: true}).skip(Number(page)*10).limit(10)
                 res.status(200).json(newsGetCategory)
             }catch (e:any) {
                 res.status(500).json(e)
@@ -20,7 +20,6 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
         default:
             break;
     }
-
 }
 
 

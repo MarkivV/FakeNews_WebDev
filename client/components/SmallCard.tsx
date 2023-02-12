@@ -1,23 +1,34 @@
-import {FC} from 'react';
-import styles from "./../styles/SmallCard.module.scss"
+import { FC } from "react";
+import styles from "./../styles/SmallCard.module.scss";
 import Link from "next/link";
-import {newsTranslate} from "../utils/utilities";
+import { newsTranslate } from "../utils/utilities";
+import {News} from "../types/types";
 type LastNews = {
-    id: string;
-    title: string;
-    img: string
-    category: string
-}
-const SmallCard: FC<LastNews> = ({id,title, img, category}) => {
-    return (
-        <div className={styles.lastNews_card}>
-            <Link href={'/news/'+id} className={styles.lastNews_card_img} passHref>
-                <img src={img} alt=""/>
-                <h4>{newsTranslate(category)}</h4>
-                <h3>{title.length > 110 ? `${title.substring(0, 110)}...` : title}</h3>
-            </Link>
-        </div>
-    );
+    item: News;
 };
+const SmallCard: FC<LastNews> = ({ item }) => {
+  return (
+    <div className={styles.lastNews_card}>
+      <div className={styles.lastNews_image}>
+        <Link href={"/news/" + item?._id} passHref>
+          <img
+            src={item?.image}
+            alt={item?.title}
+            width={1200}
+            height={960}
+            decoding={"async"}
+            loading={"eager"}
+            itemProp={"image"}
+          />
 
+        </Link>
+      </div>
+      <div className={styles.lastNews_content}>
+        <h4>{newsTranslate(item?.category)}</h4>
+        <h3>{item?.title.length > 110 ? `${item?.title.substring(0, 110)}...` : item?.title}</h3>
+        <h2>{item?.description.length > 300 ? `${item?.description.substring(0, 300)}...` : item?.description}</h2>
+      </div>
+    </div>
+  );
+};
 export default SmallCard;

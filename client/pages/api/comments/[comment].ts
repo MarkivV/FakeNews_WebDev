@@ -14,7 +14,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
             try {
                 const commentsGet = await Comments.find({postId: comment})
                 console.log(commentsGet);                
-                res.status(200).json(commentsGet)
+                res.status(200).json(commentsGet.reverse())
             }catch (e:any) {
                 res.status(500).json(e)
             }

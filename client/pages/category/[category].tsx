@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import styles from "../../styles/NewsCat.module.scss";
@@ -31,11 +31,27 @@ export const listEng = [
 ];
 const News: FC<NewsCat> = ({ news, category }) => {
   const [selectedCateg, setSelectedCateg] = useState(category);
+  const [postsList, setPostsList] = useState<News[]>(news);
+  const [page, setPage] = useState(1);
+  
+  // useEffect(() => {
+  //   setPostsList(news)
+  // }, [news])
+  
 
-  const handleClick = (categ: string) => {
+  const handleClick = async (categ: string) => {
     setSelectedCateg(categ);
-  };
+    const getNextPosts = await axios.get(
+      "http://localhost:3000/api/category/" + categ,
+      {
+        params: {
+          page: 0,
+        },
+      }
+    );
 
+    setPostsList(getNextPosts.data);
+  };
   return (
     <div className={styles.wrap}>
       <nav className={styles.categories}>
@@ -54,7 +70,7 @@ const News: FC<NewsCat> = ({ news, category }) => {
         <h1>{newsTranslate(selectedCateg)}</h1>
       </div>
       <div className={styles.mainBlock}>
-        {news.map((i: News) => (
+        {postsList.map((i: News) => (
           <div key={i._id} className={styles.normal_card}>
             <div className={styles.normal_card_img}>
               <Link href={"/news/" + i._id}>
@@ -63,12 +79,12 @@ const News: FC<NewsCat> = ({ news, category }) => {
               <div className={styles.desc}>
                 <div className={styles.up_desc}>
                   <Link href={"/category/" + category}>
-                    <h2>{newsTranslate(i.category)}</h2>
+                    <h6>{newsTranslate(i.category)}</h6>
                   </Link>
-                  <h2>| {moment(i.createdAt).format("LLL")}</h2>
+                  <h6>| {moment(i.createdAt).format("LLL")}</h6>
                 </div>
                 <Link href={"/news/" + i._id}>
-                  <h2>
+                  <h2 className={styles.titleDesc}>
                     {i.title?.length > 150
                       ? `${i.title?.substring(0, 90)}...`
                       : i.title}
@@ -81,7 +97,29 @@ const News: FC<NewsCat> = ({ news, category }) => {
             </div>
           </div>
         ))}
+
       </div>
+      <div className={styles.loadMoreButton}>
+          <button
+            onClick={async () => {
+              setPage(page + 1);
+              console.log(page);
+
+              const getNextPosts = await axios.get(
+                "http://localhost:3000/api/category/" + category,
+                {
+                  params: {
+                    page: page,
+                  },
+                }
+              );
+
+              setPostsList([...postsList, ...getNextPosts.data]);
+            }}
+          >
+            Завантажити ще
+          </button>
+        </div>
     </div>
   );
 };
@@ -90,7 +128,12 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
   const res = await axios.get(
-    "http://localhost:3000/api/category/" + params.category
+    `http://localhost:3000/api/category/${params.category}`,
+     {
+      params: {
+        page: 0
+      }
+     }
   );
   return {
     props: {

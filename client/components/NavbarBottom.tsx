@@ -1,18 +1,38 @@
-import styles from "./../styles/Footer.module.scss";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { FC, useState, CSSProperties, useEffect } from "react";
+import styles from "../../client/styles/NavbarBottom.module.scss";
+import PersonIcon from "@mui/icons-material/Person";
 
-const Footer = () => {
+type Props = { styleRules: CSSProperties };
+
+const NavbarBottom: FC<Props> = () => {
+  const [scValue, setValue] = useState(false);
+
+  const changeValueScroll = () => {
+    const scrollValue = document.documentElement.scrollTop;
+
+    if (scrollValue > 90) {
+      setValue(true);
+    } else {
+      setValue(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeValueScroll);
+  }, []);
+
   return (
-    <div className={styles.wrap}>
-      <div className={styles.header_title}>
-        <Link href={"/"}>
-        <svg
+    <div className={styles.bottomNav}>
+      <div className={styles.first13}>
+        <div className={scValue ? styles.mainLogo : styles.mainLogoNone}>
+          <Link href={"/"}>
+            <svg
               id="Слой_1"
               data-name="Слой 1"
               xmlns="http://www.w3.org/2000/svg"
-              width="220"
-              height="50"
+              width="160"
+              height="40"
               viewBox="0 0 792.78 146.52"
             >
               <path
@@ -60,62 +80,37 @@ const Footer = () => {
                 fill="#0A0A0A"
               />
             </svg>
-        </Link>
-      </div>
-      <div className={styles.categories}>
-        <ul className={styles.catDiv}>
-          <li>
-            <h3><Link href={"/category/war"}>Новини</Link></h3>
-          </li>
-          <li>
-            <h3><Link href={"/"}>Головна</Link></h3>
-          </li>
-          <li>
-            <h3><Link href={"/"}>Важливо</Link></h3>
-          </li>
-          <li>
-            <h3><Link href={"/suggest"}>Запропонувати</Link></h3>
-          </li>
-          <li>
-            <h3><Link href={"/profile"}>Профіль</Link></h3>
-          </li>
-          <li>
-            <h3 onClick={()=>signOut()}>Вийти</h3>
-          </li>
-        </ul>
-      </div>
-      <div className={styles.about}>
-            <p>
-              <strong>Бражкович Медіа - </strong>
-              це сатиричне онлайн видання яке публікує повністю вигадані новини
-              українською мовою
-            </p>
+          </Link>
         </div>
-        <hr />
-      <div className={styles.foot}>
-        <div className={styles.left_block}>
-          <div className={styles.otherInfo}>
-            <span>
-              Увага! Всі матеріали, розміщені на даному ресурсі, є власністю ТОВ
-              "БРАЖКОВИЧ МЕДІА" і можуть бути використані тільки за умови
-              посилання на наш ресурс. Повне або часткове відтворення матеріалів
-              без виконання наших умов є незаконним і може привести до юридичних
-              наслідків. Додатково, будь-ласка, майте на увазі, що наші
-              матеріали містять сатиричний контент і є непристойними для деяких
-              осіб. Використовуйте їх на свій розсуд.
-            </span>
-          </div>
+      </div>
+      <div className={styles.second13}>
+        <div className={styles.inSecond13}>
+          <Link href={"/"}>
+            <h4>Головна</h4>
+          </Link>
+          <Link href={"/category/war?page=0"}>
+            <h4>Новини</h4>
+          </Link>
+          <Link href={"/suggest"}>
+            <h4>Запропонувати</h4>
+          </Link>
+          <Link href={"/suggest"}>
+            <h4>Підтримайте нас</h4>
+          </Link>
+          <Link href={"/about"}>
+            <h4>Про Нас</h4>
+          </Link>
         </div>
-        <div className={styles.right_block}>
-          <div className={styles.otherInfo}>
-            <span>
-            Дисклеймер: Сайт Бражкович Медіа є платформою для виконання сатиричної журналістики. Всі матеріали, розміщені на нашому сайті, є фантазією та надані виключно для розваги і не мають наміру образити реальних людей або організацій. Будь-ласка, не відносіть їх до реальності і не використовуйте без нашої згоди. Ми не несемо відповідальності за будь-які збитки, які можуть виникнути внаслідок використання нашого сайту.
-            </span>
-          </div>
+      </div>
+      <div className={styles.third13}>
+        <div className={scValue ? styles.personIcon : styles.personIconNone}>
+          <Link href={"/profile"}>
+            <PersonIcon />
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default Footer;
+export default NavbarBottom;

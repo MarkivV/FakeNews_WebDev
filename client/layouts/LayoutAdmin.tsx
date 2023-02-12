@@ -33,5 +33,4 @@ const LayoutAdmin = ({children}: any) => {
     </div>
   );
 };
-
 export default LayoutAdmin;

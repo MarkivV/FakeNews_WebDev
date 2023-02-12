@@ -3,43 +3,16 @@
   flex-direction: column;
   margin-top: 20px;
 
-  .categories{
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    border-bottom: 2px solid #ececec;
-    button{
-      justify-content: center;
-      align-items: center;
-      border:0;
-      background-color: #ffffff;
-      border-radius: 10px;
-      width: 100px;
-      margin-bottom: 15px;
-      h2{
-        font-weight: 500;
-      }
-      &:hover{
-        h2{
-          color: #FF4F00;
-        }
-      }
-    }
-    .active{
-    }
-
-  }
   .mainBlock{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    // flex-wrap: wrap;
     justify-content: space-between;
   
  
   .card {
     display: flex;
-    flex-direction: column;
-    width: 24%;
+    flex-direction: row;
     justify-content: space-between;
     margin-bottom: 25px;
     border-bottom: 1px solid #EDEDED;
@@ -48,27 +21,35 @@
 
       .image{
         img {
-          width: 100%;
+          width: 400px;
           object-fit: cover;
-          height: 300px;
+          height: 150px;
         }
       }
+    }
+    .title {
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      margin-right: 15px;
 
-      .title {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-        //height: 170px;
-
+      h2{
+        font-weight: 300;
+        font-size: 15px;
       }
+
     }
     .buttons{
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       margin-bottom: 15px;
       gap: 10px;
       button{
+        width: 100px;
         display: flex;
+        justify-content: center;
         align-items: center;
         height: 45px;
         border: 1px solid #E0E0E0FF;
@@ -77,7 +58,7 @@
         background-color: #fff;
         h3 {
           &:hover {
-            color: #ff4f00;
+            text-decoration: underline;
           }
         }
       }

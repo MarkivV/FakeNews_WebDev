@@ -2,8 +2,10 @@
     .categories{
         display: flex;
         gap: 40px;
+        margin-top: 15px;
         justify-content: center;
-        border-bottom: 2px solid #ececec;
+        border-bottom: 1px solid #ccc;
+        border-bottom-style: dashed;
         button{
           justify-content: center;
           align-items: center;
@@ -16,7 +18,7 @@
           }
           &:hover{
             h2{
-              color: #FF4F00;
+              text-decoration: underline;
             }
           }
         }

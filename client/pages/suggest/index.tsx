@@ -18,7 +18,6 @@ import Alerts from "../../components/Alerts";
         }
     } )
 }
-
 const Suggest = () => {
     const [title, setTitle] = useState("");
     const [description, setDesc] = useState("");
@@ -51,7 +50,6 @@ const Suggest = () => {
         }
 
     }
-
     const handleUploadImage = async (e: any) =>{
         const file = e.target.files[0]
         const base64 = await convertToBase64(file)
@@ -60,7 +58,6 @@ const Suggest = () => {
         // @ts-ignore
         setImg(base64)
     }
-
     // @ts-ignore
     // @ts-ignore
     return (

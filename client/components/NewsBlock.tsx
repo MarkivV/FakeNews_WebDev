@@ -10,7 +10,6 @@ type NewsBlock = {
   news: News[];
   category: string;
 };
-
 const NewsBlock: FC<NewsBlock> = ({ news, category }) => {
   return (
     <>
@@ -34,11 +33,12 @@ const NewsBlock: FC<NewsBlock> = ({ news, category }) => {
                     <Link href={"/category/" + category}>
                       <h2>{newsTranslate(i.category)}</h2>
                     </Link>
-                    <h2>| {moment(i.createdAt).format("LLL")}</h2>
                   </div>
+                  <div className={styles.titleDiv}>
                   <Link href={"/news/" + i._id}>
-                    <span>{i.title}</span>
+                    <h2>{i.title}</h2>
                   </Link>
+                  </div>
                 </div>
               </div>
               <div className={styles.up_descDown}>
@@ -52,3 +52,5 @@ const NewsBlock: FC<NewsBlock> = ({ news, category }) => {
 };
 
 export default NewsBlock;
+
+

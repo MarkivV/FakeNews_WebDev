@@ -1,53 +1,93 @@
-.header{
+.header {
   margin: auto 150px;
+  // border-bottom: 1px solid #ccc;
+  // border-bottom-style: dashed;
   a:-webkit-any-link {
     text-decoration: none;
     color: inherit;
   }
-  max-height: 70px;
   display: flex;
   justify-content: space-between;
-  .header_title{
-    display: flex;
+  flex-direction: column;
+  .logoDiv {
     align-items: center;
-    cursor: pointer;
-    .title{
-      font-weight: bold;
-    }
-    .title_small{
-      font-weight: 400;
-      color: #FF4F00;
-    }
-  }
-  .menu{
     display: flex;
-    h3{
-      font-weight: 400;
-      margin: 20px;
-      cursor: pointer;
-      &:hover{
-        color: #FF4F00;
-      }
+    width: 100%;
+    .first13 {
+      flex: none;
+      width: 33.333%;
+      display: block;
+      padding: 0.75rem;
     }
 
-    .supportBtn{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: 25px;
-      h4{
-        font-weight: 500;
-        padding: 10px;
-        background-color: #FF4F00;
-        color: white;
-      }
+    .second13 {
+      padding: 1rem;
+      width: 33.333%;
+      text-align: center;
     }
 
-    .header_icons{
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .third13 {
+      flex: none;
+      width: 33.333%;
+      display: block;
+      padding: 0.75rem;
+      text-align: right;
     }
   }
+  // .bottomNav {
+  //   z-index: 1000;
+  //   display: flex;
+  //   align-items: center;
+  //   position: sticky;
+  //   background-color: #fff;
+  //   top: 0;
+  //   position: -webkit-sticky;
 
+
+
+  //   .first13 {
+  //     display: block;
+  //     flex-basis: 0;
+  //     flex-grow: 1;
+  //     padding: 0.75rem;
+  //     flex-shrink: 0;
+  //     .mainLogo{
+  //       display: none;
+  //     }
+  //   }
+
+  //   .second13 {
+  //     display: block;
+  //     flex-grow: 1;
+  //     flex-shrink: 0;
+  //     padding: 0.75rem;
+  //     .inSecond13 {
+  //       display: flex;
+  //       flex: 1;
+  //       justify-content: center;
+  //       h4 {
+  //         font-size: 15px;
+  //         margin-left: 35px !important;
+  //         margin-right: 35px !important;
+  //         padding: 10px;
+  //         &:hover {
+  //           background-color: #f4f4f4;
+  //           text-decoration: underline;
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   .third13 {
+  //     display: block;
+  //     flex-basis: 0;
+  //     flex-grow: 1;
+  //     flex-shrink: 0;
+  //     padding: 0.75rem;
+  //     text-align: right;
+  //     .personIcon{
+  //       display: none;
+  //     }
+  //   }
+  // }
 }

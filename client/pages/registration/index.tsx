@@ -30,7 +30,7 @@ const Registration = () => {
                     id: alertList.length+1,
                     title: "Помилка",
                     description: "Паролі не співпадають",
-                    bgColor: "#FF4F00"
+                    bgColor: "#fff"
                 }
                 setAlertList([...alertList, toastProp])
             }
@@ -40,7 +40,7 @@ const Registration = () => {
                 id: alertList.length+1,
                 title: "Помилка",
                 description: "Заповніть всі поля",
-                bgColor: "#FF4F00"
+                bgColor: "#fff"
             }
             setAlertList([...alertList, toastProp])
         }

@@ -4,28 +4,31 @@ import {NextApiRequest, NextApiResponse} from "next";
 import NewsPosts from "../../../models/NewsPosts";
 import {News} from "../../../types/types";
 import { User } from "../../../models/User";
+import  Comments  from "../../../models/Comments";
 
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
     const {method, query:{id}} = req
 
     await dbConnect()
-
     switch (method) {
         case "GET":
             try {
                 const post = await NewsPosts.findById(id)
                 if(post){
                     const creator = post.creator;
+                    // const postId = post._id;
                     // @ts-ignore
-                    const posts = await NewsPosts.find({ creator: { $in: [creator] } });
+                    const posts = await NewsPosts.find({ creator: { $in: [creator] } }).limit(3);
                     const postsUser = await User.findById(creator)
+                    // const comments = await Comments.find({postId: postId})
                     res.status(200).json({
                         post: post,
                         posts: posts.sort(function () {
                             return Math.random() - 0.5;
                         }),
-                        userName: postsUser?.name
+                        userName: postsUser?.name,
+                        // comments: comments.reverse()
                     });
                 }
             }catch (e:any) {
