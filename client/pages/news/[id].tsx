@@ -24,11 +24,19 @@ type Details = {
   name: string;
   comments: Comment[];
 };
+
+export type ParentId = {
+  parId: string | null;
+}
+
+
+
 const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
   const { data: session, status } = useSession();
   const [commentsList, setCommentsList] = useState(comments);
   const [comment, setComment] = useState("");
-  const [parentId] = useState(null);
+  const [reply, setReply] = useState("")
+  // const [parentId, setParentId] = useState(null);
   const [postId] = useState(mainPost?._id);
   const [alertList, setAlertList] = useState<toastProps[]>([]);
   console.log(commentsList);
@@ -43,13 +51,50 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
     setCommentsList(comments);
   }, [comments]);
 
-  const handleSubmitComment = async (e: any) => {
+  // const handleReply = (comm: string, parId: string, e: InputEvent) => {
+  //   setComment(comm)
+  //   setParentId(parId)
+  //   handleSubmitComment(e)
+  // }
+
+  const commentDelete = async (commId: string, e: any) => {
+    console.log(commId, "Deleted");
+
+    e.preventDefault();
+    if (commId) {
+      const res = await axios.delete(
+        "http://localhost:3000/api/comments/" + commId
+      );
+      if (res.status === 201) {
+        toastProp = {
+          id: alertList.length + 1,
+          title: "Виконано",
+          description: "Видалення пройшло успішно",
+          bgColor: "#009216",
+        };
+        setAlertList([...alertList, toastProp]);
+        setCommentsList(
+          commentsList.filter((comments) => comments._id !== commId)
+        );
+      } else {
+        toastProp = {
+          id: alertList.length + 1,
+          title: "Помилка",
+          description: "Сталась невідома помилка",
+          bgColor: "#ff9900",
+        };
+        setAlertList([...alertList, toastProp]);
+      }
+    }
+  };
+
+  const handleSubmitComment = async (e: any, parentId: any) => {
     e.preventDefault();
 
-    if (comment) {
+    if (comment || reply) {
       await axios
         .post<Comment, Comment>("http://localhost:3000/api/comments", {
-          body: comment,
+          body: comment === "" ? reply : comment,
           userId: session?.user?.id,
           parentId,
           postId,
@@ -104,8 +149,6 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
                 __html: DOMPurify.sanitize(formattedText),
               }}
             >
-              {/* <ReactMarkdown source={mainPost?.description} /> */}
-              {/* <span>{mainPost?.description}</span> */}
             </div>
 
             <div className={styles.cardDetails_otherInfo}>
@@ -121,15 +164,6 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
                 <TwitterIcon style={{ color: "#1DA1F2", cursor: "pointer" }} />
               </div>
             </div>
-            {/* <hr className={styles.hr} /> */}
-            {/* <div className={styles.cardDetails_tags}>
-            <div className={styles.cardDetails_tagsBadge}>
-              <h3>Теги:</h3>
-              {mainPost.tags.map((i, index) => (
-                <h2 key={index}>{i}</h2>
-              ))}
-            </div>
-          </div> */}
             <div className={styles.comments}>
               <div className={styles.commentsTitle}>
                 <h3>Коментарі</h3>
@@ -143,14 +177,25 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
                     type="text"
                     placeholder={"Залишити коментар"}
                   />
-                  <button onClick={(e) => handleSubmitComment(e)}>
+                  <button
+                    onClick={(e) => handleSubmitComment(e, null)}
+                    className={styles.button}
+                  >
                     <h3>Відправити</h3>
                   </button>
                 </div>
               )}
 
               <div className={styles.commList}>
-                <CommentsList comments={commentsList} canReply={canReply()} />
+                <CommentsList
+                  comments={commentsList}
+                  canReply={canReply()}
+                  currentUserId={session?.user?.id}
+                  commentDelete={commentDelete}
+                  handleSubmitComment={handleSubmitComment}
+                  setReply={setReply}
+                  reply={reply}
+                />
               </div>
             </div>
           </div>

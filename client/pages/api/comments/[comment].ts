@@ -1,27 +1,40 @@
-import { Comment } from './../../../types/types.d';
+import { Comment } from "./../../../types/types.d";
 import dbConnect from "../../../utils/dbConnect";
-import {NextApiRequest, NextApiResponse} from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import Comments from "../../../models/Comments";
 
-export default async function handler(req:NextApiRequest, res:NextApiResponse){
-    const {method, query: {comment}} = req
-    console.log(req.body)
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const {
+    method,
+    query: { comment },
+  } = req;
+  console.log(req.body);
 
-    await dbConnect()
+  await dbConnect();
 
-    switch (method) {
-        case "GET":
-            try {
-                const commentsGet = await Comments.find({postId: comment})
-                console.log(commentsGet);                
-                res.status(200).json(commentsGet.reverse())
-            }catch (e:any) {
-                res.status(500).json(e)
-            }
-            break;
-        default:
-            break;
-    }
-
+  switch (method) {
+    case "GET":
+      try {
+        const commentsGet = await Comments.find({ postId: comment });
+        console.log(commentsGet);
+        res.status(200).json(commentsGet.reverse());
+      } catch (e: any) {
+        res.status(500).json(e);
+      }
+      break;
+    case "DELETE":
+      try {
+        const commentDeleted = await Comments.deleteOne({ _id: comment });
+        console.log(commentDeleted);
+        res.status(201).json(commentDeleted);
+      } catch (e: any) {
+        res.status(500).json(e);
+      }
+      break;
+    default:
+      break;
+  }
 }
-

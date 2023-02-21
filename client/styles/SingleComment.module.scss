@@ -9,6 +9,7 @@
     font-size: 15px;
   }
   .commBody {
+    width: 100%;
     margin-left: 25px;
     .commContent{
       h5 {
@@ -19,6 +20,52 @@
       margin-top: 10px;
       h4{
 
+      }
+      .commActions{
+        display: flex;
+        gap: 15px;
+        h6{
+          margin-top: 5px;
+          font-size: 14px;
+          &:hover{
+            color: #485EC6;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .replyBlock{
+        margin-top: 35px;
+        .commentInput{
+          font-size: 14px;
+          padding: 10px 10px 10px 5px;
+          display: block;
+          border: none;
+          border-bottom: 1px solid #515151;
+          background: transparent;
+          width: 75%;
+        }
+        .buttonBlock{
+          margin-top: 10px;
+          display: flex;
+          gap: 10px;
+          button{
+            background-color: #0a0a0a;
+            border: 0;
+            height: 30px;
+            width: 115px;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 50px;
+
+            &:nth-child(2){
+              background-color: #fff;
+              border: 1px solid #0a0a0a;
+              color: #0a0a0a;
+
+            }
+          }
+        }
       }
     }
   }

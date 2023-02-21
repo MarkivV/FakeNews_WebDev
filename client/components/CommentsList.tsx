@@ -6,10 +6,23 @@ import SingleComment from "./SingleComment";
 type CommentsComponent = {
   comments: Comment[];
   canReply: boolean;
+  currentUserId?: string;
+  commentDelete: (commId: string, e: any) => void;
+  handleSubmitComment: (e: any, parentId: any) => void;
+  setReply: (reply: string) => void;
+  reply: string;
+  // handleReply: (comm: string, parId: string, e: InputEvent) => void;
 };
 
-const CommentsList: FC<CommentsComponent> = ({ comments, canReply }) => {
-  
+const CommentsList: FC<CommentsComponent> = ({
+  comments,
+  canReply,
+  currentUserId,
+  commentDelete,
+  handleSubmitComment,
+  setReply,
+  reply
+}) => {
   const rootComments = comments.filter((comm) => comm?.parentId === null);
   const getReplies = (commentId: any) => {
     //ts-ignore
@@ -35,7 +48,17 @@ const CommentsList: FC<CommentsComponent> = ({ comments, canReply }) => {
   return (
     <>
       {rootComments?.map((comm: Comment) => (
-        <SingleComment comment={comm} key={comm?._id} replies={getReplies(comm?._id)} canReply={canReply} />
+        <SingleComment
+          comment={comm}
+          key={comm?._id}
+          replies={getReplies(comm?._id)}
+          canReply={canReply}
+          currentUserId={currentUserId}
+          commentDelete={commentDelete}
+          handleSubmitComment={handleSubmitComment}
+          setReply={setReply}
+          reply={reply}
+        />
       ))}
     </>
   );
