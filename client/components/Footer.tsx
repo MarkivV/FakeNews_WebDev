@@ -11,8 +11,8 @@ const Footer = () => {
               id="Слой_1"
               data-name="Слой 1"
               xmlns="http://www.w3.org/2000/svg"
-              width="220"
-              height="50"
+              width="170"
+              height="35"
               viewBox="0 0 792.78 146.52"
             >
               <path
