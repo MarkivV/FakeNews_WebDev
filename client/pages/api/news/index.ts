@@ -14,7 +14,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
                 const newsGet = await NewsPosts.find({published: true})
                 res.status(200).json(newsGet.reverse())
             }catch (e:any) {
-                res.status(500).json(e)
+                res.status(404).json(e)
             }
             break;
         case "POST":
