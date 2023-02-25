@@ -195,6 +195,8 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
     </LayoutAdmin>
   );
 };
+
+
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/`);
   return {
