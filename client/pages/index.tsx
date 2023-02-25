@@ -10,9 +10,6 @@ import dynamic from "next/dynamic"
 
 const LastNews = dynamic(()=>import("../components/LastNews"))
 const NewsBlock = dynamic(()=>import("../components/NewsBlock"))
-
-
-
 type Props = {
   news: News[];
 };
