@@ -25,7 +25,7 @@ const NewPost = () => {
   const handleSuggest = async (e: any) =>{
       e.preventDefault()
       if(title && description && image){
-          const res = await axios.post("http://localhost:3000/api/news", {title, description, image, category: listEng[selectedButton], creator: session?.user?.id});
+          const res = await axios.post(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`, {title, description, image, category: listEng[selectedButton], creator: session?.user?.id});
           console.log(res)
           setTitle("")
           setImg("")

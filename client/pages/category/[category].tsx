@@ -42,7 +42,7 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
   const handleClick = async (categ: string) => {
     setSelectedCateg(categ);
     const getNextPosts = await axios.get(
-      "http://localhost:3000/api/category/" + categ,
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/category/` + categ,
       {
         params: {
           page: 0,
@@ -106,7 +106,7 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
               console.log(page);
 
               const getNextPosts = await axios.get(
-                "http://localhost:3000/api/category/" + category,
+                `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/category/` + category,
                 {
                   params: {
                     page: page,
@@ -128,7 +128,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
   const res = await axios.get(
-    `http://localhost:3000/api/category/${params.category}`,
+    `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/category/${params.category}`,
      {
       params: {
         page: 0

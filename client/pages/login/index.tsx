@@ -64,13 +64,13 @@ const Login = () => {
     // Google Handler function
     async function handleGoogleSignin(e: any){
         e.preventDefault()
-        await signIn('google', { callbackUrl : "http://localhost:3000"})
+        await signIn('google', { callbackUrl : `${process.env.NEXTAUTH_URL}`})
     }
 
     // Github Login
     async function handleGithubSignin(e: any){
         e.preventDefault()
-        await signIn('github', { callbackUrl : "http://localhost:3000"})
+        await signIn('github', { callbackUrl : `${process.env.NEXTAUTH_URL}`})
     }
 
     return (
