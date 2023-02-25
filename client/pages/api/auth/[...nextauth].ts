@@ -1,12 +1,48 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { AdapterUser } from 'next-auth/adapters';
+import NextAuth, { NextAuthOptions} from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise, { loginUser } from "../../../utils/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+// type CustomSession = Session & {
+//   user: {
+//     id: string;
+//     email: string;
+//     role: string;
+//     name: string;
+//   };
+// };
+
+// const sessionCallback = async (
+//   params: {
+//     session: CustomSession;
+//     user: User | AdapterUser;
+//     token: JWT;
+//   }
+// ): Promise<CustomSession> => {
+//   const { session, token } = params;
+
+//   if (token) {
+//     session.user = {
+//       id: token?.id,
+//       email: token?.email,
+//       role: token?.role,
+//       name: token?.name,
+//     };
+//   }
+
+//   return session;
+// };
+
+
 // @ts-ignore
 export const authOptions: NextAuthOptions = {
+
+
+  
+
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
@@ -52,6 +88,17 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    async session({ session, user, token }: any) {
+      return {
+        ...session,
+        user: {
+          id: token?.id,
+          email: token?.email,
+          role: token?.role,
+          name: token?.name
+        },
+      };
+    },
     async jwt({ token, user }) {
       // @ts-ignore
       if (user?.role) {
@@ -60,18 +107,7 @@ export const authOptions: NextAuthOptions = {
         token.id = user?.id;
       }
       return token;
-    },
-    async session({ session, token, user }) {
-      return {
-        ...session,
-        user: {
-          id: token.id,
-          email: token.email,
-          role: token?.role,
-          name: token?.name
-        },
-      };
-    },
+    }
   },
   adapter: MongoDBAdapter(clientPromise),
   secret: process.env.NEXTAUTH_SECRET,
@@ -85,3 +121,16 @@ export const authOptions: NextAuthOptions = {
 };
 
 export default NextAuth(authOptions);
+
+
+// async session({ session, user, token }) {
+//   return {
+//     ...session,
+//     user: {
+//       id: token?.id,
+//       email: token?.email,
+//       role: token?.role,
+//       name: token?.name
+//     },
+//   };
+// },
