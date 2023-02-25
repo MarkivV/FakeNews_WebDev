@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { FC, useState, CSSProperties, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import styles from "../../client/styles/NavbarBottom.module.scss";
 import PersonIcon from "@mui/icons-material/Person";
 
-type Props = { styleRules: CSSProperties };
 
-const NavbarBottom: FC<Props> = () => {
+const NavbarBottom: FC = () => {
   const [scValue, setValue] = useState(false);
 
   const changeValueScroll = () => {
