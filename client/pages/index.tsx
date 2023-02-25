@@ -7,6 +7,7 @@ import axios from "axios";
 import React from "react";
 import { listEng } from "./category/[category]";
 import dynamic from "next/dynamic"
+import { useRouter } from "next/router";
 
 const LastNews = dynamic(()=>import("../components/LastNews"))
 const NewsBlock = dynamic(()=>import("../components/NewsBlock"))
@@ -15,9 +16,10 @@ type Props = {
 };
 
 export default function Home({ news }: Props) {
-  if (news.length === 0) {
-    return "Наразі на сайті ведутся технічні роботи";
-  }
+  const router = useRouter()
+    if (!router.isFallback && !news) {
+        return <div>Ведутся технічні роботи</div>
+    }
 
   return (
     <div className={styles.wrap}>
@@ -51,6 +53,12 @@ export default function Home({ news }: Props) {
       </div>
     </div>
   );
+}
+
+
+
+export const getStaticPaths = async () => {
+  return { paths: [], fallback: true }
 }
 
 export const getStaticProps: GetStaticProps = async () => {
