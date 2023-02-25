@@ -198,7 +198,12 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/`);
+  let res = null;
+  try{
+     res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/`);
+  }catch(err){
+    console.log(err);
+  }
   return {
     props: {
       posts: res?.data,

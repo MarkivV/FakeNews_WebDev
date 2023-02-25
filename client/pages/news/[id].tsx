@@ -238,15 +238,24 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
 export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/${params.id}`);
-  const comments = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/comments/${res.data.post._id}`
-  );
+
+  let res = null
+  let comments = null
+
+  try{
+     res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/${params.id}`);
+     comments = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/comments/${res.data.post._id}`
+    );
+  }catch(err){
+    console.log(err);
+  }
+  
   return {
     props: {
-      mainPost: res.data.post,
-      posts: res.data.posts,
-      name: res.data.userName,
+      mainPost: res?.data?.post,
+      posts: res?.data?.posts,
+      name: res?.data?.userName,
       comments: comments?.data,
     },
   };

@@ -127,14 +127,19 @@ export default NewsComponent;
 export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
-  const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/category/${params.category}`,
-     {
-      params: {
-        page: 0
-      }
-     }
-  );
+  let res = null
+  try{
+    res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/category/${params.category}`,
+       {
+        params: {
+          page: 0
+        }
+       }
+    );
+  }catch(err){
+    console.log(err);
+  }
   return {
     props: {
       news: res?.data,
