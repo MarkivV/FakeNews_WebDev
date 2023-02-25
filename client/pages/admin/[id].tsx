@@ -226,13 +226,20 @@ const AdminDetails: FC<Details> = ({ news, name }) => {
 export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
-  const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/${params.id}`
-  );
+  let res = null;
+
+  try {
+    res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/${params.id}`
+    );
+  } catch (err) {
+    console.log(err);
+  }
+
   return {
     props: {
-      news: res.data.post,
-      name: res.data.userName,
+      news: res?.data.post,
+      name: res?.data.userName,
     },
   };
 };

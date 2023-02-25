@@ -15,9 +15,12 @@ const Users: FC<UsersType> = ({ users }) => {
 
   const handleChangeAdmin = async (e: any, id: string) => {
     e.preventDefault();
-    const res = await axios.put(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/users/` + id, {
-      role: e.target.value,
-    });
+    const res = await axios.put(
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/users/` + id,
+      {
+        role: e.target.value,
+      }
+    );
     if (res.status === 201) {
       toastProp = {
         id: alertList.length + 1,
@@ -88,7 +91,14 @@ const Users: FC<UsersType> = ({ users }) => {
 export default Users;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/users`);
+  let res = null;
+  try {
+    res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/users`
+    );
+  } catch (err) {
+    console.log(err);
+  }
   return {
     props: {
       users: res?.data,
