@@ -2,12 +2,11 @@ import styles from "../styles/Home.module.scss";
 import MainCard from "../components/MainCard";
 import NormalCard from "../components/NormalCard";
 import { News } from "../types/types";
-import { GetStaticProps } from "next";
+import { GetStaticProps, GetServerSideProps } from "next";
 import axios from "axios";
 import React from "react";
 import { listEng } from "./category/[category]";
 import dynamic from "next/dynamic"
-import { useRouter } from "next/router";
 
 const LastNews = dynamic(()=>import("../components/LastNews"))
 const NewsBlock = dynamic(()=>import("../components/NewsBlock"))
@@ -54,7 +53,7 @@ export default function Home({ news }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`);
   return {
     props: {
