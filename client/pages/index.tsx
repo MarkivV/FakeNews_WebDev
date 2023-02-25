@@ -53,7 +53,7 @@ export default function Home({ news }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   let res = null
   try{
     res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`);
