@@ -9,7 +9,7 @@ type NewsBlock = {
   news: News[];
   category: string;
 };
-const NewsBlock: FC<NewsBlock> = ({ news, category }) => {
+const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
   return (
     <>
       <div className={styles.fist_part}>
@@ -49,6 +49,6 @@ const NewsBlock: FC<NewsBlock> = ({ news, category }) => {
     </>
   );
 };
-export default NewsBlock;
+export default NewsBlockComponent;
 
 

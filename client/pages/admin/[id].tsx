@@ -36,8 +36,8 @@ const AdminDetails: FC<Details> = ({ news, name }) => {
   const [description, setDescription] = useState(news?.description);
   const [image, setImage] = useState(news?.image);
   const [category, setCategory] = useState(news?.category);
-  const [tags, setTags] = useState(news?.tags);
-  const [published, setPublished] = useState(news?.published);
+  const [tags] = useState(news?.tags);
+  const [published] = useState(news?.published);
   let toastProp = null;
   const router = useRouter();
 

@@ -29,7 +29,7 @@ export const listEng = [
   "World",
   "economy",
 ];
-const News: FC<NewsCat> = ({ news, category }) => {
+const NewsComponent: FC<NewsCat> = ({ news, category }) => {
   const [selectedCateg, setSelectedCateg] = useState(category);
   const [postsList, setPostsList] = useState<News[]>(news);
   const [page, setPage] = useState(1);
@@ -123,7 +123,7 @@ const News: FC<NewsCat> = ({ news, category }) => {
     </div>
   );
 };
-export default News;
+export default NewsComponent;
 export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
