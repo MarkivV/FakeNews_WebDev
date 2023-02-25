@@ -16,8 +16,7 @@ type Props = {
 };
 
 export default function Home({ news }: Props) {
-  const router = useRouter()
-    if (!router.isFallback && !news) {
+    if (!news) {
         return <div>Ведутся технічні роботи</div>
     }
 
@@ -53,12 +52,6 @@ export default function Home({ news }: Props) {
       </div>
     </div>
   );
-}
-
-
-
-export const getStaticPaths = async () => {
-  return { paths: [], fallback: true }
 }
 
 export const getStaticProps: GetStaticProps = async () => {
