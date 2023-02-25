@@ -18,8 +18,8 @@ export type News = {
     published: boolean,
     category: string,
     rating: Number 
-    createdAt?: string,
-    updatedAt?: string,
+    createdAt: string,
+    updatedAt: string,
 }
 
 export interface typeNews {

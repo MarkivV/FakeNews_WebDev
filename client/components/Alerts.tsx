@@ -18,7 +18,7 @@ const Alert: FC<toastLists> = ({toastList, position,setAlertList}) => {
     return (
         <div className={`${styles.wrap} ${styles[position]}`}>
             {
-                toastList.map((i, index)=>(
+                toastList?.map((i, index)=>(
                     <div
                         className={`${styles.notify} ${styles.toast_to_right} ${styles[position]}`}
                         key={index}
@@ -26,8 +26,8 @@ const Alert: FC<toastLists> = ({toastList, position,setAlertList}) => {
                     >
                         <button onClick={()=>deleteToast(i.id)}><CloseIcon/></button>
                         <div className={styles.block}>
-                            <h2 className={styles.title}>{i.title}</h2>
-                            <p className={styles.desc}>{i.description}</p>
+                            <h2 className={styles.title}>{i?.title}</h2>
+                            <p className={styles.desc}>{i?.description}</p>
                         </div>
                     </div>
                 ))
