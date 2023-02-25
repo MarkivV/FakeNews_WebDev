@@ -76,7 +76,8 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
         "http://localhost:3000/api/admin/posts/" + id,
         { 
           published,
-          rating: e.target.value || rating
+          rating: rating
+          // rating: e.target.value || rating
          }
       );
 
@@ -145,7 +146,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
                 >
                   <h3>{post?.published ? "Архівувати" : "Опублікувати"}</h3>
                 </button>
-                <select
+                {/* <select
                   name="Admin"
                   id="Admin"
                   onChange={(e) => publishPost(e, post?._id, post?.published)}
@@ -180,7 +181,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
                   <option value="9" selected={post?.rating === 9}>
                     9
                   </option>
-                </select>
+                </select> */}
               </div>
             </div>
           ))}
