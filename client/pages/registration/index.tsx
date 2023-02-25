@@ -20,7 +20,7 @@ const Registration = () => {
         e.preventDefault()
         if(email && username && password){
             if(password === passwordConf){
-                await axios.post("http://localhost:3000/api/registration", {email, name: username, password});
+                await axios.post(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/registration`, {email, name: username, password});
                 setEmail("")
                 setUsername("")
                 setPassword("")

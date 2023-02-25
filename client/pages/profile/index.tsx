@@ -115,7 +115,7 @@ const Profile: FC<Details> = ({ news, user }) => {
               console.log(page);
 
               const getNextPosts = await axios.get(
-                "http://localhost:3000/api/news/newsprof/" + session?.user.id,
+                `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/newsprof/` + session?.user.id,
                 {
                   params: {
                     page: page,
@@ -151,10 +151,10 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   } else {
     const user = await axios.get(
-      "http://localhost:3000/api/profile/" + session.user.id
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/profile/` + session.user.id
     );
     const res = await axios.get(
-      "http://localhost:3000/api/news/newsprof/" + session.user.id,
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/newsprof/` + session.user.id,
       {
         params: {
           page: 0,

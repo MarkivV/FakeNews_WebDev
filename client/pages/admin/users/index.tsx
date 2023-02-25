@@ -15,7 +15,7 @@ const Users: FC<UsersType> = ({ users }) => {
 
   const handleChangeAdmin = async (e: any, id: string) => {
     e.preventDefault();
-    const res = await axios.put("http://localhost:3000/api/admin/users/" + id, {
+    const res = await axios.put(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/users/` + id, {
       role: e.target.value,
     });
     if (res.status === 201) {
@@ -88,7 +88,7 @@ const Users: FC<UsersType> = ({ users }) => {
 export default Users;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3000/api/admin/users");
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/users`);
   return {
     props: {
       users: res?.data,

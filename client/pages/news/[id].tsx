@@ -26,9 +26,6 @@ type Details = {
 export type ParentId = {
   parId: string | null;
 }
-
-
-
 const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
   const { data: session, status } = useSession();
   const [commentsList, setCommentsList] = useState(comments);
@@ -61,7 +58,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
     e.preventDefault();
     if (commId) {
       const res = await axios.delete(
-        "http://localhost:3000/api/comments/" + commId
+        `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/comments/` + commId
       );
       if (res.status === 201) {
         toastProp = {
@@ -88,10 +85,11 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
 
   const handleSubmitComment = async (e: any, parentId: any) => {
     e.preventDefault();
-
+    console.log(process.env.MONGO_URL);
+    
     if (comment || reply) {
       await axios
-        .post<Comment, Comment>("http://localhost:3000/api/comments", {
+        .post<Comment, Comment>(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/comments`, {
           body: comment === "" ? reply : comment,
           userId: session?.user?.id,
           parentId,
@@ -240,9 +238,9 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
 export const getServerSideProps: GetServerSideProps = async ({
   params,
 }: any) => {
-  const res = await axios.get(`http://localhost:3000/api/news/${params.id}`);
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/${params.id}`);
   const comments = await axios.get(
-    `http://localhost:3000/api/comments/${res.data.post._id}`
+    `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/comments/${res.data.post._id}`
   );
   return {
     props: {

@@ -20,7 +20,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
   const PublishAll = async (e:any, publish: Boolean) =>{
     e.preventDefault()
     const res = await axios.put(
-      "http://localhost:3000/api/admin/posts", {
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts`, {
         published: publish
       }
     );
@@ -47,7 +47,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
     e.preventDefault();
     if (id) {
       const res = await axios.delete(
-        "http://localhost:3000/api/admin/posts/" + id
+        `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/` + id
       );
       if (res.status === 201) {
         toastProp = {
@@ -73,7 +73,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
     e.preventDefault();
     if (id) {
       const res = await axios.post(
-        "http://localhost:3000/api/admin/posts/" + id,
+        `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/` + id,
         { 
           published,
           rating: rating
@@ -196,7 +196,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
   );
 };
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3000/api/admin/posts/");
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/`);
   return {
     props: {
       posts: res?.data,
