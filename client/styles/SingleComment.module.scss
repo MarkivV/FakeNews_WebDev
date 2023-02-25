@@ -1,38 +1,61 @@
 .comment {
-  margin-top: 15px;
+  margin-top: 25px;
   display: flex;
   .avatar {
-    background-color: #ff4040;
-    width: 4em;
-    height: 4em;
-    border-radius: 50%;
+    width: 3.5em;
+    height: 3.5em;
     font-size: 15px;
   }
   .commBody {
     width: 100%;
-    margin-left: 25px;
+    margin-left: 10px;
     .commContent{
+      display: flex;
+      justify-content: space-between;
       h5 {
         font-weight: 300;
-      }
-    }
-    .commText{
-      margin-top: 10px;
-      h4{
-
       }
       .commActions{
         display: flex;
         gap: 15px;
+        color: #ccc;
         h6{
-          margin-top: 5px;
+          cursor: pointer;
+          .deleteButton{
+            width: 0.9em;
+            height: 0.9em;
+            &:hover{
+              color: #485EC6;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .commentBody{
+      margin-top: 10px;
+      p {
+        font-size: 16px;
+        word-break: break-all;
+      }
+    }
+    .commText{
+      margin-top: 10px;
+
+      .commActions{
+        h6{
+          cursor: pointer;
           font-size: 14px;
+
           &:hover{
             color: #485EC6;
             text-decoration: underline;
           }
+
         }
       }
+
 
       .replyBlock{
         margin-top: 35px;
@@ -69,4 +92,22 @@
       }
     }
   }
+}
+
+
+@media only screen and (max-width: 600px) {
+
+.comment{
+
+  
+  .commBody{
+
+
+    .commentBody{
+      h4{
+        width: 100px;
+      }
+    }
+  }
+}
 }

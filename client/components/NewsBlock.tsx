@@ -5,7 +5,6 @@ import { FC } from "react";
 import { newsTranslate } from "../utils/utilities";
 import moment from "moment";
 import "moment/locale/uk";
-
 type NewsBlock = {
   news: News[];
   category: string;
@@ -50,7 +49,6 @@ const NewsBlock: FC<NewsBlock> = ({ news, category }) => {
     </>
   );
 };
-
 export default NewsBlock;
 
 

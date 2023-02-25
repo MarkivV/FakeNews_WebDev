@@ -3,6 +3,20 @@
   flex-direction: column;
   margin-top: 20px;
 
+  .publishButton{
+    margin-bottom: 25px;
+    display: flex;
+    gap: 20px;
+    button{
+      height: 35px;
+      width: 150px;
+      background-color: #0a0a0a;
+      color: #fff;
+      border-radius: 50px;
+      border: 0;
+    }
+  }
+
   .mainBlock{
     display: flex;
     flex-direction: column;

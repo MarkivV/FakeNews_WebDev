@@ -44,6 +44,7 @@
         margin-left: 35px !important;
         margin-right: 35px !important;
         padding: 10px;
+        font-weight: 400;
         &:hover {
           background-color: #f4f4f4;
           text-decoration: underline;
@@ -69,3 +70,11 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 600px) {
+  .bottomNav{
+    display: none;
+  }
+  
+  }

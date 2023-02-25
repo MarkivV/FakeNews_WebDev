@@ -40,13 +40,13 @@ export default function Home({ news }: Props) {
       <hr className={styles.hrHome} />
       <div className={styles.titlePopular}>
         <h1>Вибір редакції</h1>
+        <span>Тут ми зібрали три найкращі новини за останній час на розсуд нашої редакції. Наші журналісти працюють наполегливо, щоб надавати вам найактуальнішу та найцікавішу інформацію з усього світу.</span>
       </div>
       <div className={styles.lastNewsBlock}>
         <div className={styles.lastNews}>
           <LastNews items={news} />
         </div>
       </div>
-      <hr className={styles.hrHome2} />
       <div className={styles.newsBlock}>
         {listEng.map((category, index) => (
           <NewsBlock news={news} key={index} category={category} />

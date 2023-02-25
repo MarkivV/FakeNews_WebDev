@@ -4,6 +4,8 @@ import { Comment } from "../types/types";
 import moment from "moment";
 import "moment/locale/uk";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import DeleteIcon from "@mui/icons-material/Delete";
+import DOMPurify from "isomorphic-dompurify";
 
 type SingleComm = {
   comment: Comment;
@@ -14,9 +16,8 @@ type SingleComm = {
   handleSubmitComment: (e: any, parentId: any) => void;
   setReply: (reply: string) => void;
   reply: string;
-
-  // handleReply: (comm: string, parId: string, e: InputEvent) => void;
 };
+
 const SingleComment: FC<SingleComm> = ({
   comment,
   replies,
@@ -29,7 +30,7 @@ const SingleComment: FC<SingleComm> = ({
 }) => {
   console.log(canReply);
   const [replyWindow, setReplyWindow] = useState(false);
-  const fiveMinutes = 300000;
+  const fiveMinutes = 3000000;
   const createdAt = comment?.createdAt
     ? new Date(comment.createdAt)
     : undefined;
@@ -44,16 +45,38 @@ const SingleComment: FC<SingleComm> = ({
     setReplyWindow(false);
   };
 
+  let formattedText =
+    "<p>" +
+    DOMPurify.sanitize(comment?.body).replace(/\n/g, "</p><p>") +
+    "</p>";
+
   return (
     <div className={styles.comment}>
-      <AccountCircleIcon />
+      <AccountCircleIcon className={styles.avatar} />
       <div className={styles.commBody}>
         <div className={styles.commContent}>
-          <h4>{comment?.name}</h4>
-          <h5>{moment(comment?.createdAt).format("LLL")}</h5>
+          <div>
+            <h4>{comment?.name}</h4>
+            <h5>{moment(comment?.createdAt).format("LLL")}</h5>
+          </div>
+          {canDelete && (
+            <div className={styles.commActions}>
+              <h6
+                onClick={(e) => comment?._id && commentDelete(comment?._id, e)}
+              >
+                <DeleteIcon className={styles.deleteButton} />
+              </h6>
+            </div>
+          )}
+        </div>
+        <div
+          className={styles.commentBody}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(formattedText),
+          }}
+        >
         </div>
         <div className={styles.commText}>
-          <h4>{comment?.body}</h4>
           {canReply && (
             <>
               {replyWindow === false && (
@@ -86,15 +109,7 @@ const SingleComment: FC<SingleComm> = ({
               )}
             </>
           )}
-          {canDelete && (
-            <div className={styles.commActions}>
-              <h6
-                onClick={(e) => comment?._id && commentDelete(comment?._id, e)}
-              >
-                Видалити
-              </h6>
-            </div>
-          )}
+
           {replies?.length > 0 && (
             <div className={styles.replies}>
               {replies.map((rep) => (

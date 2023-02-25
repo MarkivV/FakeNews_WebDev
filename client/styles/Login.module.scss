@@ -155,3 +155,26 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 600px) {
+  .wrap {
+    display: block;
+    .inputs{
+      .titleInput{
+        width: 100%;
+      }
+
+      .buttonGoogle{
+        h2{
+          font-size: 14px;
+        }
+      }
+      .buttonGit{
+        h2{
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

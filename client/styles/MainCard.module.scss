@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 20px;
   background-color: #FBFAF8;
+  background-color: none;
   position: relative;
   .imgDiv{
     display: block;
@@ -64,4 +65,16 @@
     //   line-height: 150%;
     // }
   }
+}
+@media only screen and (max-width: 600px) {
+  .wrap{
+    position: static;
+    .imgDiv{
+      position: static;
+      img{
+        height: 270px;
+      }
+    }
+  }
+
 }

@@ -15,9 +15,7 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import ReactMarkdown from "react-markdown";
 import DOMPurify from "isomorphic-dompurify";
-
 type Details = {
   mainPost: News;
   posts: News[];
@@ -132,8 +130,10 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
         <div>
           <div className={styles.underImageBlock}>
             <div className={styles.creator}>
+              <div className={styles.creatorName}>
               <h2>Від: </h2>
               <h3>{name}</h3>
+              </div>
               <h4>{moment(mainPost.createdAt).format("LLL")}</h4>
             </div>
           </div>

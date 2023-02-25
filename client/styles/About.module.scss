@@ -50,3 +50,42 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 600px) {
+  .wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 50px;
+    margin-top: 0;
+    .about{
+      width: 100%;
+
+      .contacts{
+        .person{
+          flex-direction: column;
+          h4{
+            margin-left: 0;
+          }
+        }
+      }
+
+      .backContact{
+        margin-top: 20px;
+        .email{
+            display: flex;
+            flex-direction: column;
+            h3{
+                font-size: 18px;
+            }
+            h2{
+                margin-left: 0px;
+                font-size: 18px;
+                text-decoration: underline;
+                color: #485EC6;
+            }
+        }
+    }
+    }
+  }
+}
