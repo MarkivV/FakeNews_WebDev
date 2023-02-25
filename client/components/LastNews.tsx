@@ -3,8 +3,8 @@ import { typeNews } from "../types/types";
 import { FC } from "react";
 import Link from "next/link";
 import { newsTranslate } from "../utils/utilities";
-
 const LastNews: FC<typeNews> = ({ items }) => {
+  
   return (
     <div className={styles.lastNewsBlock}>
       <div className={styles.newsBlock}>
@@ -24,9 +24,6 @@ const LastNews: FC<typeNews> = ({ items }) => {
               </Link>
             </div>
             <div className={styles.lastNews_content}>
-              <Link href={`/category/${i?.category}?page=0`}>
-                <h4>{newsTranslate(i?.category)}</h4>
-              </Link>
               <Link href={"/news/" + i?._id}>
                 <h3>
                   {i?.title.length > 110
@@ -34,10 +31,13 @@ const LastNews: FC<typeNews> = ({ items }) => {
                     : i?.title}
                 </h3>
               </Link>
+              <Link href={`/category/${i?.category}?page=0`}>
+                <h4>{newsTranslate(i?.category)}</h4>
+              </Link>
               <Link href={"/news/" + i?._id}>
                 <h2>
-                  {i?.description.length > 300
-                    ? `${i?.description.substring(0, 300)}...`
+                  {i?.description.length > 330
+                    ? `${i?.description.substring(0, 330)}...`
                     : i?.description}
                 </h2>
               </Link>

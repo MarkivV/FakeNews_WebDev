@@ -16,6 +16,33 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
   const [alertList, setAlertList] = useState<toastProps[]>([]);
   let toastProp = null;
 
+
+  const PublishAll = async (e:any, publish: Boolean) =>{
+    e.preventDefault()
+    const res = await axios.put(
+      "http://localhost:3000/api/admin/posts", {
+        published: publish
+      }
+    );
+    if (res.status === 201) {
+      toastProp = {
+        id: alertList.length + 1,
+        title: "Виконано",
+        description: "Зміни пройшли успішно",
+        bgColor: "#009216",
+      };
+      setAlertList([...alertList, toastProp]);
+    } else {
+      toastProp = {
+        id: alertList.length + 1,
+        title: "Помилка",
+        description: "Сталась невідома помилка",
+        bgColor: "#ff9900",
+      };
+      setAlertList([...alertList, toastProp]);
+    }
+  }
+
   const deletePost = async (e: any, id: string) => {
     e.preventDefault();
     if (id) {
@@ -84,6 +111,10 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
   return (
     <LayoutAdmin>
       <div className={styles.wrap}>
+        <div className={styles.publishButton}>
+          <button onClick={(e)=>PublishAll(e, false)}>Архівувати все</button>
+          <button onClick={(e)=>PublishAll(e, true)}>Опублікувати все</button>
+        </div>
         <div className={styles.mainBlock}>
           {postList.map((post) => (
             <div className={styles.card} key={post?._id}>

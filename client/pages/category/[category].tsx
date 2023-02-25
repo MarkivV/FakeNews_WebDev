@@ -49,7 +49,6 @@ const News: FC<NewsCat> = ({ news, category }) => {
         },
       }
     );
-
     setPostsList(getNextPosts.data);
   };
   return (
@@ -62,6 +61,7 @@ const News: FC<NewsCat> = ({ news, category }) => {
               onClick={() => handleClick(listEng[index])}
             >
               <h2>{i}</h2>
+              <p>/</p>
             </button>
           </Link>
         ))}

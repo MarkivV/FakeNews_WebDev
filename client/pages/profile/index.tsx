@@ -5,6 +5,10 @@ import { News, User } from "../../types/types";
 import React, { FC, useState } from "react";
 import moment from "moment";
 import "moment/locale/uk";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import { getSession, signOut, useSession } from "next-auth/react";
 
 type Details = {
@@ -12,12 +16,9 @@ type Details = {
   user: User;
 };
 const Profile: FC<Details> = ({ news, user }) => {
-  const [change, setChange] = useState(false);
-  const [name, setName] = useState(news[0]?.creator);
   const [postsList, setPostsList] = useState(news);
   const [page, setPage] = useState(1);
   const { data: session } = useSession();
-
   return (
     <div className={styles.wrap}>
       <div className={styles.leftSide}>
@@ -26,6 +27,47 @@ const Profile: FC<Details> = ({ news, user }) => {
           <h3>{user?.email}</h3>
         </div>
         <button onClick={() => signOut()}>Вийти</button>
+      </div>
+      <div className={styles.socMedia}>
+        <h2>Ваші соцальні мережі: У розробці</h2>
+        <div className={styles.socDivs}>
+          <div className={styles.socIn}>
+            <div className={styles.socDivIn}>
+              <h2>Telegram</h2>
+              <TelegramIcon style={{ color: "#0088CC", cursor: "pointer" }} />
+            </div>
+            <button className={styles.socInButton}>
+              <h3>Додати посилання</h3>
+            </button>
+          </div>
+          <div className={styles.socIn}>
+            <div className={styles.socDivIn}>
+              <h2>Instagram</h2>
+              <InstagramIcon style={{ cursor: "pointer" }} />
+            </div>
+            <button className={styles.socInButton}>
+              <h3>Додати посилання</h3>
+            </button>
+          </div>
+          <div className={styles.socIn}>
+            <div className={styles.socDivIn}>
+              <h2>Twitter</h2>
+              <TwitterIcon style={{ color: "#1DA1F2", cursor: "pointer" }} />
+            </div>
+            <button className={styles.socInButton}>
+              <h3>Додати посилання</h3>
+            </button>
+          </div>
+          <div className={styles.socIn}>
+            <div className={styles.socDivIn}>
+              <h2>Facebook</h2>
+              <FacebookIcon style={{ color: "#4267B2", cursor: "pointer" }} />
+            </div>
+            <button className={styles.socInButton}>
+              <h3>Додати посилання</h3>
+            </button>
+          </div>
+        </div>
       </div>
       <div className={styles.rightSide}>
         {postsList?.map((item: News) => (
@@ -71,7 +113,7 @@ const Profile: FC<Details> = ({ news, user }) => {
             onClick={async () => {
               setPage(page + 1);
               console.log(page);
-              
+
               const getNextPosts = await axios.get(
                 "http://localhost:3000/api/news/newsprof/" + session?.user.id,
                 {
@@ -81,7 +123,7 @@ const Profile: FC<Details> = ({ news, user }) => {
                 }
               );
 
-              setPostsList([...postsList, ...getNextPosts.data])
+              setPostsList([...postsList, ...getNextPosts.data]);
             }}
           >
             Завантажити ще

@@ -16,11 +16,17 @@
       h2 {
         font-size: 15px;
         font-weight: 600;
+        
       }
+      p{
+        display: none;
+      }
+
       &:hover {
         background-color: #f4f4f4;
         text-decoration: underline;
       }
+      
     }
   }
   .catTitle {
@@ -54,6 +60,7 @@
         .desc {
           margin-right: 20px;
           margin-left: 20px;
+          padding-bottom: 10px;
           position: absolute;
           text-align: justify;
           bottom: 1px;
@@ -61,17 +68,17 @@
             display: flex;
             margin-bottom: 15px;
             h6 {
-              background-color: #FBFAF8;
+              background-color: #fbfaf8;
               padding: 5px;
               font-size: 20px;
               color: black;
             }
           }
-          .titleDesc{
+          .titleDesc {
             font-size: 32px;
             font-weight: 600;
             padding: 5px;
-            background-color: #FBFAF8;
+            background-color: #fbfaf8;
             color: #0a0a0a;
           }
         }
@@ -105,14 +112,12 @@
         h4 {
           font-weight: 400;
           margin-bottom: 5px;
-          color: #8A8A8A;
+          color: #8a8a8a;
         }
       }
     }
-
-
   }
-  .loadMoreButton{
+  .loadMoreButton {
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -127,6 +132,90 @@
       font-size: 18px;
       font-weight: 500;
       width: 15%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+    .catTitle {
+      margin-top: 15px;
+      margin-bottom: 5px;
+      h1{
+        font-size: 24px;
+      }
+    }
+    .categories {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 0px;
+      flex-wrap: wrap;
+      width: 100%;
+      button {
+        border: 0;
+        background-color: #ffffff;
+        margin-bottom: 15px;
+        padding: 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        h2 {
+          color: #0a0a0a;
+          font-size: 14px;
+          font-weight: 600;
+          
+        }
+        p{
+          display: block;
+          padding-left: 10px;
+          padding-right: 10px;
+          color: #0a0a0a;
+        }
+        &:hover {
+          background-color: #fff;
+          text-decoration: underline;
+        }
+        
+      }
+    }
+
+    .mainBlock {
+      display: flex;
+      .normal_card {
+        width: 100%;
+
+        &:first-of-type {
+          .desc {
+            .titleDesc {
+              font-size: 20px;
+              font-weight: 600;
+              padding: 5px;
+              background-color: #fbfaf8;
+              color: #0a0a0a;
+            }
+            .up_desc {
+              display: flex;
+              flex-direction: column;
+              h6 {
+                background-color: #fbfaf8;
+                color: #0a0a0a;
+              }
+            }
+            
+          }
+        }
+      }
+    }
+
+    .loadMoreButton {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      button {
+        width: 75%;
+      }
     }
   }
 }
