@@ -17,7 +17,7 @@ const NormalCard: FC<NormalCardType> = ({news}) => {
                 <Image
                 src={news?.image}
                 alt={news?.title}
-                width={1200} height={960}
+                width={400} height={300}
                 />
                 {/* <img src={news?.image} alt={news?.title} width={1200} height={960} decoding={"async"} loading={"eager"} itemProp={"image"}  /> */}
             </figure>

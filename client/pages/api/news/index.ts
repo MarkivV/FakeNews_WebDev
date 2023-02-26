@@ -1,9 +1,11 @@
 import dbConnect from "../../../utils/dbConnect";
 import {NextApiRequest, NextApiResponse} from "next";
 import NewsPosts from "../../../models/NewsPosts";
+import sharp from 'sharp';
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
     const {method} = req
+
     console.log(req.body)
 
     await dbConnect()
@@ -11,7 +13,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     switch (method) {
         case "GET":
             try {
-                const newsGet = await NewsPosts.find({published: true})
+                const newsGet = await NewsPosts.find({published: true}).limit(9)
                 res.status(200).json(newsGet.reverse())
             }catch (e:any) {
                 res.status(500).json(e)
