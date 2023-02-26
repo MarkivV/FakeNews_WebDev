@@ -10,6 +10,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { getSession, signOut, useSession } from "next-auth/react";
+import Image from "next/image"
 
 type Details = {
   news: News[];
@@ -74,7 +75,12 @@ const Profile: FC<Details> = ({ news, user }) => {
           <div key={item?._id} className={styles.card}>
             <div className={styles.image}>
               <div className={styles.cardImage}>
-                <img src={item?.image} alt="" />
+                <Image
+                    src={item?.image}
+                    alt={item?.title}
+                    width={300}
+                    height={400}
+                />
               </div>
               <div className={styles.title}>
                 <h2>{item?.title}</h2>

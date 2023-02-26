@@ -27,6 +27,9 @@
       display: block;
       padding: 0.75rem;
     }
+    .third13Mobile{
+      display: none;
+    }
 
     .mobileMenu {
       display: none;
@@ -187,6 +190,13 @@
         display: none;
         flex: none;
         padding: 0.75rem;
+      }
+
+      .third13Mobile{
+        display: block;
+        position: absolute;
+        padding-right: 20px;
+        right: 0;
       }
 
       .mobileMenu {

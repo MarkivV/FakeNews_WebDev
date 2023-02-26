@@ -138,6 +138,11 @@ const Header = () => {
             </svg>
           </Link>
         </div>
+        <div className={styles.third13Mobile}>
+          <Link href={"/profile"}>
+            <PersonIcon />
+          </Link>
+        </div>
         <div className={styles.third13}>
           <Link href={"/profile"}>
             <PersonIcon />

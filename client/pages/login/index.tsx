@@ -32,11 +32,9 @@ const Login = () => {
                 password: password,
                 callbackUrl: "/"
             })
-            console.log(status)
-            setEmail("")
-            setPassword("")
-            console.log(status)
             if (status?.ok) {
+                setEmail("")
+                setPassword("")
                 // @ts-ignore
                 router.push(status?.url)
             }else if(status?.error){
@@ -64,13 +62,13 @@ const Login = () => {
     // Google Handler function
     async function handleGoogleSignin(e: any){
         e.preventDefault()
-        await signIn('google', { callbackUrl : `${process.env.NEXTAUTH_URL}`})
+        await signIn('google', { callbackUrl : `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}`})
     }
 
     // Github Login
     async function handleGithubSignin(e: any){
         e.preventDefault()
-        await signIn('github', { callbackUrl : `${process.env.NEXTAUTH_URL}`})
+        await signIn('github', { callbackUrl : `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}`})
     }
 
     return (

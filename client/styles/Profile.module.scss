@@ -229,3 +229,63 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .wrap{
+    padding-right: 20px;
+    padding-left: 20px;
+
+    .leftSide{
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      align-items: flex-start;
+      button{
+        margin-top: 15px;
+      }
+      .name{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .socMedia{
+      margin-top: 10px;
+    }
+    .rightSide{
+      .card{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .image{
+          flex-direction: column;
+          justify-content: center;
+
+          .cardImage{
+            justify-content: center;
+            align-items: center;
+
+            img{
+              width: 100%;
+            }
+          }
+        }
+
+        .description{
+          width: 100%;
+          .stats{
+            width: 100%;
+
+          }
+        }
+      }
+
+      .loadMoreButton{
+        margin-bottom: 15px;
+        button{
+          width: 70%;
+        }
+      }
+    }
+  }
+}
