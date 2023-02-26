@@ -7,6 +7,7 @@ import Link from "next/link";
 import moment from "moment";
 import "moment/locale/uk";
 import { newsTranslate } from "../../utils/utilities";
+import Image from "next/image"
 type NewsCat = {
   news: News[];
   category: string;
@@ -74,7 +75,12 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
           <div key={i._id} className={styles.normal_card}>
             <div className={styles.normal_card_img}>
               <Link href={"/news/" + i._id}>
-                <img src={i?.image} alt="" />
+                  <Image
+                      src={i?.image}
+                      alt={i?.title}
+                      width={400} height={300}
+                  />
+                {/*<img src={i?.image} alt="" />*/}
               </Link>
               <div className={styles.desc}>
                 <div className={styles.up_desc}>

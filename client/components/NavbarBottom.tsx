@@ -87,7 +87,7 @@ const NavbarBottom: FC = () => {
           <Link href={"/"}>
             <h4>Головна</h4>
           </Link>
-          <Link href={"/category/war?page=0"}>
+          <Link href={"/category/war"}>
             <h4>Новини</h4>
           </Link>
           <Link href={"/suggest"}>
