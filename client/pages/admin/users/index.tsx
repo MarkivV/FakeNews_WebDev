@@ -50,7 +50,6 @@ const Users: FC<UsersType> = ({ users }) => {
               <th className={styles.cell}>Імʼя</th>
               <th className={styles.cell}>Email</th>
               <th className={styles.cell}>Роль</th>
-              <th className={styles.cell}>Дії</th>
             </tr>
           </thead>
           <tbody>
@@ -73,7 +72,6 @@ const Users: FC<UsersType> = ({ users }) => {
                     </option>
                   </select>
                 </td>
-                <td className={styles.cell}>Змінити</td>
               </tr>
             ))}
           </tbody>

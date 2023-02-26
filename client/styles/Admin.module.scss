@@ -81,3 +81,33 @@
   }
 }
 }
+
+@media only screen and (max-width: 600px) {
+  .wrap{
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    .mainBlock{
+      .card{
+        flex-direction: column;
+        .upperBlock{
+          .image{
+            img{
+              width: 100%;
+            }
+          }
+        }
+
+        .title{
+          margin-left: 0;
+
+        }
+
+        .buttons{
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}

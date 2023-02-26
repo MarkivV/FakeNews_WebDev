@@ -5,7 +5,7 @@
 import mongoose from "mongoose";
 
 if (!process.env.MONGO_URL) {
-    throw new Error("Please add your MONGODB_URL to .env");
+    throw new Error("Please add your MONGODB_URL to .env.local");
 }
 
 const MONGO_URL: string = process.env.MONGO_URL;

@@ -73,7 +73,7 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {},
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         // @ts-ignore
         const { email, password } = credentials;
         // @ts-ignore
@@ -87,8 +87,9 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async session({ session, user, token }: any) {
+    async session({ session, token }: any) {
       return {
         ...session,
         user: {
@@ -110,7 +111,6 @@ export const authOptions: NextAuthOptions = {
     }
   },
   adapter: MongoDBAdapter(clientPromise),
-  secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
     maxAge: 24 * 60 * 60 * 60,
