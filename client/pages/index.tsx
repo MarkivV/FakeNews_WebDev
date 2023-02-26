@@ -2,22 +2,20 @@ import styles from "../styles/Home.module.scss";
 import MainCard from "../components/MainCard";
 import NormalCard from "../components/NormalCard";
 import { News } from "../types/types";
-import { GetStaticProps, GetServerSideProps } from "next";
+import { GetServerSideProps } from "next";
 import axios from "axios";
 import React from "react";
 import { listEng } from "./category/[category]";
-import dynamic from "next/dynamic"
-
-const LastNews = dynamic(()=>import("../components/LastNews"))
-const NewsBlock = dynamic(()=>import("../components/NewsBlock"))
+import dynamic from "next/dynamic";
+const LastNews = dynamic(() => import("../components/LastNews"));
+const NewsBlock = dynamic(() => import("../components/NewsBlock"));
 type Props = {
   news: News[];
 };
-
 export default function Home({ news }: Props) {
-    if (!news) {
-        return <div>Ведутся технічні роботи</div>
-    }
+  if (!news) {
+    return <div>Ведутся технічні роботи</div>;
+  }
 
   return (
     <div className={styles.wrap}>
@@ -37,7 +35,11 @@ export default function Home({ news }: Props) {
       <hr className={styles.hrHome} />
       <div className={styles.titlePopular}>
         <h1>Вибір редакції</h1>
-        <span>Тут ми зібрали три найкращі новини за останній час на розсуд нашої редакції. Наші журналісти працюють наполегливо, щоб надавати вам найактуальнішу та найцікавішу інформацію з усього світу.</span>
+        <span>
+          Тут ми зібрали три найкращі новини за останній час на розсуд нашої
+          редакції. Наші журналісти працюють наполегливо, щоб надавати вам
+          найактуальнішу та найцікавішу інформацію з усього світу.
+        </span>
       </div>
       <div className={styles.lastNewsBlock}>
         <div className={styles.lastNews}>
@@ -54,10 +56,12 @@ export default function Home({ news }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  let res = null
-  try{
-    res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`);
-  }catch(err){
+  let res = null;
+  try {
+    res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`
+    );
+  } catch (err) {
     console.log(err);
   }
   return {

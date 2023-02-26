@@ -21,6 +21,7 @@ const BigCard: FC<News> = ({
     <div className={styles.card_wrap}>
       <div className={styles.Image}>
         <Link href={"/news/" + _id}>
+          
           <img src={image} alt="" />
         </Link>
         <div className={styles.desc}>
