@@ -2,6 +2,7 @@ import styles from "./../styles/MainCard.module.scss";
 import { News } from "../types/types";
 import Link from "next/link";
 import { newsTranslate } from "../utils/utilities";
+import Image from "next/image"
 type NewsProp = {
   news: News;
 };
@@ -10,7 +11,7 @@ const MainCard = ({ news }: NewsProp) => {
     <div className={styles.wrap}>
       <figure className={styles.imgDiv}>
         <Link href={"/news/" + news?._id}>
-          <img
+          {/* <img
             src={news?.image}
             alt={news?.title}
             width={1200}
@@ -18,6 +19,12 @@ const MainCard = ({ news }: NewsProp) => {
             decoding={"async"}
             loading={"eager"}
             itemProp={"image"}
+          /> */}
+          <Image
+          src={news?.image}
+          alt={news?.title}
+          width={1200}
+          height={960}
           />
         </Link>
       </figure>

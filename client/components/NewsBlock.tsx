@@ -5,6 +5,7 @@ import { FC } from "react";
 import { newsTranslate } from "../utils/utilities";
 import moment from "moment";
 import "moment/locale/uk";
+import Image from "next/image"
 type NewsBlock = {
   news: News[];
   category: string;
@@ -25,7 +26,13 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
             <div key={i._id} className={styles.normal_card}>
               <div className={styles.normal_card_img}>
                 <Link href={"/news/" + i._id}>
-                  <img src={i?.image} alt="" />
+                  <Image
+                  src={i?.image}
+                  alt={i?.title}
+                  width={1200}
+                  height={960}
+                  />
+                  {/* <img  alt="" /> */}
                 </Link>
                 <div className={styles.normal_card_desc}>
                   <div className={styles.up_desc}>
