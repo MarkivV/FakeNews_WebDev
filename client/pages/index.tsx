@@ -9,18 +9,21 @@ import { listEng } from "./category/[category]";
 import dynamic from "next/dynamic";
 const LastNews = dynamic(() => import("../components/LastNews"));
 const NewsBlock = dynamic(() => import("../components/NewsBlock"));
-type Props = {
-  news: News[];
-};
-export default function Home({news}: Props) {
-  // const [news, setNews] = useState<Props>();
+// type Props = {
+//   news: News[];
+// };
+export default function Home() {
+  const [news, setNews] = useState<News[]>([]);
 
-  // useEffect(() => {
-  //     const res = axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`)
-  //         // @ts-ignore
-  //     setNews(res?.data)
-  //
-  // }, []);
+  useEffect(() => {
+      const fetchPost = async () =>{
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`)
+          // @ts-ignore
+          // console.log(res?.data)
+          setNews(res?.data)
+      }
+      fetchPost()
+  }, []);
 
   if (!news) {
     return <div>Ведутся технічні роботи</div>;
@@ -64,18 +67,18 @@ export default function Home({news}: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  let res = null;
-  try {
-    res = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`
-    );
-  } catch (err) {
-    console.log(err);
-  }
-  return {
-    props: {
-      news: res?.data,
-    },
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   let res = null;
+//   try {
+//     res = await axios.get(
+//       `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`
+//     );
+//   } catch (err) {
+//     console.log(err);
+//   }
+//   return {
+//     props: {
+//       news: res?.data,
+//     },
+//   };
+// };
