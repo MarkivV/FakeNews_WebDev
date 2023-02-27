@@ -9,8 +9,37 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     switch (method) {
         case "GET":
             try {
-                const newsGet = await NewsPosts.find({published: true}).limit(10)
-                res.status(200).json(newsGet.reverse())
+                const lastFivePosts = await NewsPosts.find({ published: true }).sort({ createdAt: -1 }).limit(5)
+                const topThreeRatedPosts = await NewsPosts.find({ rating: { $gte: 0, $lte: 9 }, published: true })
+                    .sort({ rating: -1 })
+                    .limit(3);                const postsByCategory = await NewsPosts.aggregate([
+                    { $match: { published: true } },
+                    {
+                        $group: {
+                            _id: '$category',
+                            posts: { $push: '$$ROOT' },
+                            count: { $sum: 1 }
+                        }
+                    },
+                    {
+                        $project: {
+                            _id: 0,
+                            category: '$_id',
+                            posts: { $slice: ['$posts', 10] },
+                            count: 1
+                        }
+                    },
+                    { $unwind: '$posts' },
+                    { $replaceRoot: { newRoot: '$posts' } }
+                ]);
+                const news = {
+                    lastFivePosts,
+                    topThreeRatedPosts,
+                    postsByCategory
+                }
+                // const newsGet = await NewsPosts.find({published: true}).limit(10)
+                // res.status(200).json(newsGet.reverse())
+                res.status(200).json(news)
             }catch (e:any) {
                 res.status(500).json(e)
             }

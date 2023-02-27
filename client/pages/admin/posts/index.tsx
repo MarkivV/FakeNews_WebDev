@@ -69,15 +69,15 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
       }
     }
   };
-  const publishPost = async (e: any, id: string, published: boolean, rating: Number) => {
+  const publishPost = async (e: any, id: string, published: boolean, rating: any) => {
     e.preventDefault();
     if (id) {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/admin/posts/` + id,
         { 
           published,
+          // rating: rating
           rating: rating
-          // rating: e.target.value || rating
          }
       );
 
@@ -146,10 +146,10 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
                 >
                   <h3>{post?.published ? "Архівувати" : "Опублікувати"}</h3>
                 </button>
-                {/* <select
+                <select
                   name="Admin"
                   id="Admin"
-                  onChange={(e) => publishPost(e, post?._id, post?.published)}
+                  onChange={(e) => publishPost(e, post?._id, post?.published, e.target.value)}
                 >
                   <option value="0" selected={post?.rating === 0}>
                     0
@@ -181,7 +181,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
                   <option value="9" selected={post?.rating === 9}>
                     9
                   </option>
-                </select> */}
+                </select>
               </div>
             </div>
           ))}
