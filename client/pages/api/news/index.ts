@@ -1,13 +1,9 @@
 import dbConnect from "../../../utils/dbConnect";
 import {NextApiRequest, NextApiResponse} from "next";
 import NewsPosts from "../../../models/NewsPosts";
-import sharp from 'sharp';
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
     const {method} = req
-
-    console.log(req.body)
-
     await dbConnect()
 
     switch (method) {

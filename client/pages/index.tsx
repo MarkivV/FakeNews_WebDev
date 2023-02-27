@@ -4,7 +4,7 @@ import NormalCard from "../components/NormalCard";
 import { News } from "../types/types";
 import { GetServerSideProps } from "next";
 import axios from "axios";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { listEng } from "./category/[category]";
 import dynamic from "next/dynamic";
 const LastNews = dynamic(() => import("../components/LastNews"));
@@ -12,11 +12,20 @@ const NewsBlock = dynamic(() => import("../components/NewsBlock"));
 type Props = {
   news: News[];
 };
-export default function Home({ news }: Props) {
+export default function Home({news}: Props) {
+  // const [news, setNews] = useState<Props>();
+
+  // useEffect(() => {
+  //     const res = axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`)
+  //         // @ts-ignore
+  //     setNews(res?.data)
+  //
+  // }, []);
+
   if (!news) {
     return <div>Ведутся технічні роботи</div>;
   }
-
+  // @ts-ignore
   return (
     <div className={styles.wrap}>
       <div className={styles.upper_block}>
