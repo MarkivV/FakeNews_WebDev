@@ -9,7 +9,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     switch (method) {
         case "GET":
             try {
-                const newsGet = await NewsPosts.find({published: true})
+                const newsGet = await NewsPosts.find({published: true}).limit(10)
                 res.status(200).json(newsGet.reverse())
             }catch (e:any) {
                 res.status(500).json(e)
