@@ -10,9 +10,12 @@ import dynamic from "next/dynamic";
 const LastNews = dynamic(() => import("../components/LastNews"));
 const NewsBlock = dynamic(() => import("../components/NewsBlock"));
 type Props = {
-  news: News[];
+  lastFivePosts: News[];
+  topThreeRatedPosts: News[];
+  postsByCategory: News[];
 };
-export default function Home({news}: Props) {
+export default function Home({lastFivePosts, topThreeRatedPosts, postsByCategory}: Props) {
+  console.log(postsByCategory)
   // const [news, setNews] = useState<News[]>([]);
   //
   // useEffect(() => {
@@ -25,7 +28,7 @@ export default function Home({news}: Props) {
   //     fetchPost()
   // }, []);
 
-  if (!news) {
+  if (!lastFivePosts && !topThreeRatedPosts) {
     return <div>Ведутся технічні роботи</div>;
   }
   // @ts-ignore
@@ -33,15 +36,15 @@ export default function Home({news}: Props) {
     <div className={styles.wrap}>
       <div className={styles.upper_block}>
         <div className={styles.leftBlock}>
-          <NormalCard news={news[1]} />
-          <NormalCard news={news[2]} />
+          <NormalCard news={lastFivePosts[1]} />
+          <NormalCard news={lastFivePosts[2]} />
         </div>
         <div className={styles.middleBlock}>
-          <MainCard news={news[0]} />
+          <MainCard news={lastFivePosts[0]} />
         </div>
         <div className={styles.rightBlock}>
-          <NormalCard news={news[3]} />
-          <NormalCard news={news[4]} />
+          <NormalCard news={lastFivePosts[3]} />
+          <NormalCard news={lastFivePosts[4]} />
         </div>
       </div>
       <hr className={styles.hrHome} />
@@ -55,12 +58,12 @@ export default function Home({news}: Props) {
       </div>
       <div className={styles.lastNewsBlock}>
         <div className={styles.lastNews}>
-          <LastNews items={news} />
+          <LastNews items={topThreeRatedPosts} />
         </div>
       </div>
       <div className={styles.newsBlock}>
         {listEng.map((category, index) => (
-          <NewsBlock news={news} key={index} category={category} />
+          <NewsBlock news={postsByCategory} key={index} category={category} />
         ))}
       </div>
     </div>
@@ -78,7 +81,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
   return {
     props: {
-      news: res?.data,
+      lastFivePosts: res?.data.lastFivePosts,
+      topThreeRatedPosts: res?.data.topThreeRatedPosts,
+      postsByCategory: res?.data.postsByCategory,
     },
   };
 };

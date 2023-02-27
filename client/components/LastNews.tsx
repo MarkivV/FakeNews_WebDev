@@ -8,7 +8,7 @@ const LastNews: FC<typeNews> = ({ items }) => {
   return (
     <div className={styles.lastNewsBlock}>
       <div className={styles.newsBlock}>
-        {items.slice(5, 8).map((i) => (
+        {items.map((i) => (
           <div className={styles.lastNews_card} key={i?._id}>
             <div className={styles.lastNews_image}>
               <Link href={"/news/" + i?._id} passHref>
