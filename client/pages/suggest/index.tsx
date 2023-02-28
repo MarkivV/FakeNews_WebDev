@@ -31,6 +31,7 @@ const Suggest = () => {
     setSelectedButton(id);
   };
 
+
   const handleSuggest = async (e: any) => {
     e.preventDefault();
     if (title && description && image) {

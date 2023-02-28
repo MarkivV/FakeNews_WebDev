@@ -5,6 +5,7 @@ import Link from 'next/link';
 import moment from "moment";
 import "moment/locale/uk";
 import Image from "next/image"
+import plainColor from "../assets/dadada.png"
 
 type NormalCardType = {
     news: News
@@ -15,9 +16,10 @@ const NormalCard: FC<NormalCardType> = ({news}) => {
             <figure className={styles.normal_card_img}>
 
                 <Image
-                src={news?.image}
+                src={news?.image || plainColor}
                 alt={news?.title}
                 width={400} height={300}
+                loading={"lazy"}
                 />
                 {/* <img src={news?.image} alt={news?.title} width={1200} height={960} decoding={"async"} loading={"eager"} itemProp={"image"}  /> */}
             </figure>

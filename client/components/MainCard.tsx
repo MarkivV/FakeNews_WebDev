@@ -3,6 +3,8 @@ import { News } from "../types/types";
 import Link from "next/link";
 import { newsTranslate } from "../utils/utilities";
 import Image from "next/image"
+import plainColor from "../assets/dadada.png"
+
 type NewsProp = {
   news: News;
 };
@@ -21,7 +23,7 @@ const MainCard = ({ news }: NewsProp) => {
             itemProp={"image"}
           /> */}
           <Image
-          src={news?.image}
+          src={news?.image || plainColor}
           alt={news?.title}
           width={1000}
           height={900}

@@ -1,3 +1,6 @@
+
+import axios from "axios";
+
 export const newsTranslate = (cat: string) =>{
     const list = ['Війна', 'Політика', 'Наука та Технології', "Шоу-бізнес", "Україна", "Світ", "Технології", "Економіка"]
 
@@ -20,3 +23,19 @@ export const newsTranslate = (cat: string) =>{
             break;
     }
 }
+
+//
+// export const fetchLastFivePosts = async () => {
+//     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/fetchLastFivePosts`);
+//     return res.data;
+// };
+//
+// export const fetchTopThreeRatedPosts = async () => {
+//     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/fetchTopThreeRatedPosts`);
+//     return res.data;
+// };
+//
+// export const fetchPostsByCategory = async () => {
+//     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/fetchPostsByCategory`);
+//     return res.data;
+// };
