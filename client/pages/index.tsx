@@ -9,9 +9,7 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { listEng } from "./category/[category]";
 import dynamic from "next/dynamic";
-import {fetchLastFivePosts} from "../utils/utilities";
-import {fetchPostsByCategory} from "../utils/utilities";
-import {fetchTopThreeRatedPosts} from "../utils/utilities";
+
 const LastNews = dynamic(() => import("../components/LastNews"), { ssr: false });
 const NewsBlock = dynamic(() => import("../components/NewsBlock"), { ssr: false });
 type Props = {

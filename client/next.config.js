@@ -2,7 +2,19 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [process.env.NEXT_PUBLIC_API_CONNECT_URL],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+        port: '',
+        pathname: '/brazhkovich/*',
+      },
+    ],
   },
-  
+  compiler: {
+    removeConsole: false,
+  },
+  swcMinify: true
 };
+
+module.exports = nextConfig

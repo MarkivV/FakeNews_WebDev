@@ -21,49 +21,73 @@ export function convertToBase64(file: any) {
 const Suggest = () => {
   const [title, setTitle] = useState("");
   const [description, setDesc] = useState("");
-  const [image, setImg] = useState("");
   const [selectedButton, setSelectedButton] = useState(0);
   const { data: session } = useSession();
   const [alertList, setAlertList] = useState<toastProps[]>([]);
+  const [image, setImage] = useState<File | null>(null);
+  const handleImageChange = (event: any) => {
+    if (event.target.files) {
+      setImage(event.target.files[0]);
+    }
+  };
   let toastProp = null;
-
   const handleClick = (id: any) => {
     setSelectedButton(id);
   };
-
-
   const handleSuggest = async (e: any) => {
     e.preventDefault();
-    if (title && description && image) {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`, {
-        title,
-        description,
-        image,
-        category: listEng[selectedButton],
-        creator: session?.user?.id,
-      });
-      console.log(res);
-      setTitle("");
-      setImg("");
-      setDesc("");
-    } else {
-      toastProp = {
-        id: alertList.length + 1,
-        title: "Увага",
-        description: "Заповніть всі поля",
-        bgColor: "#FF4F00",
+    if (image) {
+      const formData = new FormData();
+      // const FileName = `${Math.random().toString(26).substring(2)}-${image.name}`
+      formData.append("file", image);
+      formData.append("name", image.name);
+
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
       };
-      setAlertList([...alertList, toastProp]);
+
+
+      try {
+        console.log(formData)
+          const imageUrl = await axios.post(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/upload`, formData, config)
+        if(imageUrl.status === 201){
+          if (title && description) {
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`, {
+              title,
+              description,
+              image: imageUrl.data,
+              category: listEng[selectedButton],
+              creator: session?.user?.id,
+            });
+            console.log(res);
+            setTitle("");
+            setImage(null);
+            setDesc("");
+          } else {
+            toastProp = {
+              id: alertList.length + 1,
+              title: "Увага",
+              description: "Заповніть всі поля",
+              bgColor: "#FF4F00",
+            };
+            setAlertList([...alertList, toastProp]);
+          }
+        }else{
+          console.log("GOKOG")
+        }
+
+
+
+      } catch (error) {
+        console.error(error);
+      }
+
+
     }
-  };
-  const handleUploadImage = async (e: any) => {
-    const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    console.log(file);
-    console.log(base64);
-    // @ts-ignore
-    setImg(base64);
-  };
+  }
+
   // @ts-ignore
   // @ts-ignore
   return (
@@ -82,13 +106,14 @@ const Suggest = () => {
           className={styles.descriptionInput}
           placeholder={"Опис"}
         />
-        <label className={image == "" ? styles.imageInput : styles.imgActive}>
+        <label className={styles.imageInput}>
           <input
-            onChange={(e) => handleUploadImage(e)}
+            onChange={handleImageChange}
             type="file"
             accept={".jpeg, .png, .jpg"}
+
           />
-          {image == "" ? <h4>Завантажити картинку</h4> : <h4>Вибрати іншу</h4>}
+          {image === null ? <h4>Завантажити картинку</h4> : <h4>Вибрати іншу</h4>}
         </label>
         <div className={styles.categories}>
           {list.map((i: string, index) => (
