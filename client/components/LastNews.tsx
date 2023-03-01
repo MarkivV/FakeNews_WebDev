@@ -3,6 +3,9 @@ import { typeNews } from "../types/types";
 import { FC } from "react";
 import Link from "next/link";
 import { newsTranslate } from "../utils/utilities";
+import plainColor from "../assets/dadada.png"
+import Image from "next/image";
+
 const LastNews: FC<typeNews> = ({ items }) => {
   
   return (
@@ -12,14 +15,12 @@ const LastNews: FC<typeNews> = ({ items }) => {
           <div className={styles.lastNews_card} key={i?._id}>
             <div className={styles.lastNews_image}>
               <Link href={"/news/" + i?._id} passHref>
-                <img
-                  src={i?.image}
+                <Image
+                  src={i?.image || plainColor}
                   alt={i?.title}
                   width={1200}
                   height={960}
-                  decoding={"async"}
-                  loading={"eager"}
-                  itemProp={"image"}
+                  loading={"lazy"}
                 />
               </Link>
             </div>

@@ -6,6 +6,8 @@ import { newsTranslate } from "../utils/utilities";
 import moment from "moment";
 import "moment/locale/uk";
 import Image from "next/image"
+import plainColor from "../assets/dadada.png"
+
 type NewsBlock = {
   news: News[];
   category: string;
@@ -27,10 +29,11 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
               <div className={styles.normal_card_img}>
                 <Link href={"/news/" + i._id}>
                   <Image
-                  src={i?.image}
+                  src={i?.image || plainColor}
                   alt={i?.title}
                   width={1200}
                   height={960}
+                  loading={"lazy"}
                   />
                   {/* <img  alt="" /> */}
                 </Link>

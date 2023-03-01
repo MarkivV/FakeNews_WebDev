@@ -1,5 +1,7 @@
 import styles from "../styles/Home.module.scss";
 import MainCard from "../components/MainCard";
+// import LastNews from "../components/LastNews";
+// import NewsBlock from "../components/NewsBlock";
 import NormalCard from "../components/NormalCard";
 import { News } from "../types/types";
 import { GetServerSideProps } from "next";
@@ -7,30 +9,42 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { listEng } from "./category/[category]";
 import dynamic from "next/dynamic";
-const LastNews = dynamic(() => import("../components/LastNews"));
-const NewsBlock = dynamic(() => import("../components/NewsBlock"));
+
+const LastNews = dynamic(() => import("../components/LastNews"), { ssr: false });
+const NewsBlock = dynamic(() => import("../components/NewsBlock"), { ssr: false });
 type Props = {
   lastFivePosts: News[];
   topThreeRatedPosts: News[];
   postsByCategory: News[];
 };
+// {lastFivePosts, topThreeRatedPosts, postsByCategory}: Props
 export default function Home({lastFivePosts, topThreeRatedPosts, postsByCategory}: Props) {
-  console.log(postsByCategory)
-  // const [news, setNews] = useState<News[]>([]);
-  //
+  // console.log(postsByCategory)
+  // const [lastFivePosts, setLastFivePosts] = useState<News[]>();
+  // const [topThreeRatedPosts, setTopThreeRatedPosts] = useState<News[]>();
+  // const [postsByCategory, setPostsByCategory] = useState<News[]>();
+  // const [loading, setLoading] = useState(true);
+
   // useEffect(() => {
-  //     const fetchPost = async () =>{
-  //         const res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news`)
-  //         // @ts-ignore
-  //         // console.log(res?.data)
-  //         setNews(res?.data)
-  //     }
-  //     fetchPost()
+  //   Promise.all([
+  //     fetchLastFivePosts(),
+  //     fetchTopThreeRatedPosts(),
+  //     fetchPostsByCategory(),
+  //   ]).then(([lastFivePosts, topThreeRatedPosts, postsByCategory]) => {
+  //     setLastFivePosts(lastFivePosts);
+  //     setTopThreeRatedPosts(topThreeRatedPosts);
+  //     setPostsByCategory(postsByCategory);
+  //     setLoading(false);
+  //   });
   // }, []);
 
   if (!lastFivePosts && !topThreeRatedPosts) {
     return <div>Ведутся технічні роботи</div>;
   }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+  // @ts-ignore
   // @ts-ignore
   return (
     <div className={styles.wrap}>

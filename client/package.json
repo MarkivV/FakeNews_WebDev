@@ -1,7 +1,7 @@
 {
   "cacheDirectories": [
-  ".next/cache"
-],
+    ".next/cache"
+  ],
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -25,6 +25,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@google-cloud/storage": "^6.9.3",
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
     "@next-auth/mongodb-adapter": "^1.1.1",
@@ -40,6 +41,8 @@
     "cookies": "^0.8.0",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
+    "formidable": "^2.1.1",
+    "formidable-serverless": "^1.1.1",
     "formik": "^2.2.9",
     "isomorphic-dompurify": "^0.26.0",
     "jsonwebtoken": "^9.0.0",
@@ -59,6 +62,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/dompurify": "^2.4.0",
+    "@types/formidable": "^2.0.5",
     "@types/jsonwebtoken": "^9.0.0",
     "@types/sharp": "^0.31.1"
   }
