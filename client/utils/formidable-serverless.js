@@ -2,15 +2,15 @@ import formidable, { IncomingForm } from "formidable";
 
 // modifying the parse function
 
-IncomingForm.prototype.parse = function (req: any, cb?: Function) {
+IncomingForm.prototype.parse = function (req, cb) {
     // setup callback first, so we don't miss data events emitted immediately
     if (cb) {
-        const fields: any = {};
-        const files: any = {};
-        this.on("field", function (name: string, value: any) {
+        const fields = {};
+        const files = {};
+        this.on("field", function (name, value) {
             fields[name] = value;
         })
-            .on("file", function (name: string, file: any) {
+            .on("file", function (name, file) {
                 if (this.multiples) {
                     if (files[name]) {
                         if (!Array.isArray(files[name])) {
@@ -24,7 +24,7 @@ IncomingForm.prototype.parse = function (req: any, cb?: Function) {
                     files[name] = file;
                 }
             })
-            .on("error", function (err: any) {
+            .on("error", function (err) {
                 cb(err, fields, files);
             })
             .on("end", function () {
@@ -34,7 +34,7 @@ IncomingForm.prototype.parse = function (req: any, cb?: Function) {
 
     const self = this;
 
-    req.on("error", function (err: any) {
+    req.on("error", function (err) {
         self._error(err);
     });
 
@@ -114,7 +114,7 @@ IncomingForm.prototype.parse = function (req: any, cb?: Function) {
             self._error(new Error("Request aborted"));
         });
 
-        req.on("data", function (buffer: any) {
+        req.on("data", function (buffer) {
             try {
                 self.write(buffer);
             } catch (err) {
