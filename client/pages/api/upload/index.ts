@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method){
         case "POST":
             try{
-                const resImg = await method1(req, res);
+                const resImg = await method1(req);
                 res.status(201).send(resImg);
             }catch(err){
                 console.error(err)
