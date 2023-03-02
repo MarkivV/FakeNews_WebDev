@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import styles from "../../styles/Registration.module.scss";
 import axios from "axios";
 import LayoutAuth from "../../layouts/LayoutAuth";
@@ -6,6 +6,8 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import Alerts from '../../components/Alerts';
 import { toastProps } from '../login';
+import imageB from "../../assets/Brazhkovich2.svg";
+import Head from "next/head";
 
 const Registration = () => {
     const [email, setEmail] = useState("");
@@ -50,6 +52,13 @@ const Registration = () => {
     return (
         <LayoutAuth>
             <div className={styles.wrap}>
+                <Head>
+                    <title>Бражкович | Реєстрація</title>
+                    <meta property="og:url" content={`https://brazhkovich.vercel.app/registration`} />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content={`Бражкович | Реєстрація`} />
+                    <meta property="og:image" content={imageB} />
+                </Head>
                 <div className={styles.title}>
                     <h2>Реєстрація</h2>
                     <p>Зареєструйтесь для того щоб використовувати всі можливості нашого сайту</p>

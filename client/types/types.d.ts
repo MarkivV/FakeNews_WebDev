@@ -1,8 +1,3 @@
-type Lists = {
-    title: string,
-    value: number | undefined
-}
-
 export type Layout = {
     children: any
 }
@@ -32,7 +27,6 @@ export type User = {
     email: string,
     name: string,
     role: string,
-    image: string
 }
 
 

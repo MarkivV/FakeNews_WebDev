@@ -11,7 +11,6 @@ type CommentsComponent = {
   handleSubmitComment: (e: any, parentId: any) => void;
   setReply: (reply: string) => void;
   reply: string;
-  // handleReply: (comm: string, parId: string, e: InputEvent) => void;
 };
 
 const CommentsList: FC<CommentsComponent> = ({

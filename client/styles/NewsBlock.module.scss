@@ -26,7 +26,6 @@
     justify-content: space-between;
     margin-bottom: 25px;
     border-bottom: 1px solid #ededed;
-    border-bottom-style: dashed;
     &:first-of-type {
       border: 0;
       position: relative;
@@ -37,13 +36,13 @@
         img {
           width: 100%;
           object-fit: cover;
-          height: 500px;
+          height: 400px;
           filter: brightness(40%);
         }
         .normal_card_desc {
           margin-left: 40%;
           bottom: 10%;
-          width: 500px;
+          width: 400px;
           position: absolute;
           .up_desc {
             display: none;
@@ -81,7 +80,7 @@
         img {
           width: 100%;
           object-fit: cover;
-          height: 500px;
+          height: 400px;
           filter: brightness(40%);
         }
         .normal_card_desc {
@@ -123,7 +122,7 @@
       img {
         width: 100%;
         object-fit: cover;
-        height: 300px;
+        height: 200px;
       }
       .normal_card_desc {
         display: flex;

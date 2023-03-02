@@ -6,36 +6,6 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise, { loginUser } from "../../../utils/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-// type CustomSession = Session & {
-//   user: {
-//     id: string;
-//     email: string;
-//     role: string;
-//     name: string;
-//   };
-// };
-
-// const sessionCallback = async (
-//   params: {
-//     session: CustomSession;
-//     user: User | AdapterUser;
-//     token: JWT;
-//   }
-// ): Promise<CustomSession> => {
-//   const { session, token } = params;
-
-//   if (token) {
-//     session.user = {
-//       id: token?.id,
-//       email: token?.email,
-//       role: token?.role,
-//       name: token?.name,
-//     };
-//   }
-
-//   return session;
-// };
-
 
 // @ts-ignore
 export const authOptions: NextAuthOptions = {
@@ -121,16 +91,3 @@ export const authOptions: NextAuthOptions = {
 };
 
 export default NextAuth(authOptions);
-
-
-// async session({ session, user, token }) {
-//   return {
-//     ...session,
-//     user: {
-//       id: token?.id,
-//       email: token?.email,
-//       role: token?.role,
-//       name: token?.name
-//     },
-//   };
-// },

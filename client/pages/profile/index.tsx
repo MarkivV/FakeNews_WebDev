@@ -11,6 +11,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { getSession, signOut, useSession } from "next-auth/react";
 import Image from "next/image"
+import imageB from "../../assets/Brazhkovich2.svg";
+import Head from "next/head";
 
 type Details = {
   news: News[];
@@ -22,6 +24,13 @@ const Profile: FC<Details> = ({ news, user }) => {
   const { data: session } = useSession();
   return (
     <div className={styles.wrap}>
+      <Head>
+        <title>Бражкович | Профіль</title>
+        <meta property="og:url" content={`https://brazhkovich.vercel.app/profile`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`Бражкович | Профіль`} />
+        <meta property="og:image" content={imageB} />
+      </Head>
       <div className={styles.leftSide}>
         <div className={styles.name}>
           <h2>{user?.name}</h2>
@@ -145,8 +154,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
 }: any) => {
   const session = await getSession({ req });
-  // console.log(params);
-  console.log(req.params?.page);
 
   if (!session) {
     return {

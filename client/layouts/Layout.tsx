@@ -12,7 +12,7 @@ const MainLayouts: FC<Layout> = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>БражковичМедіа</title>
+        <title>Бражкович</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
