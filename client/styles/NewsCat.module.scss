@@ -38,7 +38,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     .normal_card {
-      width: 32%;
+      width: 23%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -53,7 +53,7 @@
           img {
             width: 100%;
             object-fit: cover;
-            height: 520px;
+            height: 420px;
             filter: brightness(50%);
           }
         }
@@ -92,7 +92,7 @@
         img {
           width: 100%;
           object-fit: cover;
-          height: 420px;
+          height: 300px;
         }
         .up_desc {
           display: none;
@@ -103,6 +103,9 @@
             &:hover {
               text-decoration: underline;
             }
+          }
+          .titleDesc{
+            font-size: 20px;
           }
         }
       }
@@ -121,6 +124,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    margin-bottom: 30px;
     button {
       cursor: pointer;
       height: 45px;

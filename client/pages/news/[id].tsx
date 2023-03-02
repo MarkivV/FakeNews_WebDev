@@ -16,25 +16,20 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import DOMPurify from "isomorphic-dompurify";
+import Head from "next/head";
 type Details = {
   mainPost: News;
   posts: News[];
   name: string;
   comments: Comment[];
 };
-
-export type ParentId = {
-  parId: string | null;
-}
 const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
   const { data: session, status } = useSession();
   const [commentsList, setCommentsList] = useState(comments);
   const [comment, setComment] = useState("");
   const [reply, setReply] = useState("")
-  // const [parentId, setParentId] = useState(null);
   const [postId] = useState(mainPost?._id);
   const [alertList, setAlertList] = useState<toastProps[]>([]);
-  console.log(commentsList);
 
   let toastProp = null;
   let formattedText =
@@ -45,16 +40,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
   useEffect(() => {
     setCommentsList(comments);
   }, [comments]);
-
-  // const handleReply = (comm: string, parId: string, e: InputEvent) => {
-  //   setComment(comm)
-  //   setParentId(parId)
-  //   handleSubmitComment(e)
-  // }
-
   const commentDelete = async (commId: string, e: any) => {
-    console.log(commId, "Deleted");
-
     e.preventDefault();
     if (commId) {
       const res = await axios.delete(
@@ -85,8 +71,6 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
 
   const handleSubmitComment = async (e: any, parentId: any) => {
     e.preventDefault();
-    console.log(process.env.MONGO_URL);
-    
     if (comment || reply) {
       await axios
         .post<Comment, Comment>(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/comments`, {
@@ -112,15 +96,22 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
   };
 
   const canReply = () => {
-    if (status === "loading" || status === "unauthenticated") {
-      return false;
-    } else {
-      return true;
-    }
+    return !(status === "loading" || status === "unauthenticated");
   };
 
   return (
     <div className={styles.cardDetails_wrap}>
+      <Head>
+        <title>Бражкович | {mainPost?.title}</title>
+        <meta property="og:url" content={`https://brazhkovich.vercel.app/news/${mainPost?._id}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={mainPost?.title} />
+        <meta
+            property="og:description"
+            content={mainPost?.description}
+        />
+        <meta property="og:image" content={mainPost?.image} />
+      </Head>
       <div className={styles.wrapperMain}>
         <div className={styles.cardDetails_title}>
           <h1>{mainPost?.title}</h1>

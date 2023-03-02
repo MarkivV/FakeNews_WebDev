@@ -1,9 +1,19 @@
 import Link from "next/link";
 import styles from "./../../styles/About.module.scss";
+import imageB from "../../assets/Brazhkovich2.svg";
+import Head from "next/head";
+import React from "react";
 
 const About = () => {
   return (
     <div className={styles.wrap}>
+      <Head>
+        <title>Бражкович | Про нас </title>
+        <meta property="og:url" content={`https://brazhkovich.vercel.app/about`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`Бражкович | Про нас`} />
+        <meta property="og:image" content={imageB} />
+      </Head>
       <div className={styles.about}>
         <div className={styles.title}>
           <h2>Про нас</h2>

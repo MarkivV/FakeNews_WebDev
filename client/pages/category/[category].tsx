@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import styles from "../../styles/NewsCat.module.scss";
@@ -8,6 +8,8 @@ import moment from "moment";
 import "moment/locale/uk";
 import { newsTranslate } from "../../utils/utilities";
 import Image from "next/image"
+import Head from "next/head";
+import imageB from "../../assets/Brazhkovich2.svg";
 type NewsCat = {
   news: News[];
   category: string;
@@ -16,8 +18,6 @@ export const list = [
   "Війна",
   "Політика",
   "Наука та Технології",
-  "Шоу-бізнес",
-  "Україна",
   "Світ",
   "Економіка",
 ];
@@ -25,8 +25,6 @@ export const listEng = [
   "war",
   "politic",
   "science",
-  "show-business",
-  "Ukraine",
   "World",
   "economy",
 ];
@@ -34,12 +32,6 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
   const [selectedCateg, setSelectedCateg] = useState(category);
   const [postsList, setPostsList] = useState<News[]>(news);
   const [page, setPage] = useState(1);
-  
-  // useEffect(() => {
-  //   setPostsList(news)
-  // }, [news])
-  
-
   const handleClick = async (categ: string) => {
     setSelectedCateg(categ);
     const getNextPosts = await axios.get(
@@ -54,6 +46,13 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
   };
   return (
     <div className={styles.wrap}>
+        <Head>
+            <title>Бражкович | {newsTranslate(category)}</title>
+            <meta property="og:url" content={`https://brazhkovich.vercel.app/category/${category}`} />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={`Бражкович | ${newsTranslate(category)}`} />
+            <meta property="og:image" content={imageB} />
+        </Head>
       <nav className={styles.categories}>
         {list.map((i: string, index) => (
           <Link href={"/category/" + listEng[index]} key={index}>

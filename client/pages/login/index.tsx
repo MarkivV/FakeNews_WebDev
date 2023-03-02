@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import styles from "../../styles/Login.module.scss";
 import LayoutAuth from "../../layouts/LayoutAuth";
 import Link from "next/link";
@@ -8,6 +8,8 @@ import git from "./../../public/asset/github.svg"
 import {signIn} from "next-auth/react"
 import {useRouter} from "next/router";
 import Alerts from "../../components/Alerts";
+import imageB from "../../assets/Brazhkovich2.svg";
+import Head from "next/head";
 
 export type toastProps = {
     id: number,
@@ -74,6 +76,13 @@ const Login = () => {
     return (
         <LayoutAuth>
             <div className={styles.wrap}>
+                <Head>
+                    <title>Бражкович | Авторизація</title>
+                    <meta property="og:url" content={`https://brazhkovich.vercel.app/login`} />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content={`Бражкович | Авторизація`} />
+                    <meta property="og:image" content={imageB} />
+                </Head>
                 <div className={styles.title}>
                     <h2>Авторизція</h2>
                     <p>Ввійдіть для того щоб використовувати всі можливості нашого сайту</p>

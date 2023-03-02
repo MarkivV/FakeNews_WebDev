@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./../../styles/Suggest.module.scss";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -6,6 +6,9 @@ import { list, listEng } from "../category/[category]";
 import { toastProps } from "../login";
 import Alerts from "../../components/Alerts";
 import Link from "next/link";
+import Head from "next/head";
+import {newsTranslate} from "../../utils/utilities";
+import imageB from "../../assets/Brazhkovich2.svg";
 export function convertToBase64(file: any) {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
@@ -38,7 +41,6 @@ const Suggest = () => {
     e.preventDefault();
     if (image) {
       const formData = new FormData();
-      // const FileName = `${Math.random().toString(26).substring(2)}-${image.name}`
       formData.append("file", image);
       formData.append("name", image.name);
 
@@ -92,6 +94,13 @@ const Suggest = () => {
   // @ts-ignore
   return (
     <div className={styles.wrap}>
+      <Head>
+        <title>Бражкович | Запропонувати</title>
+        <meta property="og:url" content={`https://brazhkovich.vercel.app/suggest`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`Бражкович | Запропонувати новину`} />
+        <meta property="og:image" content={imageB} />
+      </Head>
       <div className={styles.left_block}>
         <input
           onChange={(e) => setTitle(e.target.value)}

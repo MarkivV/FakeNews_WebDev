@@ -3,8 +3,8 @@ import { useState } from "react";
 import styles from "./../styles/LayoutAdmin.module.scss";
 
 const LayoutAdmin = ({children}: any) => {
-  const categories = ["posts", "users", "newpost"];
-  const categoriesUkr = ["Головна", "Користувачі", "Новий пост"];
+  const categories = ["posts", "users"];
+  const categoriesUkr = ["Головна", "Користувачі"];
   const [selectedButton, setSelectedButton] = useState(0);
 
   const handleClick = (id: any) => {

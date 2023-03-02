@@ -1,14 +1,14 @@
 import styles from "../styles/Home.module.scss";
 import MainCard from "../components/MainCard";
-// import LastNews from "../components/LastNews";
-// import NewsBlock from "../components/NewsBlock";
+import imageB from "./../assets/Brazhkovich2.svg"
 import NormalCard from "../components/NormalCard";
 import { News } from "../types/types";
 import { GetServerSideProps } from "next";
 import axios from "axios";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { listEng } from "./category/[category]";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 
 const LastNews = dynamic(() => import("../components/LastNews"), { ssr: false });
 const NewsBlock = dynamic(() => import("../components/NewsBlock"), { ssr: false });
@@ -17,37 +17,29 @@ type Props = {
   topThreeRatedPosts: News[];
   postsByCategory: News[];
 };
-// {lastFivePosts, topThreeRatedPosts, postsByCategory}: Props
 export default function Home({lastFivePosts, topThreeRatedPosts, postsByCategory}: Props) {
-  // console.log(postsByCategory)
-  // const [lastFivePosts, setLastFivePosts] = useState<News[]>();
-  // const [topThreeRatedPosts, setTopThreeRatedPosts] = useState<News[]>();
-  // const [postsByCategory, setPostsByCategory] = useState<News[]>();
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   Promise.all([
-  //     fetchLastFivePosts(),
-  //     fetchTopThreeRatedPosts(),
-  //     fetchPostsByCategory(),
-  //   ]).then(([lastFivePosts, topThreeRatedPosts, postsByCategory]) => {
-  //     setLastFivePosts(lastFivePosts);
-  //     setTopThreeRatedPosts(topThreeRatedPosts);
-  //     setPostsByCategory(postsByCategory);
-  //     setLoading(false);
-  //   });
-  // }, []);
 
   if (!lastFivePosts && !topThreeRatedPosts) {
-    return <div>Ведутся технічні роботи</div>;
+    return(
+        <div className={styles.noDataPlaceholder}>
+          <div>
+            Сайт тимчасово не працює
+          </div>
+        </div>
+    )
   }
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
+
   // @ts-ignore
   // @ts-ignore
   return (
     <div className={styles.wrap}>
+        <Head>
+            <title>Бражкович</title>
+            <meta property="og:url" content={`https://brazhkovich.vercel.app`} />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content={"Новини які приголомшують"} />
+            <meta property="og:image" content={imageB} />
+        </Head>
       <div className={styles.upper_block}>
         <div className={styles.leftBlock}>
           <NormalCard news={lastFivePosts[1]} />

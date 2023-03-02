@@ -13,15 +13,6 @@ const MainCard = ({ news }: NewsProp) => {
     <div className={styles.wrap}>
       <figure className={styles.imgDiv}>
         <Link href={"/news/" + news?._id}>
-          {/* <img
-            src={news?.image}
-            alt={news?.title}
-            width={1200}
-            height={960}
-            decoding={"async"}
-            loading={"eager"}
-            itemProp={"image"}
-          /> */}
           <Image
           src={news?.image || plainColor}
           alt={news?.title}
