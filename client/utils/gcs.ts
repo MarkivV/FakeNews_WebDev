@@ -1,8 +1,9 @@
 import { Storage } from "@google-cloud/storage";
+import path from "path";
 
 const storage = new Storage({
     projectId: "kursach-371317",
-    keyFilename: "kursach-371317-43cb9cd5d0c4.json",
+    keyFilename: path.resolve("kursach-371317-43cb9cd5d0c4.json"),
 });
 
 const bucket = storage.bucket(process.env.GCS_BUCKET as string);
