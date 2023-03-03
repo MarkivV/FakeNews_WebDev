@@ -4,7 +4,7 @@ export type Layout = {
 
 export type News = {
     _id: string,
-    url?: string,
+    url: string,
     title: string,
     description: string,
     creator: string,

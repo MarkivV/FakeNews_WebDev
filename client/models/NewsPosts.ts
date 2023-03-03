@@ -1,4 +1,4 @@
-import mongoose, { Types } from "mongoose";
+import mongoose from "mongoose";
 
 const NewsPostsSchema = new mongoose.Schema(
   {
@@ -12,7 +12,8 @@ const NewsPostsSchema = new mongoose.Schema(
     },
     url: {
       type: String,
-      required: false,
+      required: true,
+
     },
     creator: {
       type: String,

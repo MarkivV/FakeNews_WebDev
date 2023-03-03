@@ -12,11 +12,12 @@ import Alerts from "../../components/Alerts";
 import { useSession } from "next-auth/react";
 import CommentsList from "../../components/CommentsList";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import DOMPurify from "isomorphic-dompurify";
 import Head from "next/head";
+import {TelegramShareButton, TwitterShareButton, FacebookShareButton} from "next-share";
+
 type Details = {
   mainPost: News;
   posts: News[];
@@ -28,7 +29,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
   const [commentsList, setCommentsList] = useState(comments);
   const [comment, setComment] = useState("");
   const [reply, setReply] = useState("")
-  const [postId] = useState(mainPost?._id);
+  const [postId] = useState(mainPost?.url);
   const [alertList, setAlertList] = useState<toastProps[]>([]);
 
   let toastProp = null;
@@ -103,14 +104,19 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
     <div className={styles.cardDetails_wrap}>
       <Head>
         <title>Бражкович | {mainPost?.title}</title>
-        <meta property="og:url" content={`https://brazhkovich.vercel.app/news/${mainPost?._id}`} />
+        <meta property="og:url" content={`https://brazhkovich.vercel.app/news/${mainPost?.url}`} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={mainPost?.title} />
+        <meta property="og:site_name" content="Бражкович" />
         <meta
             property="og:description"
             content={mainPost?.description}
         />
         <meta property="og:image" content={mainPost?.image} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
+
       </Head>
       <div className={styles.wrapperMain}>
         <div className={styles.cardDetails_title}>
@@ -147,10 +153,21 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
               </h3>
               <div className={styles.otherInfoDiv}>
                 <h2>Поширити:</h2>
-                <TelegramIcon style={{ color: "#0088CC", cursor: "pointer" }} />
-                <InstagramIcon style={{ cursor: "pointer" }} />
-                <FacebookIcon style={{ color: "#4267B2", cursor: "pointer" }} />
-                <TwitterIcon style={{ color: "#1DA1F2", cursor: "pointer" }} />
+                <TelegramShareButton
+                    url={'https://brazhkovich.vercel.app/news/'+ mainPost?.url}
+                >
+                  <TelegramIcon style={{ color: "#0088CC", cursor: "pointer" }} />
+                </TelegramShareButton>
+                <FacebookShareButton
+                    url={'https://brazhkovich.vercel.app/news/'+ mainPost?.url}
+                >
+                  <FacebookIcon style={{ color: "#4267B2", cursor: "pointer" }} />
+                </FacebookShareButton>
+                <TwitterShareButton
+                    url={'https://brazhkovich.vercel.app/news/'+ mainPost?.url}
+                >
+                  <TwitterIcon style={{ color: "#1DA1F2", cursor: "pointer" }} />
+                </TwitterShareButton>
               </div>
             </div>
             <div className={styles.comments}>
@@ -196,12 +213,12 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
         </div>
         <div className={styles.cards}>
           {posts
-            .filter((post) => post._id !== mainPost?._id)
+            .filter((post) => post.url !== mainPost?.url)
             .slice(0, 3)
             .map((post) => (
-              <div className={styles.card} key={post?._id}>
+              <div className={styles.card} key={post?.url}>
                 <div className={styles.upperPart}>
-                  <Link href={"/news/" + post?._id}>
+                  <Link href={"/news/" + post?.url}>
                     <img src={post?.image} alt="" />
                   </Link>
                 </div>
@@ -209,7 +226,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
                   <Link href={`/category/${post?.category}?page=0`}>
                     <h2>{newsTranslate(post?.category)}</h2>
                   </Link>
-                  <Link href={"/news/" + post?._id}>
+                  <Link href={"/news/" + post?.url}>
                     <h3>{post?.title}</h3>
                   </Link>
                 </div>
@@ -236,7 +253,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   try{
      res = await axios.get(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/news/${params.id}`);
      comments = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/comments/${res.data.post._id}`
+      `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/comments/${res.data.post.url}`
     );
   }catch(err){
     console.log(err);

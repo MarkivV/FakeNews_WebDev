@@ -81,7 +81,7 @@ const Profile: FC<Details> = ({ news, user }) => {
       </div>
       <div className={styles.rightSide}>
         {postsList?.map((item: News) => (
-          <div key={item?._id} className={styles.card}>
+          <div key={item?.url} className={styles.card}>
             <div className={styles.image}>
               <div className={styles.cardImage}>
                 <Image

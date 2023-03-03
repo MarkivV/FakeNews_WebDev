@@ -1,4 +1,4 @@
-
+import slugify from "slugify";
 export const newsTranslate = (cat: string) =>{
     const list = ['Війна', 'Політика', 'Наука та Технології', "Світ", "Технології", "Економіка"]
 
@@ -16,4 +16,12 @@ export const newsTranslate = (cat: string) =>{
         default:
             break;
     }
+}
+
+export function generateSlug(title: string) {
+    return slugify(title, {
+        lower: true,
+        locale: 'uk',
+        remove: /[*+~.()'"!:@«»ь]/g,
+    });
 }

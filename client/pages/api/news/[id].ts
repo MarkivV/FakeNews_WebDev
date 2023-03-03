@@ -13,7 +13,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     switch (method) {
         case "GET":
             try {
-                const post = await NewsPosts.findById(id)
+                const post = await NewsPosts.findOne({url: id})
                 if(post){
                     const creator = post.creator;
                     const posts = await NewsPosts.find({ creator: { $in: [creator] } }).limit(3);
