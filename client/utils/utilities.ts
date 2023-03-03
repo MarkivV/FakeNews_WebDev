@@ -22,6 +22,6 @@ export function generateSlug(title: string) {
     return slugify(title, {
         lower: true,
         locale: 'uk',
-        remove: /[*+~.()'"!:@«»]/g,
+        remove: /[*+~.()'"!:@«»ь]/g,
     });
 }

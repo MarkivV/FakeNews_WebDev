@@ -71,15 +71,14 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
       </div>
       <div className={styles.mainBlock}>
         {postsList.map((i: News) => (
-          <div key={i._id} className={styles.normal_card}>
+          <div key={i.url} className={styles.normal_card}>
             <div className={styles.normal_card_img}>
-              <Link href={"/news/" + i._id}>
+              <Link href={"/news/" + i.url}>
                   <Image
                       src={i?.image}
                       alt={i?.title}
                       width={400} height={300}
                   />
-                {/*<img src={i?.image} alt="" />*/}
               </Link>
               <div className={styles.desc}>
                 <div className={styles.up_desc}>
@@ -88,7 +87,7 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
                   </Link>
                   <h6>| {moment(i.createdAt).format("LLL")}</h6>
                 </div>
-                <Link href={"/news/" + i._id}>
+                <Link href={"/news/" + i.url}>
                   <h2 className={styles.titleDesc}>
                     {i.title?.length > 150
                       ? `${i.title?.substring(0, 90)}...`

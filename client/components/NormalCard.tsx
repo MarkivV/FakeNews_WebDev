@@ -21,10 +21,9 @@ const NormalCard: FC<NormalCardType> = ({news}) => {
                 width={400} height={300}
                 loading={"lazy"}
                 />
-                {/* <img src={news?.image} alt={news?.title} width={1200} height={960} decoding={"async"} loading={"eager"} itemProp={"image"}  /> */}
             </figure>
             <div className={styles.normal_card_desc}>
-                <Link href={'/news/'+news?._id}>
+                <Link href={'/news/'+news?.url}>
                     <h3>{news?.title?.length > 90 ? `${news?.title?.substring(0, 90)}...` : news?.title}</h3>
                     <h4>{moment(news?.createdAt).format("LLL")}</h4>
                 </Link>

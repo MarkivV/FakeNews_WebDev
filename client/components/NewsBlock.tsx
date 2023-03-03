@@ -25,9 +25,9 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
           .filter((cat) => cat.category === category)
           .slice(0, 10)
           .map((i) => (
-            <div key={i._id} className={styles.normal_card}>
+            <div key={i.url} className={styles.normal_card}>
               <div className={styles.normal_card_img}>
-                <Link href={"/news/" + i._id}>
+                <Link href={"/news/" + i.url}>
                   <Image
                   src={i?.image || plainColor}
                   alt={i?.title}
@@ -44,7 +44,7 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
                     </Link>
                   </div>
                   <div className={styles.titleDiv}>
-                  <Link href={"/news/" + i._id}>
+                  <Link href={"/news/" + i.url}>
                     <h2>{i.title}</h2>
                   </Link>
                   </div>
