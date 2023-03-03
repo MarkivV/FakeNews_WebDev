@@ -7,7 +7,7 @@ import { toastProps } from "../login";
 import Alerts from "../../components/Alerts";
 import Link from "next/link";
 import Head from "next/head";
-import {newsTranslate} from "../../utils/utilities";
+import {generateSlug, newsTranslate} from "../../utils/utilities";
 import imageB from "../../assets/Brazhkovich2.svg";
 export function convertToBase64(file: any) {
   return new Promise((resolve, reject) => {
@@ -62,6 +62,7 @@ const Suggest = () => {
               image: imageUrl.data,
               category: listEng[selectedButton],
               creator: session?.user?.id,
+              url: generateSlug(title)
             });
             console.log(res);
             setTitle("");
