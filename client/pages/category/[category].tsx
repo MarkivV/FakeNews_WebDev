@@ -11,8 +11,10 @@ import Image from "next/image"
 import Head from "next/head";
 import imageB from "../../assets/Brazhkovich2.svg";
 type NewsCat = {
-  news: News[];
+    newsGetCategory: News[];
   category: string;
+
+    lastFivePosts: News[];
 };
 export const list = [
   "Війна",
@@ -28,9 +30,10 @@ export const listEng = [
   "World",
   "economy",
 ];
-const NewsComponent: FC<NewsCat> = ({ news, category }) => {
+const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }) => {
   const [selectedCateg, setSelectedCateg] = useState(category);
-  const [postsList, setPostsList] = useState<News[]>(news);
+  const [postsList, setPostsList] = useState<News[]>(newsGetCategory);
+  const [lastPostsList, setLastPostsList] = useState<News[]>(lastFivePosts);
   const [page, setPage] = useState(1);
   const handleClick = async (categ: string) => {
     setSelectedCateg(categ);
@@ -42,7 +45,7 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
         },
       }
     );
-    setPostsList(getNextPosts.data);
+    setPostsList(getNextPosts.data.newsGetCategory);
   };
   return (
     <div className={styles.wrap}>
@@ -69,6 +72,8 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
       <div className={styles.catTitle}>
         <h1>{newsTranslate(selectedCateg)}</h1>
       </div>
+        <div className={styles.categoryBlocks}>
+
       <div className={styles.mainBlock}>
         {postsList.map((i: News) => (
           <div key={i.url} className={styles.normal_card}>
@@ -102,27 +107,62 @@ const NewsComponent: FC<NewsCat> = ({ news, category }) => {
           </div>
         ))}
 
+          <div className={styles.loadMoreButton}>
+              <button
+                  onClick={async () => {
+                      setPage(page + 1);
+                      console.log(page);
+
+                      const getNextPosts = await axios.get(
+                          `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/category/` + category,
+                          {
+                              params: {
+                                  page: page,
+                              },
+                          }
+                      );
+
+                      setPostsList([...postsList, ...getNextPosts.data.newsGetCategory]);
+                  }}
+              >
+                  Завантажити ще
+              </button>
+          </div>
       </div>
-      <div className={styles.loadMoreButton}>
-          <button
-            onClick={async () => {
-              setPage(page + 1);
-              console.log(page);
-
-              const getNextPosts = await axios.get(
-                `${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/category/` + category,
-                {
-                  params: {
-                    page: page,
-                  },
-                }
-              );
-
-              setPostsList([...postsList, ...getNextPosts.data]);
-            }}
-          >
-            Завантажити ще
-          </button>
+        <div className={styles.right_block}>
+            <h1>Останні новини</h1>
+            {lastPostsList.map((i: News) => (
+                <div key={i.url} className={styles.normal_card}>
+                    <div className={styles.normal_card_img}>
+                        <Link href={"/news/" + i.url}>
+                            <Image
+                                src={i?.image}
+                                alt={i?.title}
+                                width={400} height={300}
+                            />
+                        </Link>
+                        <div className={styles.desc}>
+                            <div className={styles.up_desc}>
+                                <Link href={"/category/" + category}>
+                                    <h6>{newsTranslate(i.category)}</h6>
+                                </Link>
+                                <h6>| {moment(i.createdAt).format("LLL")}</h6>
+                            </div>
+                            <Link href={"/news/" + i.url}>
+                                <h2 className={styles.titleDesc}>
+                                    {i.title?.length > 150
+                                        ? `${i.title?.substring(0, 90)}...`
+                                        : i.title}
+                                </h2>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className={styles.normal_card_desc}>
+                        <h4>{moment(i.createdAt).format("LLL")}</h4>
+                    </div>
+                </div>
+            ))}
+        </div>
         </div>
     </div>
   );
@@ -146,8 +186,9 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
   return {
     props: {
-      news: res?.data,
+      newsGetCategory: res?.data.newsGetCategory,
       category: params?.category,
+      lastFivePosts: res?.data.lastFivePosts
     },
   };
 };
