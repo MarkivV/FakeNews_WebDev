@@ -17,6 +17,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import DOMPurify from "isomorphic-dompurify";
 import Head from "next/head";
 import {TelegramShareButton, TwitterShareButton, FacebookShareButton} from "next-share";
+import Image from "next/image"
 
 type Details = {
   mainPost: News;
@@ -134,7 +135,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
           </div>
         </div>
         <div className={styles.cardDetails_image}>
-          <img src={mainPost?.image} alt="" />
+          <Image src={mainPost?.image} alt="" height={600}/>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.cardDetails_leftBlock}>
@@ -219,7 +220,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
               <div className={styles.card} key={post?.url}>
                 <div className={styles.upperPart}>
                   <Link href={"/news/" + post?.url}>
-                    <img src={post?.image} alt="" />
+                    <Image src={post?.image} alt={post?.title} height={150}/>
                   </Link>
                 </div>
                 <div className={styles.bottomPart}>

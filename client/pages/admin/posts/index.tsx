@@ -7,6 +7,7 @@ import { toastProps } from "../../login";
 import Alerts from "../../../components/Alerts";
 import Link from "next/link";
 import LayoutAdmin from "../../../layouts/LayoutAdmin";
+import Image from "next/image"
 
 type AdminDashboard = {
   posts: News[];
@@ -121,7 +122,7 @@ const Admin: FC<AdminDashboard> = ({ posts }) => {
             <div className={styles.card} key={post?._id}>
               <div className={styles.upperBlock}>
                 <div className={styles.image}>
-                  <img src={post?.image} alt="" />
+                  <Image src={post?.image} alt={post?.title} width={300} height={200}/>
                 </div>
               </div>
               <div className={styles.title}>

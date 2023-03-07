@@ -31,6 +31,7 @@
   }
   .catTitle {
     margin-bottom: 5px;
+    padding-left: 1%;
   }
 
   .categoryBlocks {
@@ -38,24 +39,25 @@
     flex-direction: row;
     gap: 25px;
     .mainBlock {
-      gap: 25px;
       width: 75%;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
 
       .normal_card {
-        width: 31.5%;
+        padding-bottom: 1%;
+        width: 32%;
+        padding-left: 1%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        //justify-content: space-between;
         border-bottom: 1px solid #ccc;
         border-bottom-style: dashed;
 
         &:first-of-type {
           border: 0;
           position: relative;
-          width: 100%;
+          width: 98%;
 
           .normal_card_img {
             img {

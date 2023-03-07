@@ -27,13 +27,13 @@ export const listEng = [
   "war",
   "politic",
   "science",
-  "World",
+  "world",
   "economy",
 ];
 const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }) => {
   const [selectedCateg, setSelectedCateg] = useState(category);
   const [postsList, setPostsList] = useState<News[]>(newsGetCategory);
-  const [lastPostsList, setLastPostsList] = useState<News[]>(lastFivePosts);
+  const [lastPostsList] = useState<News[]>(lastFivePosts);
   const [page, setPage] = useState(1);
   const handleClick = async (categ: string) => {
     setSelectedCateg(categ);

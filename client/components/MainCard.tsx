@@ -17,7 +17,7 @@ const MainCard = ({ news }: NewsProp) => {
           src={news?.image || plainColor}
           alt={news?.title}
           width={1000}
-          height={900}
+          height={500}
           />
         </Link>
       </figure>

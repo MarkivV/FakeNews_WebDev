@@ -17,10 +17,12 @@
 }
 .second_part {
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   flex-wrap: wrap;
+  //gap: 20px;
   .normal_card {
-    width: 23%;
+    width: 24%;
+    padding-left: 1%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,7 +32,7 @@
       border: 0;
       position: relative;
 
-      width: 74.3%;
+      width: 74%;
       .normal_card_img {
         margin-top: 20px;
         img {
@@ -74,7 +76,8 @@
     &:nth-child(2) {
       border: 0;
       position: relative;
-      width: 23%;
+      width: 24%;
+
       .normal_card_img {
         margin-top: 20px;
         img {
@@ -97,7 +100,6 @@
 
             a{
               h2 {
-                background-color: none;
                 padding-left: 20px;
                 padding-right: 20px;
                 font-size: 20px;
