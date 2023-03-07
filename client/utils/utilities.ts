@@ -1,6 +1,6 @@
 import slugify from "slugify";
 export const newsTranslate = (cat: string) =>{
-    const list = ['Війна', 'Політика', 'Наука та Технології', "Світ", "Технології", "Економіка"]
+    const list = ['Війна', 'Політика', 'Наука та Технології', "Світ", "Економіка"]
 
     switch (cat) {
         case "war":
@@ -9,10 +9,10 @@ export const newsTranslate = (cat: string) =>{
             return list[1];
         case "science":
             return list[2];
-        case "World":
-            return list[5];
+        case "world":
+            return list[3];
         case "economy":
-            return list[7]
+            return list[4]
         default:
             break;
     }

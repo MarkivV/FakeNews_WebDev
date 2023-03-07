@@ -38,47 +38,47 @@ const Profile: FC<Details> = ({ news, user }) => {
         </div>
         <button onClick={() => signOut()}>Вийти</button>
       </div>
-      <div className={styles.socMedia}>
-        <h2>Ваші соцальні мережі: У розробці</h2>
-        <div className={styles.socDivs}>
-          <div className={styles.socIn}>
-            <div className={styles.socDivIn}>
-              <h2>Telegram</h2>
-              <TelegramIcon style={{ color: "#0088CC", cursor: "pointer" }} />
-            </div>
-            <button className={styles.socInButton}>
-              <h3>Додати посилання</h3>
-            </button>
-          </div>
-          <div className={styles.socIn}>
-            <div className={styles.socDivIn}>
-              <h2>Instagram</h2>
-              <InstagramIcon style={{ cursor: "pointer" }} />
-            </div>
-            <button className={styles.socInButton}>
-              <h3>Додати посилання</h3>
-            </button>
-          </div>
-          <div className={styles.socIn}>
-            <div className={styles.socDivIn}>
-              <h2>Twitter</h2>
-              <TwitterIcon style={{ color: "#1DA1F2", cursor: "pointer" }} />
-            </div>
-            <button className={styles.socInButton}>
-              <h3>Додати посилання</h3>
-            </button>
-          </div>
-          <div className={styles.socIn}>
-            <div className={styles.socDivIn}>
-              <h2>Facebook</h2>
-              <FacebookIcon style={{ color: "#4267B2", cursor: "pointer" }} />
-            </div>
-            <button className={styles.socInButton}>
-              <h3>Додати посилання</h3>
-            </button>
-          </div>
-        </div>
-      </div>
+      {/*<div className={styles.socMedia}>*/}
+      {/*  <h2>Ваші соцальні мережі: У розробці</h2>*/}
+      {/*  <div className={styles.socDivs}>*/}
+      {/*    <div className={styles.socIn}>*/}
+      {/*      <div className={styles.socDivIn}>*/}
+      {/*        <h2>Telegram</h2>*/}
+      {/*        <TelegramIcon style={{ color: "#0088CC", cursor: "pointer" }} />*/}
+      {/*      </div>*/}
+      {/*      <button className={styles.socInButton}>*/}
+      {/*        <h3>Додати посилання</h3>*/}
+      {/*      </button>*/}
+      {/*    </div>*/}
+      {/*    <div className={styles.socIn}>*/}
+      {/*      <div className={styles.socDivIn}>*/}
+      {/*        <h2>Instagram</h2>*/}
+      {/*        <InstagramIcon style={{ cursor: "pointer" }} />*/}
+      {/*      </div>*/}
+      {/*      <button className={styles.socInButton}>*/}
+      {/*        <h3>Додати посилання</h3>*/}
+      {/*      </button>*/}
+      {/*    </div>*/}
+      {/*    <div className={styles.socIn}>*/}
+      {/*      <div className={styles.socDivIn}>*/}
+      {/*        <h2>Twitter</h2>*/}
+      {/*        <TwitterIcon style={{ color: "#1DA1F2", cursor: "pointer" }} />*/}
+      {/*      </div>*/}
+      {/*      <button className={styles.socInButton}>*/}
+      {/*        <h3>Додати посилання</h3>*/}
+      {/*      </button>*/}
+      {/*    </div>*/}
+      {/*    <div className={styles.socIn}>*/}
+      {/*      <div className={styles.socDivIn}>*/}
+      {/*        <h2>Facebook</h2>*/}
+      {/*        <FacebookIcon style={{ color: "#4267B2", cursor: "pointer" }} />*/}
+      {/*      </div>*/}
+      {/*      <button className={styles.socInButton}>*/}
+      {/*        <h3>Додати посилання</h3>*/}
+      {/*      </button>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
       <div className={styles.rightSide}>
         {postsList?.map((item: News) => (
           <div key={item?.url} className={styles.card}>

@@ -31,8 +31,8 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
                   <Image
                   src={i?.image || plainColor}
                   alt={i?.title}
-                  width={1200}
-                  height={960}
+                  width={700}
+                  height={200}
                   loading={"lazy"}
                   />
                   {/* <img  alt="" /> */}

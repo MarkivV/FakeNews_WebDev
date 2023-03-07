@@ -64,24 +64,52 @@ const Footer = () => {
       </div>
       <div className={styles.categories}>
         <ul className={styles.catDiv}>
-          <li>
-            <h3><Link href={"/category/war"}>Новини</Link></h3>
-          </li>
-          <li>
-            <h3><Link href={"/"}>Головна</Link></h3>
-          </li>
-          <li>
-            <h3><Link href={"/"}>Важливо</Link></h3>
-          </li>
-          <li>
-            <h3><Link href={"/suggest"}>Запропонувати</Link></h3>
-          </li>
-          <li>
-            <h3><Link href={"/profile"}>Профіль</Link></h3>
-          </li>
-          <li>
-            <h3 onClick={()=>signOut()}>Вийти</h3>
-          </li>
+          <ul className={styles.catDivUl}>
+            <li>
+              <h3>Категорії</h3>
+            </li>
+            <li>
+              <h2><Link href={"/"}>Головна</Link></h2>
+            </li>
+            <li>
+              <h2><Link href={"/category/war"}>Новини</Link></h2>
+            </li>
+            <li>
+              <h2><Link href={"/category/politic"}>Політика</Link></h2>
+            </li>
+            <li>
+              <h2><Link href={"/category/science"}>Наука та Технології</Link></h2>
+            </li>
+            <li>
+              <h2><Link href={"/category/world"}>Світ</Link></h2>
+            </li>
+            <li>
+              <h2><Link href={"/category/economy"}>Економіка</Link></h2>
+            </li>
+          </ul>
+          <ul className={styles.catDivUl}>
+            <li><h3>Дії</h3></li>
+            <li><h2><Link href={"/suggest"}>Запропонувати</Link></h2></li>
+            <li><h2><Link href={"/"}>Підтримайте нас</Link></h2></li>
+            <li><h2><Link href={"/profile"}>Профіль</Link></h2></li>
+          </ul>
+          <ul className={styles.catDivUl}>
+            <li>
+              <h3 onClick={()=>signOut()}>Соціальні мережі</h3>
+            </li>
+            <li>
+              <h2><Link href={"/"}>FaceBook</Link></h2>
+            </li>
+            <li>
+              <h2><Link href={"/"}>Twitter</Link></h2>
+            </li>
+            <li>
+              <h2><Link href={"/"}>Instagram</Link></h2>
+            </li>
+            <li>
+              <h2><Link href={"/"}>Telegram</Link></h2>
+            </li>
+          </ul>
         </ul>
       </div>
       <div className={styles.about}>

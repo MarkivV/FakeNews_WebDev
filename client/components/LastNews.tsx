@@ -18,8 +18,8 @@ const LastNews: FC<typeNews> = ({ items }) => {
                 <Image
                   src={i?.image || plainColor}
                   alt={i?.title}
-                  width={1200}
-                  height={960}
+                  width={370}
+                  height={240}
                   loading={"lazy"}
                 />
               </Link>
