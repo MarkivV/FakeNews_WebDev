@@ -31,7 +31,17 @@ const Profile: FC<Details> = ({ news, user }) => {
         <meta property="og:title" content={`Бражкович | Профіль`} />
         <meta property="og:image" content={imageB} />
       </Head>
+        <div className={styles.emailVerify}>
+            {
+                !user?.emailVerified && (
+                    <div>
+                        <h3>Підтвердіть свій Email для того щоб використовувати повний функціонал ресурсу</h3>
+                    </div>
+                )
+            }
+        </div>
       <div className={styles.leftSide}>
+
         <div className={styles.name}>
           <h2>{user?.name}</h2>
           <h3>{user?.email}</h3>

@@ -135,7 +135,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
           </div>
         </div>
         <div className={styles.cardDetails_image}>
-          <Image src={mainPost?.image} alt="" height={600}/>
+          <Image src={mainPost?.image} alt="" width={550} height={600}/>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.cardDetails_leftBlock}>
@@ -220,7 +220,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
               <div className={styles.card} key={post?.url}>
                 <div className={styles.upperPart}>
                   <Link href={"/news/" + post?.url}>
-                    <Image src={post?.image} alt={post?.title} height={150}/>
+                    <Image src={post?.image} alt={post?.title} width={300} height={150}/>
                   </Link>
                 </div>
                 <div className={styles.bottomPart}>
