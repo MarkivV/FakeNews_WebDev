@@ -4,6 +4,8 @@
   margin-top: 20px;
   gap: 20px;
 
+  margin-bottom: 100px;
+
   .wrapperMain {
     width: 70%;
       .cardDetails_title {
@@ -158,70 +160,21 @@
             }
 
             .button {
-              color: black;
-              text-decoration: none;
               cursor: pointer;
-              outline: none;
+              height: 35px;
               border: none;
-              background: transparent;
-              justify-content: center;
-              h3 {
-                height: auto;
-                transition: 0.5s linear;
-                position: relative;
-                display: block;
-                overflow: hidden;
-                padding: 10px;
-                text-align: center;
-                background: transparent;
-                text-transform: uppercase;
-                font-weight: 600;
-                font-size: 14px;
-                &::before {
-                  position: absolute;
-                  content: "";
-                  left: 0;
-                  bottom: 0;
-                  height: 4px;
-                  width: 100%;
-                  border-bottom: 4px solid transparent;
-                  border-left: 4px solid transparent;
-                  box-sizing: border-box;
-                  transform: translateX(100%);
+              background-color: #0a0a0a;
+              width: 20%;
+              color: #0a0a0a;
+              font-size: 14px;
+              text-transform: uppercase;
+              border-radius: 5px;
+              font-weight: 600;
+              h3{
+                color: #fff;
+                &:hover{
+                  text-decoration: underline;
                 }
-        
-                &:after {
-                  position: absolute;
-                  content: "";
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 4px;
-                  border-top: 4px solid transparent;
-                  border-right: 4px solid transparent;
-                  box-sizing: border-box;
-                  transform: translateX(-100%);
-                }
-        
-                &:hover {
-                  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-                }
-                &:hover::before {
-                  border-color: #262626;
-                  height: 100%;
-                  transform: translateX(0);
-                  transition: 0.3s transform linear, 0.3s height linear 0.3s;
-                }
-        
-                &:hover::after {
-                  border-color: #262626;
-                  height: 100%;
-                  transform: translateX(0);
-                  transition: 0.3s transform linear, 0.3s height linear 0.5s;
-                }
-        
-        
-        
               }
             }
           }

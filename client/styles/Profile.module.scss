@@ -2,6 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  .emailVerify{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+  }
   .leftSide {
     display: flex;
     justify-content: space-between;

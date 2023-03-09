@@ -7,20 +7,8 @@ import { toastProps } from "../login";
 import Alerts from "../../components/Alerts";
 import Link from "next/link";
 import Head from "next/head";
-import {generateSlug, newsTranslate} from "../../utils/utilities";
+import {generateSlug} from "../../utils/utilities";
 import imageB from "../../assets/Brazhkovich2.svg";
-export function convertToBase64(file: any) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}
 const Suggest = () => {
   const [title, setTitle] = useState("");
   const [description, setDesc] = useState("");
@@ -138,20 +126,17 @@ const Suggest = () => {
             </button>
           ))}
         </div>
-        {session ? (
-          <button className={styles.button} onClick={(e) => handleSuggest(e)}>
+          <button className={session ? styles.button : styles.buttonDis} disabled={!session} onClick={(e) => handleSuggest(e)}>
             <h3>Відправити</h3>
           </button>
-        ) : (
-          <button
-            className={styles.button}
-            onClick={() => alert("Ви не ввійшли в свій аккаунт")}
-          >
-            <h3>Відправити</h3>
-          </button>
-        )}
+
       </div>
       <div className={styles.right_block}>
+        <span>
+          <strong>
+            Перед тим як пропонувати свою новину зареєструйтесь та підтвердіть свою пошту
+          </strong>
+        </span>
         <span>
           Якщо Ви хочете опублікувати свою сатиричну новину, то перед тим, як це
           зробити, давайте поговоримо про наші правила. Ми хочемо зберегти
@@ -189,7 +174,7 @@ const Suggest = () => {
         </span>
         <span>
           <strong>
-            Ми залишаємо за собою право відхилити будь-яку публікацію, яка не
+            Ми залишаємо за собою право змінити або відхилити будь-яку публікацію, яка не
             відповідає нашим правилам без пояснення причин. Якщо у вас є будь-які запитання, не
             соромтеся звернутися до нас.
           </strong>
