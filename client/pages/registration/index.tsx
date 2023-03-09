@@ -15,12 +15,14 @@ const Registration = () => {
     const [password, setPassword] = useState("");
     const [passwordConf, setPasswordConf] = useState("");
     const [alertList, setAlertList] = useState<toastProps[]>([]);
+    const [buttonDisabled, setButtonDisabled] = useState(false);
     let toastProp = null
     const router = useRouter()
 
     const handleRegister = async (e: any) =>{
         e.preventDefault()
         if(email && username && password){
+            setButtonDisabled(true)
             if(password === passwordConf){
                 await axios.post(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/registration`, {email, name: username, password});
                 setEmail("")
@@ -68,7 +70,7 @@ const Registration = () => {
                     <input onChange={(e)=>setUsername(e.target.value)} value={username} className={styles.titleInput} type="text" placeholder={"Імʼя"}/>
                     <input onChange={(e)=>setPassword(e.target.value)} value={password} className={styles.titleInput} type="password" placeholder={"Пароль"}/>
                     <input onChange={(e)=>setPasswordConf(e.target.value)} value={passwordConf} className={styles.titleInput} type="password" placeholder={"Підтвердіть пароль"}/>
-                    <button className={styles.button} onClick={(e)=>handleRegister(e)}><h2>Зареєструватись</h2></button>
+                    <button className={buttonDisabled ? styles.buttonDis : styles.button } disabled={buttonDisabled} onClick={(e)=>handleRegister(e)}><h2>Зареєструватись</h2></button>
                 </form>
                 <div className={styles.desc}>
                     <p>Вже маєте акаунт?</p>
