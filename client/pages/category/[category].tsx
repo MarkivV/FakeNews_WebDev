@@ -51,7 +51,7 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
     <div className={styles.wrap}>
         <Head>
             <title>Бражкович | {newsTranslate(category)}</title>
-            <meta property="og:url" content={`https://brazhkovich.vercel.app/category/${category}`} />
+            <meta property="og:url" content={`https://brazhkovich.com/category/${category}`} />
             <meta property="og:type" content="website" />
             <meta property="og:title" content={`Бражкович | ${newsTranslate(category)}`} />
             <meta property="og:image" content={imageB} />

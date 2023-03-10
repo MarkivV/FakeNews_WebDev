@@ -26,7 +26,7 @@ const Profile: FC<Details> = ({ news, user }) => {
     <div className={styles.wrap}>
       <Head>
         <title>Бражкович | Профіль</title>
-        <meta property="og:url" content={`https://brazhkovich.vercel.app/profile`} />
+        <meta property="og:url" content={`https://brazhkovich.com/profile`} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`Бражкович | Профіль`} />
         <meta property="og:image" content={imageB} />

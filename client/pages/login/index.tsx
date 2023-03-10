@@ -78,7 +78,7 @@ const Login = () => {
             <div className={styles.wrap}>
                 <Head>
                     <title>Бражкович | Авторизація</title>
-                    <meta property="og:url" content={`https://brazhkovich.vercel.app/login`} />
+                    <meta property="og:url" content={`https://brazhkovich.com/login`} />
                     <meta property="og:type" content="website" />
                     <meta property="og:title" content={`Бражкович | Авторизація`} />
                     <meta property="og:image" content={imageB} />

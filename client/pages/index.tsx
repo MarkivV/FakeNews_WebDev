@@ -35,7 +35,7 @@ export default function Home({lastFivePosts, topThreeRatedPosts, postsByCategory
     <div className={styles.wrap}>
         <Head>
             <title>Бражкович</title>
-            <meta property="og:url" content={`https://brazhkovich.vercel.app`} />
+            <meta property="og:url" content={`https://brazhkovich.com`} />
             <meta property="og:type" content="website" />
             <meta property="og:title" content={"Новини які приголомшують"} />
             <meta property="og:image" content={imageB} />
