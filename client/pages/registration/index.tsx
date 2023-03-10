@@ -56,7 +56,7 @@ const Registration = () => {
             <div className={styles.wrap}>
                 <Head>
                     <title>Бражкович | Реєстрація</title>
-                    <meta property="og:url" content={`https://brazhkovich.vercel.app/registration`} />
+                    <meta property="og:url" content={`https://brazhkovich.com/registration`} />
                     <meta property="og:type" content="website" />
                     <meta property="og:title" content={`Бражкович | Реєстрація`} />
                     <meta property="og:image" content={imageB} />

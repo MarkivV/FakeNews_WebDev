@@ -9,7 +9,7 @@ const About = () => {
     <div className={styles.wrap}>
       <Head>
         <title>Бражкович | Про нас </title>
-        <meta property="og:url" content={`https://brazhkovich.vercel.app/about`} />
+        <meta property="og:url" content={`https://brazhkovich.com/about`} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`Бражкович | Про нас`} />
         <meta property="og:image" content={imageB} />

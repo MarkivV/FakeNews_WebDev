@@ -105,7 +105,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
     <div className={styles.cardDetails_wrap}>
       <Head>
         <title>Бражкович | {mainPost?.title}</title>
-        <meta property="og:url" content={`https://brazhkovich.vercel.app/news/${mainPost?.url}`} />
+        <meta property="og:url" content={`https://brazhkovich.com/news/${mainPost?.url}`} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={mainPost?.title} />
         <meta property="og:site_name" content="Бражкович" />
@@ -155,17 +155,17 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
               <div className={styles.otherInfoDiv}>
                 <h2>Поширити:</h2>
                 <TelegramShareButton
-                    url={'https://brazhkovich.vercel.app/news/'+ mainPost?.url}
+                    url={'https://brazhkovich.com/news/'+ mainPost?.url}
                 >
                   <TelegramIcon style={{ color: "#0088CC", cursor: "pointer" }} />
                 </TelegramShareButton>
                 <FacebookShareButton
-                    url={'https://brazhkovich.vercel.app/news/'+ mainPost?.url}
+                    url={'https://brazhkovich.com/news/'+ mainPost?.url}
                 >
                   <FacebookIcon style={{ color: "#4267B2", cursor: "pointer" }} />
                 </FacebookShareButton>
                 <TwitterShareButton
-                    url={'https://brazhkovich.vercel.app/news/'+ mainPost?.url}
+                    url={'https://brazhkovich.com/news/'+ mainPost?.url}
                 >
                   <TwitterIcon style={{ color: "#1DA1F2", cursor: "pointer" }} />
                 </TwitterShareButton>

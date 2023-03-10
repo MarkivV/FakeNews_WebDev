@@ -85,7 +85,7 @@ const Suggest = () => {
     <div className={styles.wrap}>
       <Head>
         <title>Бражкович | Запропонувати</title>
-        <meta property="og:url" content={`https://brazhkovich.vercel.app/suggest`} />
+        <meta property="og:url" content={`https://brazhkovich.com/suggest`} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`Бражкович | Запропонувати новину`} />
         <meta property="og:image" content={imageB} />
