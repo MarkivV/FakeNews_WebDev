@@ -6,7 +6,7 @@ const LayoutAuth = ({ children }: any) => {
       <div className={styles.bigBlock}>
         <div className={styles.leftBlock}>
           <div className={styles.cardImg}>
-            <Link href={"/"}>
+            <Link href={"/"} prefetch={false}>
               <svg
                 id="Слой_1"
                 data-name="Слой 1"

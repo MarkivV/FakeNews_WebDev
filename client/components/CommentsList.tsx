@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { Comment } from "../types/types";
-import styles from "../styles/CommentsList.module.scss";
 import SingleComment from "./SingleComment";
 
 type CommentsComponent = {

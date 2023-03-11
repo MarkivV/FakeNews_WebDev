@@ -8,7 +8,7 @@ import Alerts from "../../components/Alerts";
 import Link from "next/link";
 import Head from "next/head";
 import {generateSlug} from "../../utils/utilities";
-import imageB from "../../assets/Brazhkovich2.svg";
+import imageB from "../../assets/Brazhkovich.svg";
 const Suggest = () => {
   const [title, setTitle] = useState("");
   const [description, setDesc] = useState("");

@@ -69,45 +69,45 @@ const Footer = () => {
               <h3>Категорії</h3>
             </li>
             <li>
-              <h2><Link href={"/"}>Головна</Link></h2>
+              <h2><Link href={"/"} prefetch={false}>Головна</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/category/war"}>Новини</Link></h2>
+              <h2><Link href={"/category/war"} prefetch={false}>Новини</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/category/politic"}>Політика</Link></h2>
+              <h2><Link href={"/category/politic"} prefetch={false}>Політика</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/category/science"}>Наука та Технології</Link></h2>
+              <h2><Link href={"/category/science"} prefetch={false}>Наука та Технології</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/category/world"}>Світ</Link></h2>
+              <h2><Link href={"/category/world"} prefetch={false}>Світ</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/category/economy"}>Економіка</Link></h2>
+              <h2><Link href={"/category/economy"} prefetch={false}>Економіка</Link></h2>
             </li>
           </ul>
           <ul className={styles.catDivUl}>
             <li><h3>Дії</h3></li>
-            <li><h2><Link href={"/suggest"}>Запропонувати</Link></h2></li>
-            <li><h2><Link href={"/"}>Підтримайте нас</Link></h2></li>
-            <li><h2><Link href={"/profile"}>Профіль</Link></h2></li>
+            <li><h2><Link href={"/suggest"} prefetch={false}>Запропонувати</Link></h2></li>
+            <li><h2><Link href={"/"} prefetch={false}>Підтримайте нас</Link></h2></li>
+            <li><h2><Link href={"/profile"} prefetch={false}>Профіль</Link></h2></li>
           </ul>
           <ul className={styles.catDivUl}>
             <li>
               <h3 onClick={()=>signOut()}>Соціальні мережі</h3>
             </li>
             <li>
-              <h2><Link href={"/"}>FaceBook</Link></h2>
+              <h2><Link href={"/"} prefetch={false}>FaceBook</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/"}>Twitter</Link></h2>
+              <h2><Link href={"/"} prefetch={false}>Twitter</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/"}>Instagram</Link></h2>
+              <h2><Link href={"/"} prefetch={false}>Instagram</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/"}>Telegram</Link></h2>
+              <h2><Link href={"/"} prefetch={false}>Telegram</Link></h2>
             </li>
           </ul>
         </ul>

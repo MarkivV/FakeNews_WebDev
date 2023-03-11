@@ -5,13 +5,10 @@ import { News, User } from "../../types/types";
 import React, { FC, useState } from "react";
 import moment from "moment";
 import "moment/locale/uk";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
+
 import { getSession, signOut, useSession } from "next-auth/react";
 import Image from "next/image"
-import imageB from "../../assets/Brazhkovich2.svg";
+import imageB from "../../assets/Brazhkovich.svg";
 import Head from "next/head";
 
 type Details = {

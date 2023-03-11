@@ -12,7 +12,7 @@ const MainCard = ({ news }: NewsProp) => {
   return (
     <div className={styles.wrap}>
       <figure className={styles.imgDiv}>
-        <Link href={"/news/" + news?.url}>
+        <Link href={"/news/" + news?.url} prefetch={false}>
           <Image
           src={news?.image || plainColor}
           alt={news?.title}
@@ -23,17 +23,17 @@ const MainCard = ({ news }: NewsProp) => {
       </figure>
       <div className={styles.descDiv}>
         <div className={styles.categoryTitle}>
-          <Link href={`/category/${news?.category}?page=0`}>
+          <Link href={`/category/${news?.category}?page=0`} prefetch={false}>
             <h3>{newsTranslate(news?.category)}</h3>
           </Link>
         </div>
         <div className={styles.titleDiv}>
-          <Link href={"/news/" + news?.url}>
+          <Link href={"/news/" + news?.url} prefetch={false}>
             <h2>{news?.title}</h2>
           </Link>
         </div>
         <div className={styles.readMore}>
-          <Link href={"/news/" + news?.url}>
+          <Link href={"/news/" + news?.url} prefetch={false}>
             <h5>Читати далі</h5>
           </Link>
         </div>

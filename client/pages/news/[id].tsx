@@ -219,15 +219,15 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
             .map((post) => (
               <div className={styles.card} key={post?.url}>
                 <div className={styles.upperPart}>
-                  <Link href={"/news/" + post?.url}>
+                  <Link href={"/news/" + post?.url} prefetch={false}>
                     <Image src={post?.image} alt={post?.title} width={300} height={150}/>
                   </Link>
                 </div>
                 <div className={styles.bottomPart}>
-                  <Link href={`/category/${post?.category}?page=0`}>
+                  <Link href={`/category/${post?.category}?page=0`} prefetch={false}>
                     <h2>{newsTranslate(post?.category)}</h2>
                   </Link>
-                  <Link href={"/news/" + post?.url}>
+                  <Link href={"/news/" + post?.url} prefetch={false}>
                     <h3>{post?.title}</h3>
                   </Link>
                 </div>

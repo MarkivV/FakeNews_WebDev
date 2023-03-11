@@ -8,7 +8,7 @@ import git from "./../../public/asset/github.svg"
 import {signIn} from "next-auth/react"
 import {useRouter} from "next/router";
 import Alerts from "../../components/Alerts";
-import imageB from "../../assets/Brazhkovich2.svg";
+import imageB from "../../assets/Brazhkovich.svg";
 import Head from "next/head";
 
 export type toastProps = {

@@ -6,7 +6,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import Alerts from '../../components/Alerts';
 import { toastProps } from '../login';
-import imageB from "../../assets/Brazhkovich2.svg";
+import imageB from "../../assets/Brazhkovich.svg";
 import Head from "next/head";
 
 const Registration = () => {

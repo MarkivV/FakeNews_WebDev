@@ -14,6 +14,7 @@ const NormalCard: FC<NormalCardType> = ({news}) => {
     return (
         <div className={styles.normal_card}>
             <figure className={styles.normal_card_img}>
+                <Link href={'/news/'+news?.url} prefetch={false}>
 
                 <Image
                 src={news?.image || plainColor}
@@ -21,6 +22,8 @@ const NormalCard: FC<NormalCardType> = ({news}) => {
                 width={400} height={300}
                 loading={"lazy"}
                 />
+                </Link>
+
             </figure>
             <div className={styles.normal_card_desc}>
                 <Link href={'/news/'+news?.url}>
