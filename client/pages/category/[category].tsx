@@ -9,7 +9,7 @@ import "moment/locale/uk";
 import { newsTranslate } from "../../utils/utilities";
 import Image from "next/image"
 import Head from "next/head";
-import imageB from "../../assets/Brazhkovich2.svg";
+import imageB from "../../assets/Brazhkovich.svg";
 type NewsCat = {
     newsGetCategory: News[];
   category: string;
@@ -58,7 +58,7 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
         </Head>
       <nav className={styles.categories}>
         {list.map((i: string, index) => (
-          <Link href={"/category/" + listEng[index]} key={index}>
+          <Link href={"/category/" + listEng[index]} key={index}  prefetch={false}>
             <button
               className={styles.active}
               onClick={() => handleClick(listEng[index])}
@@ -78,7 +78,7 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
         {postsList.map((i: News) => (
           <div key={i.url} className={styles.normal_card}>
             <div className={styles.normal_card_img}>
-              <Link href={"/news/" + i.url}>
+              <Link href={"/news/" + i.url} prefetch={false}>
                   <Image
                       src={i?.image}
                       alt={i?.title}
@@ -87,12 +87,12 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
               </Link>
               <div className={styles.desc}>
                 <div className={styles.up_desc}>
-                  <Link href={"/category/" + category}>
+                  <Link href={"/category/" + category} prefetch={false}>
                     <h6>{newsTranslate(i.category)}</h6>
                   </Link>
                   <h6>| {moment(i.createdAt).format("LLL")}</h6>
                 </div>
-                <Link href={"/news/" + i.url}>
+                <Link href={"/news/" + i.url} prefetch={false}>
                   <h2 className={styles.titleDesc}>
                     {i.title?.length > 150
                       ? `${i.title?.substring(0, 90)}...`
@@ -134,7 +134,7 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
             {lastPostsList.map((i: News) => (
                 <div key={i.url} className={styles.normal_card}>
                     <div className={styles.normal_card_img}>
-                        <Link href={"/news/" + i.url}>
+                        <Link href={"/news/" + i.url} prefetch={false}>
                             <Image
                                 src={i?.image}
                                 alt={i?.title}
@@ -143,12 +143,12 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
                         </Link>
                         <div className={styles.desc}>
                             <div className={styles.up_desc}>
-                                <Link href={"/category/" + category}>
+                                <Link href={"/category/" + category} prefetch={false}>
                                     <h6>{newsTranslate(i.category)}</h6>
                                 </Link>
                                 <h6>| {moment(i.createdAt).format("LLL")}</h6>
                             </div>
-                            <Link href={"/news/" + i.url}>
+                            <Link href={"/news/" + i.url} prefetch={false}>
                                 <h2 className={styles.titleDesc}>
                                     {i.title?.length > 150
                                         ? `${i.title?.substring(0, 90)}...`

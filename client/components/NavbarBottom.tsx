@@ -25,7 +25,7 @@ const NavbarBottom: FC = () => {
     <div className={styles.bottomNav}>
       <div className={styles.first13}>
         <div className={scValue ? styles.mainLogo : styles.mainLogoNone}>
-          <Link href={"/"}>
+          <Link href={"/"} prefetch={false}>
             <svg
               id="Слой_1"
               data-name="Слой 1"
@@ -84,26 +84,26 @@ const NavbarBottom: FC = () => {
       </div>
       <div className={styles.second13}>
         <div className={styles.inSecond13}>
-          <Link href={"/"}>
+          <Link href={"/"} prefetch={false}>
             <h4>Головна</h4>
           </Link>
-          <Link href={"/category/war"}>
+          <Link href={"/category/war"} prefetch={false}>
             <h4>Новини</h4>
           </Link>
-          <Link href={"/suggest"}>
+          <Link href={"/suggest"} prefetch={false}>
             <h4>Запропонувати</h4>
           </Link>
-          <Link href={"/suggest"}>
+          <Link href={"/suggest"} prefetch={false}>
             <h4>Підтримайте нас</h4>
           </Link>
-          <Link href={"/about"}>
+          <Link href={"/about"} prefetch={false}>
             <h4>Про Нас</h4>
           </Link>
         </div>
       </div>
       <div className={styles.third13}>
         <div className={scValue ? styles.personIcon : styles.personIconNone}>
-          <Link href={"/profile"}>
+          <Link href={"/profile"} prefetch={false}>
             <PersonIcon />
           </Link>
         </div>

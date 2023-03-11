@@ -15,7 +15,7 @@ const LayoutAdmin = ({children}: any) => {
     <div className={styles.wrap}>
       <div className={styles.categories}>
         {categories.map((i: string, index) => (
-          <Link href={"/admin/" + categories[index]} key={index}>
+          <Link href={"/admin/" + categories[index]} key={index} prefetch={false}>
             <button
               className={
                 index === selectedButton ? styles.active : styles.disable

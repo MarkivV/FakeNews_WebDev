@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.scss";
 import MainCard from "../components/MainCard";
-import imageB from "./../assets/Brazhkovich2.svg"
+import imageB from "../assets/Brazhkovich.svg"
 import NormalCard from "../components/NormalCard";
 import { News } from "../types/types";
 import { GetServerSideProps } from "next";

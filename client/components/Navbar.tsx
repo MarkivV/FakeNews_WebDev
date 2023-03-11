@@ -1,4 +1,4 @@
-import PersonIcon from "@mui/icons-material/Person";
+ import PersonIcon from "@mui/icons-material/Person";
 import styles from "./../styles/Navbar.module.scss";
 import Link from "next/link";
 import { useState } from "react";
@@ -25,7 +25,7 @@ const Header = () => {
           <span></span>
         </label>
         <div className={styles.second13}>
-          <Link href={"/"}>
+          <Link href={"/"} prefetch={false}>
             <svg
               id="Слой_1"
               data-name="Слой 1"
@@ -82,7 +82,7 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.second13Mobile}>
-          <Link href={"/"}>
+          <Link href={"/"} prefetch={false}>
             <svg
               id="Слой_1"
               data-name="Слой 1"
@@ -139,31 +139,31 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.third13Mobile}>
-          <Link href={"/profile"}>
+          <Link href={"/profile"} prefetch={false}>
             <PersonIcon />
           </Link>
         </div>
         <div className={styles.third13}>
-          <Link href={"/profile"}>
+          <Link href={"/profile"} prefetch={false}>
             <PersonIcon />
           </Link>
         </div>
       </div>
       <div className={openMenu ? styles.menuOpen : styles.menuClosed}>
         <div className={styles.links}>
-          <Link href={"/"}>
+          <Link href={"/"} prefetch={false}>
             <h4 onClick={() => setOpenMenu(false)}>Головна</h4>
           </Link>
-          <Link href={"/category/war"}>
+          <Link href={"/category/war"} prefetch={false}>
             <h4 onClick={() => setOpenMenu(false)}>Новини</h4>
           </Link>
-          <Link href={"/suggest"}>
+          <Link href={"/suggest"} prefetch={false}>
             <h4 onClick={() => setOpenMenu(false)}>Запропонувати</h4>
           </Link>
-          <Link href={"/suggest"}>
+          <Link href={"/suggest"} prefetch={false}>
             <h4 onClick={() => setOpenMenu(false)}>Підтримайте нас</h4>
           </Link>
-          <Link href={"/about"}>
+          <Link href={"/about"} prefetch={false}>
             <h4 onClick={() => setOpenMenu(false)}>Про Нас</h4>
           </Link>
         </div>

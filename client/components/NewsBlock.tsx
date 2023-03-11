@@ -16,7 +16,7 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
   return (
     <>
       <div className={styles.fist_part}>
-        <Link href={"/category/" + category}>
+        <Link href={"/category/" + category} prefetch={false}>
           <h1>{newsTranslate(category)}</h1>
         </Link>
       </div>
@@ -27,7 +27,7 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
           .map((i) => (
             <div key={i.url} className={styles.normal_card}>
               <div className={styles.normal_card_img}>
-                <Link href={"/news/" + i.url}>
+                <Link href={"/news/" + i.url} prefetch={false}>
                   <Image
                   src={i?.image || plainColor}
                   alt={i?.title}
@@ -39,12 +39,12 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
                 </Link>
                 <div className={styles.normal_card_desc}>
                   <div className={styles.up_desc}>
-                    <Link href={"/category/" + category}>
+                    <Link href={"/category/" + category} prefetch={false}>
                       <h2>{newsTranslate(i.category)}</h2>
                     </Link>
                   </div>
                   <div className={styles.titleDiv}>
-                  <Link href={"/news/" + i.url}>
+                  <Link href={"/news/" + i.url} prefetch={false}>
                     <h2>{i.title}</h2>
                   </Link>
                   </div>

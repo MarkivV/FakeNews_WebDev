@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./../../styles/About.module.scss";
-import imageB from "../../assets/Brazhkovich2.svg";
+import imageB from "../../assets/Brazhkovich.svg";
 import Head from "next/head";
 import React from "react";
 

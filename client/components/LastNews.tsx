@@ -14,7 +14,7 @@ const LastNews: FC<typeNews> = ({ items }) => {
         {items.map((i) => (
           <div className={styles.lastNews_card} key={i?.url}>
             <div className={styles.lastNews_image}>
-              <Link href={"/news/" + i?.url} passHref>
+              <Link href={"/news/" + i?.url}  prefetch={false}>
                 <Image
                   src={i?.image || plainColor}
                   alt={i?.title}
@@ -25,17 +25,17 @@ const LastNews: FC<typeNews> = ({ items }) => {
               </Link>
             </div>
             <div className={styles.lastNews_content}>
-              <Link href={"/news/" + i?.url}>
+              <Link href={"/news/" + i?.url} prefetch={false}>
                 <h3>
                   {i?.title.length > 110
                     ? `${i?.title.substring(0, 110)}...`
                     : i?.title}
                 </h3>
               </Link>
-              <Link href={`/category/${i?.category}?page=0`}>
+              <Link href={`/category/${i?.category}?page=0`} prefetch={false}>
                 <h4>{newsTranslate(i?.category)}</h4>
               </Link>
-              <Link href={"/news/" + i?.url}>
+              <Link href={"/news/" + i?.url} prefetch={false}>
                 <h2>
                   {i?.description.length > 330
                     ? `${i?.description.substring(0, 330)}...`
