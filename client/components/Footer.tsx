@@ -104,10 +104,10 @@ const Footer = () => {
               <h2><Link href={"/"} prefetch={false}>Twitter</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/"} prefetch={false}>Instagram</Link></h2>
+              <h2><Link href={"https://instagram.com/brazhkovich?igshid=YmMyMTA2M2Y="} prefetch={false}>Instagram</Link></h2>
             </li>
             <li>
-              <h2><Link href={"/"} prefetch={false}>Telegram</Link></h2>
+              <h2><Link href={"https://t.me/brazhkovich"} prefetch={false}>Telegram</Link></h2>
             </li>
           </ul>
         </ul>
