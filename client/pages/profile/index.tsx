@@ -30,7 +30,7 @@ const Profile: FC<Details> = ({ news, user }) => {
       </Head>
         <div className={styles.emailVerify}>
             {
-                !user?.emailVerified && (
+                user?.emailVerified == false && (
                     <div>
                         <h3>Підтвердіть свій Email для того щоб використовувати повний функціонал ресурсу</h3>
                     </div>
