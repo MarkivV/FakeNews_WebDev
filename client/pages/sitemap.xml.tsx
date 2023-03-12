@@ -46,14 +46,14 @@ async function generateXML(): Promise<string> {
             return `
             <url>
                 <loc>${process.env.NEXT_PUBLIC_API_CONNECT_URL}/category/${page}</loc>
-                <lastmod>${new Date().toString()}</lastmod>
+                <lastmod>${new Date().toISOString()}</lastmod>
             </url>
             `
         }).join('')
     }
     <url>
                 <loc>${process.env.NEXT_PUBLIC_API_CONNECT_URL}/about</loc>
-                <lastmod>${new Date().toString()}</lastmod>
+                <lastmod>${new Date().toISOString()}</lastmod>
             </url>
 </urlset>`
 }
