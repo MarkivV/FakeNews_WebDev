@@ -33,7 +33,6 @@
     "@types/cookies": "^0.7.7",
     "@types/mongodb": "^4.0.7",
     "@types/mongoose": "^5.11.97",
-    "@types/node": "18.11.17",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "@vercel/analytics": "^0.1.11",
@@ -56,12 +55,14 @@
     "next": "13.0.7",
     "next-auth": "^4.18.7",
     "next-share": "^0.19.0",
+    "next-sitemap": "^4.0.5",
     "nodemailer": "^6.9.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.5",
     "sass": "^1.57.0",
     "sharp": "^0.31.3",
+    "sitemap": "^7.1.1",
     "slugify": "^1.6.5",
     "typescript": "4.9.4",
     "uuidv4": "^6.2.13"
@@ -71,6 +72,7 @@
     "@types/dompurify": "^2.4.0",
     "@types/formidable": "^2.0.5",
     "@types/jsonwebtoken": "^9.0.0",
+    "@types/node": "^18.15.0",
     "@types/nodemailer": "^6.4.7",
     "@types/sharp": "^0.31.1"
   }
