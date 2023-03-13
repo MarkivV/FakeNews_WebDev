@@ -12,12 +12,12 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     switch (method) {
         case "GET":
             try {
-                const lastFivePosts = await NewsPosts.find({published: true}, {image: 1, title: 1, _id: 1, createdAt: 1, category: 1, url: 1 })
+                const lastFivePosts = await NewsPosts.find({published: true}, {image: 1, title: 1, _id: 1, updatedAt: 1, category: 1, url: 1 })
                     .sort({ updatedAt: -1 })
                     .limit(5);
                 const topThreeRatedPosts = await NewsPosts.find(
                     { rating: { $gte: 0, $lte: 9 }, published: true },
-                    { image: 1,title: 1, _id: 1, createdAt: 1, category: 1, description: 1, url: 1  }
+                    { image: 1,title: 1, _id: 1, updatedAt: 1, category: 1, description: 1, url: 1  }
                 )
                     .sort({ rating: -1 })
                     .limit(3);
@@ -45,7 +45,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
                                                 _id: '$$post._id',
                                                 title: '$$post.title',
                                                 image: '$$post.image',
-                                                createdAt: '$$post.createdAt',
+                                                updatedAt: '$$post.createdAt',
                                                 url: '$$post.url',
                                                 category: '$_id'
                                             }

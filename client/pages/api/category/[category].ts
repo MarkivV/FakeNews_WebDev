@@ -16,10 +16,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
                     .sort({ updatedAt: -1 })
                     .limit(5);
 
-                const newsApi = {
-                    lastFivePosts,
-                    newsGetCategory
-                }
+                const newsApi = {lastFivePosts, newsGetCategory}
                 res.status(200).json(newsApi)
             }catch (e:any) {
                 res.status(500).json(e)

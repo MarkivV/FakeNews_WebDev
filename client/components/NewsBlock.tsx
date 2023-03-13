@@ -51,7 +51,7 @@ const NewsBlockComponent: FC<NewsBlock> = ({ news, category }) => {
                 </div>
               </div>
               <div className={styles.up_descDown}>
-                <h4>{moment(i.createdAt).format("LLL")}</h4>
+                <h4>{moment(i.updatedAt).format("LLL")}</h4>
               </div>
             </div>
           ))}
