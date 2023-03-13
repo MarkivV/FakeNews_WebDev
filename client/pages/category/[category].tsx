@@ -55,6 +55,9 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
             <meta property="og:type" content="website" />
             <meta property="og:title" content={`${newsTranslate(category)} | Бражкович`} />
             <meta property="og:image" content={imageB} />
+            <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6465383896599402"
+                    crossOrigin="anonymous"></script>
         </Head>
       <nav className={styles.categories}>
         {list.map((i: string, index) => (
