@@ -104,7 +104,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
   return (
     <div className={styles.cardDetails_wrap}>
       <Head>
-        <title>Бражкович | {mainPost?.title}</title>
+        <title>{mainPost?.title}</title>
         <meta property="og:url" content={`https://brazhkovich.com/news/${mainPost?.url}`} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={mainPost?.title} />

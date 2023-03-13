@@ -50,10 +50,10 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
   return (
     <div className={styles.wrap}>
         <Head>
-            <title>Бражкович | {newsTranslate(category)}</title>
+            <title>{newsTranslate(category)} | Бражкович </title>
             <meta property="og:url" content={`https://brazhkovich.com/category/${category}`} />
             <meta property="og:type" content="website" />
-            <meta property="og:title" content={`Бражкович | ${newsTranslate(category)}`} />
+            <meta property="og:title" content={`${newsTranslate(category)} | Бражкович`} />
             <meta property="og:image" content={imageB} />
         </Head>
       <nav className={styles.categories}>
