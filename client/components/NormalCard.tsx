@@ -28,7 +28,7 @@ const NormalCard: FC<NormalCardType> = ({news}) => {
             <div className={styles.normal_card_desc}>
                 <Link href={'/news/'+news?.url}>
                     <h3>{news?.title?.length > 90 ? `${news?.title?.substring(0, 90)}...` : news?.title}</h3>
-                    <h4>{moment(news?.createdAt).format("LLL")}</h4>
+                    <h4>{moment(news?.updatedAt).format("LLL")}</h4>
                 </Link>
             </div>
         </div>

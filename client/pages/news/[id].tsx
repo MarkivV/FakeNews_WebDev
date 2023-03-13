@@ -130,7 +130,7 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
               <h2>Від: </h2>
               <h3>{name}</h3>
               </div>
-              <h4>{moment(mainPost.createdAt).format("LLL")}</h4>
+              <h4>{moment(mainPost.updatedAt).format("LLL")}</h4>
             </div>
           </div>
         </div>

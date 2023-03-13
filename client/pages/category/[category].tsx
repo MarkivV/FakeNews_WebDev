@@ -188,7 +188,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       newsGetCategory: res?.data.newsGetCategory,
       category: params?.category,
-      lastFivePosts: res?.data.lastFivePosts
+      lastFivePosts: res?.data.lastFivePosts.reverse()
     },
   };
 };
