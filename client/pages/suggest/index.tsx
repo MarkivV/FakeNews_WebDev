@@ -16,6 +16,7 @@ const Suggest = () => {
   const { data: session } = useSession();
   const [alertList, setAlertList] = useState<toastProps[]>([]);
   const [image, setImage] = useState<File | null>(null);
+  const [disabledButton, setDisabledButton] = useState(false);
   const handleImageChange = (event: any) => {
     if (event.target.files) {
       setImage(event.target.files[0]);
@@ -40,6 +41,7 @@ const Suggest = () => {
 
 
       try {
+        setDisabledButton(true)
         console.log(formData)
           const imageUrl = await axios.post(`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/api/upload`, formData, config)
         if(imageUrl.status === 201){
@@ -52,18 +54,31 @@ const Suggest = () => {
               creator: session?.user?.id,
               url: generateSlug(title)
             });
-            console.log(res);
-            setTitle("");
-            setImage(null);
-            setDesc("");
-          } else {
-            toastProp = {
-              id: alertList.length + 1,
-              title: "Увага",
-              description: "Заповніть всі поля",
-              bgColor: "#FF4F00",
-            };
-            setAlertList([...alertList, toastProp]);
+            if(res.status === 201){
+              console.log(res);
+              setTitle("");
+              setImage(null);
+              setDesc("");
+              setDisabledButton(false)
+            }else if (res.status === 203){
+                toastProp = {
+                  id: alertList.length + 1,
+                  title: "Увага",
+                  description: "Ви не підтвердили свою пошту",
+                  bgColor: "#FF4F00",
+                };
+                setAlertList([...alertList, toastProp]);
+                setDisabledButton(false)
+            } else {
+                toastProp = {
+                  id: alertList.length + 1,
+                  title: "Увага",
+                  description: "Заповніть всі поля",
+                  bgColor: "#FF4F00",
+                };
+                setAlertList([...alertList, toastProp]);
+                setDisabledButton(false)
+            }
           }
         }else{
           console.log("GOKOG")
@@ -129,7 +144,7 @@ const Suggest = () => {
             </button>
           ))}
         </div>
-          <button className={session ? styles.button : styles.buttonDis} disabled={!session} onClick={(e) => handleSuggest(e)}>
+          <button className={session && !disabledButton ? styles.button : styles.buttonDis} disabled={!session && disabledButton} onClick={(e) => handleSuggest(e)}>
             <h3>Відправити</h3>
           </button>
 
