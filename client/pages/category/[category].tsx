@@ -78,6 +78,7 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
         <div className={styles.categoryBlocks}>
 
       <div className={styles.mainBlock}>
+        <div className={styles.mainBlockPosts}>
         {postsList.map((i: News) => (
           <div key={i.url} className={styles.normal_card}>
             <div className={styles.normal_card_img}>
@@ -109,7 +110,7 @@ const NewsComponent: FC<NewsCat> = ({ newsGetCategory, category, lastFivePosts }
             </div>
           </div>
         ))}
-
+        </div>
           <div className={styles.loadMoreButton}>
               <button
                   onClick={async () => {
