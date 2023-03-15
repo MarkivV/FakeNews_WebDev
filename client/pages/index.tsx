@@ -34,11 +34,14 @@ export default function Home({lastFivePosts, topThreeRatedPosts, postsByCategory
   return (
     <div className={styles.wrap}>
         <Head>
-            <title>Бражкович</title>
+            <title>Бражкович - розкриваємо правду</title>
             <meta property="og:url" content={`https://brazhkovich.com`} />
             <meta property="og:type" content="website" />
             <meta property="og:title" content={"Новини які приголомшують"} />
             <meta property="og:image" content={imageB} />
+            <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6465383896599402"
+                    crossOrigin="anonymous"></script>
         </Head>
       <div className={styles.upper_block}>
         <div className={styles.leftBlock}>

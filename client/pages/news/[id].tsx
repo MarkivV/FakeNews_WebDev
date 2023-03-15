@@ -117,7 +117,9 @@ const CardDetails: FC<Details> = ({ mainPost, posts, name, comments }) => {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/jpeg" />
-
+        <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6465383896599402"
+                crossOrigin="anonymous"></script>
       </Head>
       <div className={styles.wrapperMain}>
         <div className={styles.cardDetails_title}>

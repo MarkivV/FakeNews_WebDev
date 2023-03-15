@@ -1,4 +1,3 @@
-//
 // /** @type {import('next-sitemap').IConfig} */
 // const siteUrl = process.env.NEXT_PUBLIC_API_CONNECT_URL
 //
@@ -8,9 +7,8 @@
 //     robotsTxtOptions: {
 //         policies: [
 //             {userAgent: "*", disallow: "/admin/*"},
-//             {userAgent: "*", allow: "/"}
-//         ],
-//         additionalSitemaps: [`${process.env.NEXT_PUBLIC_API_CONNECT_URL}/sitemap.xml`]
+//             {userAgent: "*", allow: "/*"}
+//         ]
 //     },
 //     exclude: ["/admin/*", "/login", "/register", "/suggest", "/profile"]
 // }

@@ -27,6 +27,9 @@ const Profile: FC<Details> = ({ news, user }) => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`Бражкович | Профіль`} />
         <meta property="og:image" content={imageB} />
+          <script async
+                  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6465383896599402"
+                  crossOrigin="anonymous"></script>
       </Head>
         <div className={styles.emailVerify}>
             {

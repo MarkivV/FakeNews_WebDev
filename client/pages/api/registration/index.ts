@@ -5,7 +5,6 @@ import {User} from "../../../models/User";
 import nodemailer from "nodemailer";
 import { v4 as uuidv4 } from 'uuid';
 
-
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
     const { email, name, password } = req.body
 
