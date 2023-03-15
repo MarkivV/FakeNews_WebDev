@@ -2,6 +2,7 @@ import dbConnect from "../../../utils/dbConnect";
 import {NextApiRequest, NextApiResponse, PageConfig} from "next";
 import NewsPosts from "../../../models/NewsPosts";
 import {method1} from "../../../utils/upload";
+import { User } from "../../../models/User";
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse){
     const {method} = req
@@ -72,8 +73,14 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
             break;
         case "POST":
             try {
-                const newsCreate = await NewsPosts.create(req.body)
-                res.status(201).json(newsCreate)
+                const UserEmailVerified = await User.findById(req.body.creator)
+                if(UserEmailVerified.emailVerified === false){
+                    res.status(203).send("Email not verified")
+                    return
+                }else{
+                    const newsCreate = await NewsPosts.create(req.body)
+                    res.status(201).json(newsCreate)
+                }
             }catch (e: any) {
                 res.status(500).json(e)
             }
