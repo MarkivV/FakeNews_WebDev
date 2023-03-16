@@ -21,9 +21,9 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
         const userAdded = await User.create({email, name, password: hashedPassword, token: token})
         try {
             const transporter = nodemailer.createTransport({
-                host: 'smtp.mailgun.org',
-                port: 587,
-                secure: false,
+                host: 'smtp.titan.email',
+                port: 465,
+                secure: true,
                 auth: {
                     user: process.env.GMAIL_USERNAME,
                     pass: process.env.GMAIL_PASSWORD,
@@ -33,7 +33,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
                 from: process.env.GMAIL_USERNAME,
                 to: email,
                 subject: 'Підтвердження реєстрації',
-                text: "https://localhost:3000/token/"+token,
+                text: process.env.GMAIL_USERNAME+token,
                 html: "<html style=\"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\n" +
                     "<head>\n" +
                     "<meta name=\"viewport\" content=\"width=device-width\" />\n" +
