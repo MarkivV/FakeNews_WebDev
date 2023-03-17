@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
       <SessionProvider session={pageProps.session}>
           <Head>
-              <link rel="shortcut icon" href="/favicon.ico" />
+              <link rel="shortcut icon" href="/favicon.ico?v=2" />
           </Head>
           <Layout>
               <Component {...pageProps} />
