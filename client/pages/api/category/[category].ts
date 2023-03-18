@@ -11,7 +11,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     switch (method) {
         case "GET":
             try {
-                const newsGetCategory = await NewsPosts.find({category: category, published: true}).skip(Number(page)*10).limit(10)
+                const newsGetCategory = await NewsPosts.find({category: category, published: true}).sort({updatedAt: -1}).skip(Number(page)*10).limit(10)
                 const lastFivePosts = await NewsPosts.find({published: true}, {image: 1, title: 1, _id: 1, createdAt: 1, category: 1, url: 1 })
                     .sort({ updatedAt: -1 })
                     .limit(5);
